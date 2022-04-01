@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.uni.member.model.dto.Member" %>
+    pageEncoding="UTF-8" %>
 <%
-	Member loginUser = (Member)session.getAttribute("loginUser");
 	
 	String msg = (String)session.getAttribute("msg");
 	
@@ -15,7 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 	body{
-		background:url('<%=request.getContextPath() %>/resources/images/1.jpg') no-repeat; 
+		background:url('<%=request.getContextPath() %>/resources/images/main.jpg') no-repeat; 
 		background-size:cover;
 	}
 	/* 로그인 폼 관련 스타일*/
@@ -63,7 +62,6 @@
 	<h1 align = "center" style="color:white;">Welcome JSP World!</h1>
 	<div class="loginArea">
 	
-	<% if ( loginUser == null ) {%> <!-- 로그인 유저가 없을 때 -->
 	<form id = "loginForm" action="<%=request.getContextPath()%>/loginMember.do" method="post" onsubmit="return loginValidate();">
 			<table>
 				<tr>
@@ -81,24 +79,6 @@
 			    <button id = "enrollBtn" type="button" onclick="enrollPage();">회원가입</button>
 			</div>
 		</form>
-		<%} else{ %> <!-- 로그인 유저가 있을 때는 마이페이지, 로그아웃으로 바뀜. -->
-		<div id = "userInfo">
-				<b style = "color:white;"><%=loginUser.getUserName() %> 님 </b> 의 방문을 환영합니다.
-				<br><br>
-				<div class ="btns" align="center">
-					<a href = "<%=request.getContextPath() %>/mypageMember.do">마이페이지</a>
-					<a href = "<%=request.getContextPath() %>/logoutMember.do">로그아웃</a>
-				</div>
-			</div>
-		<%} %>
-	</div>
-	
-	
-	<script>
-		function enrollPage(){ // 단순 회원가입을 띄워줄 form
-			location.href ="<%=request.getContextPath()%>/enrollFormMember.do";
-		}
-	</script>
 	
 	<br clear="both">
 		
