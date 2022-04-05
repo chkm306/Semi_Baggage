@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>index</title>
 <style>
 	.content{
 			width:70%;
@@ -29,11 +29,20 @@
 		.thumb:hover {
 			cursor: pointer;
 		}--%>
+		.banner{
+		background:url('<%=request.getContextPath() %>/resources/images/main.jpg') no-repeat;
+		background-size:cover;
+		}
 </style>
 </head>
 <body>
 	<%@ include file="views/common/menubar.jsp" %>
-	  <div class="content">
+	<div class="main-reservation">
+	
+	</div>
+	
+	<div class="content">
+	
 	
 	</div>
 	
