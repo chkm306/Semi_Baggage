@@ -10,29 +10,6 @@
 			width:70%;
 			height:800px;
 		}
-		<%--.topList {
-			width: 1000px;
-			height: 400px;
-			background: black;
-			color: white;
-			margin: auto;
-		}
-		
-		.thumb {
-			display: inline-block;
-			width: 250px;
-			height: 250px;
-			margin: 10px;
-			border: 1px solid white;
-		}
-		
-		.thumb:hover {
-			cursor: pointer;
-		}--%>
-		.banner{
-		background:url('<%=request.getContextPath() %>/resources/images/main.jpg') no-repeat;
-		background-size:cover;
-		}
 </style>
 </head>
 <body>
