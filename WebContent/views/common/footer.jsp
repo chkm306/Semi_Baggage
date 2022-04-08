@@ -14,33 +14,27 @@
 	*{
 	    margin: 0;
 	    padding: 0;
-	    /* 기본적으로 들어간 마진과 패딩을 없애겠다 */
 	    box-sizing: border-box;
-	    /* 박스의 사이즈는 컨텐츠박스가 아닌 테두리를 기준으로 하겠다. */
 	}
 	
 	body{
 	    font-family: jua, serif;
-	    /* 주아 폰트 적용 */
 	}
-	/* 링크 */
+		/* 링크 */
 	a{
 	    cursor:pointer;
-	    /* 커서를 올렸을때 포인터로 설정 */
 	    text-decoration: none;
 	    /* 밑줄 없애기 */
-	    color: #0367a6;
 	}
+	
+	/* 푸터 css */
 	
 	footer{
 	    font-family: 'Nanum Gothic', sans-serif;
 	    background: rgb(242, 242, 242);
-	    /* height: 100vw; */
-	    /* ? */
 	    padding-top: 20px;
 	    color: rgb(118, 113, 113);
 	    margin: 0 auto;
-	    /* color: rgb(64, 64, 64); */
 	}
 	
 	.footer{
@@ -69,7 +63,7 @@
 	    color: rgb(118, 113, 113);
 	    font-size: 1rem;
 	}
-	.footer a:hover{
+	.footer_menu>a:hover{
 	    color: rgb(58, 58, 58);
 	}
 	
@@ -79,6 +73,15 @@
 	    width: 100vw;
 	    padding: 20px 0;
 	    text-align: center;
+	}
+	
+	.main_slide input[id*="slide"] {
+	    display: none;
+	}
+	
+	.silde_area{
+	    width: 100%;
+	    margin: 0 auto;
 	}
     </style>
 </head>
