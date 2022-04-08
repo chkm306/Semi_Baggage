@@ -4,6 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<title>Insert title here</title>
+<style>
+	.content{
+			width:70%;
+			height:800px;
+		
+		}
+		
+	
+</style>
+</head>
+<body>
+
+	<%@ include file = "views/common/menubar.jsp" %>
+	<div class="main-reservation">
+	
+	</div>
+
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <title>index</title>
@@ -193,13 +212,15 @@
 
     </main>
 
-	
+
 	
 	<div class="content">
 	
 	
 	</div>
 	
+
+
 	
 	
 	
@@ -207,6 +228,7 @@
 	<!-- 부트스트랩 자스코드 -->
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	    <a style="display:scroll; position:fixed; bottom:3rem; right:3rem; color: #a2cdf2;" href="#" id="angle_up"><i class="fa-solid fa-circle-arrow-up fa-3x"></i></i></a>
+
 	<%@ include file="views/common/footer.jsp" %> 
 </body>
 </html>
