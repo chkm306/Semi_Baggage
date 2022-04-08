@@ -4,31 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<title>Insert title here</title>
-<style>
-	.content{
-			width:70%;
-			height:800px;
-		
-		}
-		
-	
-</style>
-</head>
-<body>
-
-	<%@ include file = "views/common/menubar.jsp" %>
-	<div class="main-reservation">
-	
-	</div>
-
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <title>index</title>
 <style>
-
-	
 #myCarousel{
 
     color: #5a5a5a;
@@ -102,7 +81,6 @@
 </head>
 <body>
 	<%@ include file="views/common/menubar.jsp" %>
-	
 	
     <!-- 슬라이더 시작 {-->
     <!-- 슬라이드 페이징 -->

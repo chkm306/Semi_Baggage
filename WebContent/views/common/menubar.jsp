@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-	
 	String msg = (String)session.getAttribute("msg");
 	
 	String contextPath = request.getContextPath();
@@ -11,14 +10,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <!-- <link rel="stylesheet" href="style.css"> -->
-   <link href="${pageContext.request.contextPath}/resources/css/menubar.css" rel="stylesheet" type="text/css">
-    <script src="https://kit.fontawesome.com/2bf1fadc44.js" crossorigin="anonymous"></script>
-    <!-- 폰트어썸 -->
-
-
     <script src="https://kit.fontawesome.com/2bf1fadc44.js" crossorigin="anonymous"></script>
     <!-- 폰트어썸 -->
 	<style>
@@ -158,10 +149,7 @@
             <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="백있지 로고" onclick="goMain()">
         </div>
 
-        <ul class="nav_menu">
-
         <ul class="nav_menu" style="color: #0367a6;">
-
             <li><a target="_self" onclick="goInfo()">이용안내</a></li>
             <li><a target="_self" onclick="goReserve()">예약하기</a></li>
             <li><a target="_self" onclick="goStorage()">보관소</a></li>
