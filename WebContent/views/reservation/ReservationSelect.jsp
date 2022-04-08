@@ -9,10 +9,16 @@
     <title>보관,운송 선택</title>
     <style>
 
+		
+		h1{
+		text-align: center;
+		}
+		
         .page_section{
             height: 800px;
             padding-top: 100px;
             margin-bottom: 120px;
+   
         }
 
         .container{
@@ -23,6 +29,7 @@
             
         }
 
+
         .res_form{
             text-align: center;
             font-size: 35px;
@@ -32,7 +39,7 @@
         .row{
             display: flex;
             flex-wrap: wrap;
-            margin-left: -35px;
+            text-align: center;
         
         }
 
@@ -52,7 +59,7 @@
             text-align: center;
             border: 1px solid black;
             border-radius: 10px 10px 10px 10px;
-            height: 200px;
+            height: 300px;
             width: 255px;
             margin-top: 60px;
         }
@@ -91,7 +98,7 @@
             text-align: center;
             border: 1px solid black;
             border-radius: 10px 10px 10px 10px;
-            height: 200px;
+            height: 300px;
             width: 255px;
             margin-top: 60px;
         }
@@ -103,9 +110,9 @@
 	
 
     <div class= "reseve_img">
-        <img src="Semi_Baggage/WebContent/resources/images/reservation.jpg" alt="" >      
+        <img src="resources/images/reservation.jpg" alt="" >      
     </div>
-    <form class="page_section"  action="<%=request.getContextPath() %>/reservationSelect.do" method="post">
+    <form class="page_section" action="<%=request.getContextPath() %>/reservationSelect.do" method="post">
 
      <div class="container">
          <h1 class="res_form">예약신청서</h1>
@@ -113,15 +120,14 @@
         <div class="col_text_right">
             <div class="trans_res_box">
                 <p>짐을 원하는 장소로 운송해드립니다</p>
-                <button onclick="" type="button" class="btn">운송</button>
+                <button onclick="location.href='<%=contextPath%>/insertReservation.do'" type="button" class="btn">운송</button>
             </div>
         </div>
 
         <div class="col_text_left">
             <div class="store_box">
                 <p>원하는 장소에 짐을 보관해드립니다</p>
-                <button onclick="" type="button" class="btn">보관</button>
-
+                <button onclick="location.href='<%=contextPath%>/insertReservation.do'" type="button" class="btn">보관</button>
             </div>
         </div>
      </div>

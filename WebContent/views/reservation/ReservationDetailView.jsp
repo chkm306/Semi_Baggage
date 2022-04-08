@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="btn" align="center">
-                <button type="button" onclick="" class="update">예약변경</button>
+                <button type="button" onclick="location.href='reservationUpdate.do'" class="update">예약변경</button>
                 <button type="button" onclick="" class="delete">예약취소</button>
             </div>
 

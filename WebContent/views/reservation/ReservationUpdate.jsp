@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약변경</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- 값 제어를 위해 jquery -->
-    <link href="./css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="resources/css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
     <!-- Air datepicker css -->
-    <script src="./js/datepicker.js"></script> <!-- Air datepicker js -->
-    <script src="./js/i18n/datepicker.ko.js"></script> <!-- 달력 한글 추가를 위해 커스텀 -->
+    <script src="resources/js/datepicker.js"></script> <!-- Air datepicker js -->
+    <script src="resources/js/i18n/datepicker.ko.js"></script> <!-- 달력 한글 추가를 위해 커스텀 -->
 
     <style>
 
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="btn" align="center">
-                <button type="button" onclick="" class="update">확인</button>
+                <button type="button" onclick="location.href='reservationCheck.do'" class="update">확인</button>
             </div>
 
 

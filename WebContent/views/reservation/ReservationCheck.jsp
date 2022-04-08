@@ -44,8 +44,8 @@
 	<%@ include file="../common/menubar.jsp" %>
 	
     <div class= "reseve_img">
-       <img src="/resources/images/reservation2.jpg" alt="">     
-    </div>
+        <img src="resources/images/reservation2.jpg" alt="" >       
+	</div>
     <section>
         <div class="outer">
         <div>
@@ -70,7 +70,7 @@
                     <td>1</td>
                     <td>1</td>
                     <td>1</td>
-                    <td><button onclick="" type="button" class="btn">상세보기</button></td>
+                    <td><button onclick="location.href='reservationDetail.do'" type="button" class="btn">상세보기</button></td>
                 </tr>
 
                 <tr>

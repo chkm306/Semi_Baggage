@@ -10,16 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ReservationInsertServlet
+ * Servlet implementation class insertReservation
  */
-@WebServlet("/listReserve.do")
-public class ReservationInsertServlet extends HttpServlet {
+@WebServlet("/insertReservation.do")
+public class insertReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public ReservationInsertServlet() {
+    public insertReservationServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -28,7 +29,7 @@ public class ReservationInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/reservation/ReservationSelect.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("views/reservation/DetailReservation.jsp");
 		view.forward(request, response);
 	}
 

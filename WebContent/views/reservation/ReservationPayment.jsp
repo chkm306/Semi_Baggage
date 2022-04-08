@@ -185,8 +185,8 @@
 	<%@ include file="../common/menubar.jsp" %>
 
     <div class= "reseve_img">
-         <img src="/resources/images/reservation.jpg" alt="">
-    </div>
+        <img src="resources/images/reservation.jpg" alt="" >       
+	</div>
 
     <div id="wrapper_page">
         <div id="confirm">
@@ -241,7 +241,7 @@
         </section>
     </div>
     <div class="btn">
-    <input type="button" class="delete" value="예약취소">
+    <input type="button" class="delete" value="예약취소" onclick="location.href='reservationCheck.do'">
     </div>
     <div class="wrap_box">
         <p>
@@ -260,7 +260,7 @@
             <b class="print_price"></b>
         </div>
         <div id="display_pay_btn" class="pay_btn">
-            <input type="button" value="결제하기" onclick="" class="btn_submit">
+            <input type="button" value="결제하기" class="btn_submit" onclick="location.href='reservationComplete.do'">
 
         </div>
 

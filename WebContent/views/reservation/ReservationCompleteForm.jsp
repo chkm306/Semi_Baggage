@@ -42,15 +42,22 @@
 	
 
     <div class= "reseve_img">
-       <img src="/resources/images/reservation.jpg" alt="">
-    </div>
+        <img src="resources/images/reservation.jpg" alt="" >       
+	</div>
     <div class="info">
         <h2 class="customer">고객님의 예약이 완료되었습니다.</h2>
         <h2 class="res_num">예약 번호 : </h2>
     </div>
     <div class="next_btn">
-        <input type="button" value="확인" class="btn">
+        <input type="button" value="확인" class="btn" onclick="goMain()">
     </div>
+    
+    <script type="text/javascript">
+    
+    function goMain(){
+        location.href="<%= request.getContextPath()%>";
+    }
+    </script>
     
      <!--footer-->
 	<%@ include file="../common/footer.jsp" %>
