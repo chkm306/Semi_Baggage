@@ -114,7 +114,7 @@
     <div class= "reseve_img">
         <img src="resources/images/reservation.jpg" alt="" >      
     </div>
-    <form class="page_section" action="<%=request.getContextPath() %>/reservationSelect.do" method="post">
+    <form class="page_section" action="<%=request.getContextPath() %>/reservationSelect.do" method="post">>
 
      <div class="container">
          <h1 class="res_form">예약신청서</h1>
@@ -122,14 +122,14 @@
         <div class="col_text_right">
             <div class="trans_res_box">
                 <p>짐을 원하는 장소로 운송해드립니다</p>
-                <button onclick="location.href='<%=contextPath%>/insertReservation.do'" type="button" class="btn">운송</button>
+                <button onclick="location.href='<%=request.getContextPath()%>/insertReservation.do'" type="button" class="btn">운송</button>
             </div>
         </div>
 
         <div class="col_text_left">
             <div class="store_box">
                 <p>원하는 장소에 짐을 보관해드립니다</p>
-                <button onclick="location.href='<%=contextPath%>/insertReservation.do'" type="button" class="btn">보관</button>
+                <button onclick="location.href='<%=request.getContextPath()%>/insertReservation.do'" type="button" class="btn">보관</button>
             </div>
         </div>
      </div>
