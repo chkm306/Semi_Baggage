@@ -33,6 +33,8 @@ public class ReservationUpdateServlet extends HttpServlet {
 		
 		view = request.getRequestDispatcher("views/reservation/ReservationUpdate.jsp");
 		view.forward(request, response);
+		
+		
 	}
 
 	/**

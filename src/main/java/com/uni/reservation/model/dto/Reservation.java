@@ -16,6 +16,8 @@ public class Reservation {
 	private Date arr_time;
 	private String status;
 	
+	
+	
 	public Reservation() {
 		// TODO Auto-generated constructor stub
 	}

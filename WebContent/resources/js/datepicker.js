@@ -59,6 +59,8 @@
                 days: 'MM, <i>yyyy</i>',
                 months: 'yyyy',
                 years: 'yyyy1 - yyyy2'
+
+
             },
 
             // timepicker

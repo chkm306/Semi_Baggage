@@ -12,6 +12,8 @@
             color: rgb(12, 101, 166);
             text-align: center;
             font-size: 50px;
+            
+            
         }
         .res_num{
             text-align: center;

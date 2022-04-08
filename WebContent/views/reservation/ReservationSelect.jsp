@@ -12,6 +12,8 @@
 		
 		h1{
 		text-align: center;
+		
+		
 		}
 		
         .page_section{

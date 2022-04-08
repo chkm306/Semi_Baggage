@@ -13,6 +13,8 @@
         #wrapper_page{
             max-width: 1000px;
             margin: 0 auto;
+            
+            
         }
 
 

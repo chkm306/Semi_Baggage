@@ -16,6 +16,8 @@
             margin:auto;
             margin-top:80px;
             text-align: center;
+            
+            
         }
 
         th{

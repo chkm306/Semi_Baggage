@@ -34,6 +34,8 @@ public class ReservationPaymentServlet extends HttpServlet {
 			view = request.getRequestDispatcher("views/reservation/ReservationPayment.jsp");
 			view.forward(request, response);
 			
+			
+			
 	}
 
 	/**
