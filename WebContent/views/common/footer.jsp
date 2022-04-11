@@ -10,14 +10,12 @@
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700&display=swap');
 	/* 주아폰트, 나눔고딕폰트 */
-
 		/* 링크 */
 	a{
 	    cursor:pointer;
+	    /* 커서를 올렸을때 포인터로 설정 */
 	    text-decoration: none;
 	}
-	
-	/* 푸터 css */
 	
 	footer{
 		margin: 0;
@@ -26,9 +24,12 @@
 	    
 	    font-family: 'Nanum Gothic', sans-serif;
 	    background: rgb(242, 242, 242);
+	    /* height: 100vw; */
+	    /* ? */
 	    padding-top: 20px;
 	    color: rgb(118, 113, 113);
 	    margin: 0 auto;
+	    /* color: rgb(64, 64, 64); */
 	}
 	
 	.footer{
@@ -57,7 +58,7 @@
 	    color: rgb(118, 113, 113);
 	    font-size: 1rem;
 	}
-	.footer_menu>a:hover{
+	.footer a:hover{
 	    color: rgb(58, 58, 58);
 	}
     </style>

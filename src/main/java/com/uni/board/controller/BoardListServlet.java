@@ -38,7 +38,7 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("bList", bList);
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/board/boardMainPage.jsp");
-		view.forward(request, response);
+		view.forward(request, response) ;
 	}
 
 	/**
