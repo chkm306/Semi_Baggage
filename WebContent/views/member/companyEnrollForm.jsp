@@ -7,13 +7,11 @@
 <title>보관소 회원 가입</title>
 <style>
 	.outer{
-		background:black;
 		width:70%;
 		height:auto;
 		margin-top:50px;
 		margin-left:auto;
 		margin-right:auto;
-		color:white;
 	}
 	#enrollForm table{
 		margin-left: auto;
@@ -36,6 +34,10 @@
 </style>
 </head>
 <body>
+	<%@ include file="../common/menubar.jsp"%>
+	<div class="banner_img">
+		<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img.jpg" alt="img" width="100%" height="30%">
+	</div>
 	<div class="outer">
 		<h2>보관소 회원 가입</h2>
         <form id="enrollForm" action="" method="post" onsubmit="">
@@ -93,5 +95,6 @@
     		})
     	}
     </script>
+    <%@ include file="../common/footer.jsp" %> 
 </body>
 </html>

@@ -79,8 +79,10 @@
 </style>
 <script type="text/javascript">
 	function findIdPopup() {
+		var popupX = (document.body.offsetWidth / 2) - 200;
+		var popupY = (window.screen.height / 2) - 150;
 		/* 절대 경로로 설정해 줌 */
-		window.open("${pageContext.request.contextPath}/views/member/findIdPopup.jsp", "findId", "width=400, height=300, left=100, top=50");
+		window.open("${pageContext.request.contextPath}/views/member/findIdPopup.jsp", "findId", "width=400, height=300, left="+ popupX + ", top=" + popupY);
 	}
 	
 	function findPwdPopup() {
@@ -159,4 +161,5 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="../common/footer.jsp" %> 
 </html>

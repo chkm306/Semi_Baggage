@@ -8,27 +8,28 @@
 </head>
 <style>
 	.outer{
-		background:black;
 		width:70%;
 		height:auto;
 		margin-left:auto;
 		margin-right:auto;
+		margin-top: 50px ;
 		color:white;
 	}
 	.wrapper{
 		position: relative;
 		margin: 0;
-		width: 960px;
+		width: 900px;
 	}
 	
 	.joinGroup{
 		text-align: center;
-		width: 920px;
+		width: 900px;
+		height: 490px; /* 삭제 시 footer 겹침 */
 	}
 	
 	.joinGroup .member-item{
 		border: 1px solid gray;
-		width: 438px;
+		width: 430px;
 		height: 490px;
 		float: left; 
 		position: relative;
@@ -51,6 +52,7 @@
 	}
 </style>
 <body>
+	<%@ include file="../common/menubar.jsp"%>
 	<div class="outer">
 		<div class="wrapper">
 			<div class="joinGroup">
@@ -67,5 +69,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="../common/footer.jsp" %> 
 </body>
 </html>
