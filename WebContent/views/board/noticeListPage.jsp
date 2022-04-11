@@ -12,6 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baggage</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 
     <style>
         .outer{
@@ -40,6 +42,15 @@
             background-color: rgb(50, 65, 1);
             color: white;
         }
+       	table{
+            width: 100%;
+            border-top: 1px solid rgb(13, 101, 166);
+            border-collapse: collapse;
+       	}
+        tr, td{
+            border-bottom: 1px solid darkgray;
+            padding: 10px;
+        }
 
     </style>
 </head>
@@ -50,60 +61,37 @@
 	
     <div class="outer">
     
-    <br>
-
-        <h2 align="center">공지사항</h2>
-        
-         <br>
-        	<form class="search" align="center">
-        		<input type="search" id="search">
-        		<button type="submit">검색하기</button>
-        	</form>
+    	<br>
+        <h2 align="center">공지사항</h2>     
         <br>
-
-        <table align="center">
-            <thead>
-            <tr>
-                <th width="100">번호</th>
-                <th width="100">카테고리</th>
-                <th width="500">제목</th>
-                <th width="100">작성일</th>
-                <th width="100">조회수</th>
-            </tr>
-        </thead>
-	        <tbody>
-	        
-	        <!-- \
-	            <% // if(bList.isEmpty()){ %>
-	            
-	            	<tr>
-	            		<td colspan="5">등록된 공지사항이 없습니다.</td>
-	            	</tr>
-	            	
-	            <% // else { %>
-	            	<%//for(Board b : bList){  %>
-	            	-->
-	            	
-	            		<tr>
-		            		<td><%=b.getbNo() %></td>
-		            		<td><%=b.getbCategory() %></td>
-		            		<td><%=b.getbTitle() %></td>
-		            		<td><%=b.getbDate() %></td>
-		            		<td><%=b.getbCount() %></td>
-	            		</tr>
-	            	<%// } %>
-	            <% //} %>
-	            
-	        </tbody>
+        
+		<form class="seach" align="center">
+			<input type="search" id="search" placeholder="검색어를 입력하세요.">
+			<button type="submit">검색하기</button>
+		</form>
+		
+		<br>
+		
+		<table class="listArea">
+		<thead>
+			<tr>
+			
+				<td width="70%" colspan="2">제목</td>
+				<td width="30%">작성일</td>
+			</tr> 
+		</thead>
+		<tbody>
+			<td><%=b.getbNo()%></td>
+			<td><%=b.getbTitle()%></td>
+			<td><%=b.getbDate()%></td>
+			
+		</tbody>
         </table>
 
         <br><br>
 
-
-
         <div class="pagingArea" align="center">
             <button onclick="">&lt;&lt;</button>
-
             <button onclick="">&gt;&gt;</button>
         </div>
         	
@@ -111,25 +99,14 @@
         
     </div>
     
-    <!-- 
-    <script>
-    
-    	$(function(){
-    		$("tbody>tr>td").click(function(){
-    			var bno = $(this).children().eq(0).text();
-    			// location.href = "<%//contextPath%>/detailNotice.do";
-    		})
-    	})
-    	*/
-    </script>
-    -->
-    
     <script>
     $(function(){
-		$(".listArea>tbody>tr>td").click(function(){
-			console.log()
-		})
-	})
-    </script>
+        $(".listArea>tbody>tr").click(function(){
+           var bno = $(this).children().eq(0).text();
+           location.href = "<%=contextPath%>/detailNotice.do?bno="+bno;
+        })
+     })    </script>
+
+    <%@ include file="../common/footer.jsp" %> 
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
+	
 	String msg = (String)session.getAttribute("msg");
 	
 	String contextPath = request.getContextPath();
@@ -21,34 +22,39 @@
 	*{
 	    margin: 0;
 	    padding: 0;
+	    /* 기본적으로 들어간 마진과 패딩을 없애겠다 */
 	    box-sizing: border-box;
+	    /* 박스의 사이즈는 컨텐츠박스가 아닌 테두리를 기준으로 하겠다. */
 	}
 	
 	
 	/* 메뉴바 기본 세팅2 */
 	body{
 	    font-family: jua, serif;
+	    /* 주아 폰트 적용 */
 	}
 	
 	/* 링크 */
 	a{
 	    cursor:pointer;
+	    /* 커서를 올렸을때 포인터로 설정 */
 	    text-decoration: none;
-	}
-	.nav_menu>li>a{
-		color: #0367a6;
+	    /* 밑줄 없애기 */
+	    color: #0367a6;
 	}
 	
 	/* 네비바 */
 	.nav {
 	    display: flex;
 	    justify-content: space-evenly;
+	    /* 사이를 균등하게, 양옆을 넒게 띄움 */
 	    align-items: center;
 	    height: 68px;
-	    
+	    /* 박스를 일자로, 양옆은 균등하게, 가운데 정렬. 길이 지정 */
+	
 	    font-size: 22px;
 	    background-color: white;
-	    flex-wrap: nowrap;
+	    /* 폰트 스타일 */
 	}
 	
 	/* 로고 */
@@ -57,7 +63,6 @@
 	    width: 150px;
 	    color: #000000;
 	    font-size: 1rem;
-	    cursor: pointer;
 	}
 	
 	/* 메뉴 텍스트바 */
@@ -65,28 +70,33 @@
 	    display: flex;
 	    list-style: none;
 	    padding-left: 0;
+	    /* 일렬로, 동그라미없애고, 왼쪽 공간 없애기 */
 	}
 	
 	/* 메뉴바 텍스트 */
 	.nav_menu li{
 	    display: inline-block;
-	    /* padding: 15px; */
+	    padding: 15px;
 	}
-
 	/* 메뉴바 텍스트 링크 */
 	.nav_menu li a{
+	    /* background-color: #000000; */
 	    padding: 20px;
+	    /* 링크 크기를 버튼에 맞게 키우기 */
 	    display: block;
-	    padding-top: 40px;
-	
+	    /* 최대한으로 넓어짐. 꽉 채워짐 */
 	}
 	
-	.nav_menu>li:hover,.nav_login>a:hover{
+	/* 메뉴바 내의 텍스트를 마우스오버 했을때 */
+	.nav_menu li:hover a, :active, .nav_login a:hover{
 	    color: #a2cdf2;
 	}
 	
 	.nav_login{
-	    padding: 0px 30px;
+	    /* padding-left: 0; */
+	    /* padding-right: 40px; */
+	    padding: 20px 30px;
+	    width: 150px;
 	    text-align: right;
 	}
 	.nav_login a{
@@ -101,7 +111,6 @@
 	    font-size: 25px;
 	    color: #0367a6;
 	}
-
 	
 	/*@media screen and (max-width:1100px) {
 	    .nav_logo{
@@ -140,7 +149,6 @@
 	}*/
 
 	</style>
-
     <title>Document</title>
 </head>
 <body>
@@ -148,8 +156,7 @@
         <div class="nav_logo">
             <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="백있지 로고" onclick="goMain()">
         </div>
-
-        <ul class="nav_menu" style="color: #0367a6;">
+        <ul class="nav_menu">
             <li><a target="_self" onclick="goInfo()">이용안내</a></li>
             <li><a target="_self" onclick="goReserve()">예약하기</a></li>
             <li><a target="_self" onclick="goStorage()">보관소</a></li>
