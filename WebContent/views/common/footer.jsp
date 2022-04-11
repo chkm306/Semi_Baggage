@@ -10,29 +10,18 @@
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700&display=swap');
 	/* 주아폰트, 나눔고딕폰트 */
-	
-	*{
-	    margin: 0;
-	    padding: 0;
-	    /* 기본적으로 들어간 마진과 패딩을 없애겠다 */
-	    box-sizing: border-box;
-	    /* 박스의 사이즈는 컨텐츠박스가 아닌 테두리를 기준으로 하겠다. */
-	}
-	
-	body{
-	    font-family: jua, serif;
-	    /* 주아 폰트 적용 */
-	}
-	/* 링크 */
+		/* 링크 */
 	a{
 	    cursor:pointer;
 	    /* 커서를 올렸을때 포인터로 설정 */
 	    text-decoration: none;
-	    /* 밑줄 없애기 */
-	    color: #0367a6;
 	}
 	
 	footer{
+		margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	    
 	    font-family: 'Nanum Gothic', sans-serif;
 	    background: rgb(242, 242, 242);
 	    /* height: 100vw; */
@@ -72,35 +61,18 @@
 	.footer a:hover{
 	    color: rgb(58, 58, 58);
 	}
-	
-	/* 푸터 마지막 */
-	.footer_bottom{
-	    background-color: rgb(236, 236, 236);
-	    width: 100vw;
-	    padding: 20px 0;
-	    text-align: center;
-	}
     </style>
 </head>
 <body>
     <footer>
         <div class="footer">
-
             <h3>BAGGAGE</h3>
-
             <div class="footer_menu">
-                <a href="">이용약관</a> | 
-                <a href="">개인정보취급방침</a>
+                <a href="">이용약관</a> | <a href="">개인정보취급방침</a>
+            	<p style="line-height: 2.5;">최경민 신현지 송한우리 구승환<br>
+            	©BAGGAGE. All rights reserved. Created by <a href="https://time-breakfast-3c5.notion.site/Team-New-Tools-7434d17cbdbc40989fb958883952fa42">최신공구</a></p>
             </div>
-            <br>
-            <p>최경민 신현지 송한우리 구승환</p>
-
-        </div>
-
-        <div class="footer_bottom">
-            <p>©BAGGAGE. All rights reserved. designed by <span>최신공구</span>.</p>
-        </div>
-        
+        </div>        
     </footer>
 </body>
 </html>
