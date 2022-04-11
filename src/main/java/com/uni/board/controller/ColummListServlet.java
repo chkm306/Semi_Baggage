@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.uni.board.model.dto.Board;
 
 /**
- * Servlet implementation class BoardListServlet
+ * Servlet implementation class ColummListServlet
  */
-@WebServlet("/listBoard.do")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/colummList.do")
+public class ColummListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListServlet() {
+    public ColummListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +37,8 @@ public class BoardListServlet extends HttpServlet {
 		
 		request.setAttribute("bList", bList);
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/board/boardMainPage.jsp");
-		view.forward(request, response) ;
+		RequestDispatcher view = request.getRequestDispatcher("views/board/colummListView.jsp");
+		view.forward(request, response);
 	}
 
 	/**

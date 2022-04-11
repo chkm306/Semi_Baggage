@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.uni.board.model.dto.Board;
 
 /**
- * Servlet implementation class BoardListServlet
+ * Servlet implementation class noticeDetailServlet
  */
-@WebServlet("/listBoard.do")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/detailNotice.do")
+public class noticeDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListServlet() {
+    public noticeDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +37,8 @@ public class BoardListServlet extends HttpServlet {
 		
 		request.setAttribute("bList", bList);
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/board/boardMainPage.jsp");
-		view.forward(request, response) ;
+		RequestDispatcher view = request.getRequestDispatcher("views/board/noticeDetailPage.jsp");
+		view.forward(request, response);
 	}
 
 	/**
