@@ -26,30 +26,31 @@
         margin: 0%;
         padding: 0%;
     }
-    #thumbnail{
-        width: 300px;
+    .test-wrap {
+        width: 30%;
+        margin: 10px auto;
+        position: relative;
+    }
+    .test-wrap img {
+        width: 100%;
         height: 200px;
-        display: inline-block;
-        margin-left: 25px;
+        vertical-align: middle;
     }
-    #bar{
-        position: absolute;
-        width: 300px;
-        height: 80px;
-        background-color: rgba(13, 101, 166, 0.4);
+    .text {
+        width: 100%;
+        height: 30%;
+        /*padding: 10px 20px;*/
+        /*border-radius: 10px;*/
+        background-color: rgba(13, 101, 166, 0.8);
         color: white;
-        margin-top: 120px;
-        
+        /*text-align: left;*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 65%);
     }
-    .title{
-        margin-left: 10px;
-        margin-top: 5px;
-        font-size: 23px;
-    }
-    .date{
-        margin-left: 10px;
-        margin-top: 10px;
-        font-size: 15px;
+    .text1{
+           margin: 2%;
     }
    
 </style>
@@ -64,31 +65,18 @@
 	        <h2 align="center">여행 칼럼</h2>
 	
 	        <br>
-	        <div class="listArea">
-	            <div id="thumbnail">
-	            	<img src="/resources/images/boardMain.png">
-	                <div id="bar">
-	                    <div class="title"><%=b.getbTitle() %></div>
-	                    <div class="date"><%=b.getbDate() %></div>
-	                </div>
-	            </div>
-	            <div id="thumbnail">
-	                <div id="bar">
-	                    <div class="title"><%=b.getbTitle() %></div>
-	                    <div class="date"><%=b.getbDate() %></div>
-	                </div>
-	            </div><div id="thumbnail">
-	                <div id="bar">
-	                    <div class="title"><%=b.getbTitle() %></div>
-	                    <div class="date"><%=b.getbDate() %></div>
-	                </div>
-	            </div><div id="thumbnail">
-	                <div id="bar">
-	                    <div class="title"><%=b.getbTitle() %></div>
-	                    <div class="date"><%=b.getbDate() %></div>
-	                </div>
-	            </div>
-	        </div>
+	        
+        <div class="test-wrap">
+        	<div class="text">
+
+           		<h2><%=b.getbTitle() %></h2>
+            	<h4><%=b.getbDate() %></h4>
+        	</div>
+        	<div class="test-img"><img src="resources/images/board/colummImg.jpg">
+        	</div>
+    	</div>
+    
+    
 	    </div>
 	<%@ include file="../common/footer.jsp" %> 	    
 </body>
