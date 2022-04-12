@@ -11,9 +11,7 @@
         .customer{
             color: rgb(12, 101, 166);
             text-align: center;
-            font-size: 50px;
-            
-            
+            font-size: 50px;  
         }
         .res_num{
             text-align: center;
@@ -36,6 +34,7 @@
             height: 30px;
             margin-top: 60px;
         }
+        
     </style>
 </head>
 <body>

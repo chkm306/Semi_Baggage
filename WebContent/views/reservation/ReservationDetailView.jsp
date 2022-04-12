@@ -9,6 +9,7 @@
     <title>상세보기</title>
     <style>
 
+
         .outer{
             width: 800px;
             margin: auto;

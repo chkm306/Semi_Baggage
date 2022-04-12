@@ -35,6 +35,7 @@ public class ReservationDetailServlet extends HttpServlet {
 		view.forward(request, response);
 		
 		
+		
 	}
 
 	/**

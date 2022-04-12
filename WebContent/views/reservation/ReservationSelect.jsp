@@ -12,7 +12,7 @@
 		
 		h1{
 		text-align: center;
-		
+		margin-left: 80px;
 		
 		}
 		
@@ -20,6 +20,7 @@
             height: 800px;
             padding-top: 100px;
             margin-bottom: 120px;
+            margin-left: 220px;
    
         }
 
@@ -61,7 +62,7 @@
             text-align: center;
             border: 1px solid black;
             border-radius: 10px 10px 10px 10px;
-            height: 300px;
+            height: 400px;
             width: 255px;
             margin-top: 60px;
         }
@@ -72,10 +73,10 @@
             margin-bottom: 20px;
         }
 
-        .btn{
+        .png{
             margin-top: 30px;
             width: 200px;
-            height: 50px;
+            height:200px;
             text-align: center;
             background-color: rgb(50, 65, 1);
             border-radius : 6px 6px 6px 6px;
@@ -100,36 +101,40 @@
             text-align: center;
             border: 1px solid black;
             border-radius: 10px 10px 10px 10px;
-            height: 300px;
+            height: 400px;
             width: 255px;
             margin-top: 60px;
         }
     </style>
 </head>
 <body>
+
    <!--navigation-->
 	<%@ include file="../common/menubar.jsp" %>
-	
+
 
     <div class= "reseve_img">
         <img src="resources/images/reservation.jpg" alt="" >      
     </div>
-    <form class="page_section" action="<%=request.getContextPath() %>/reservationSelect.do" method="post">>
+    <form class="page_section" action="<%=request.getContextPath() %>/reservationSelect.do" method="post">
 
      <div class="container">
          <h1 class="res_form">예약신청서</h1>
      <div class="row">
         <div class="col_text_right">
             <div class="trans_res_box">
+            
+            	<img src="resources/images/2.png" onclick="location.href='<%=request.getContextPath()%>/reservationForm.do'" class="png"> 
                 <p>짐을 원하는 장소로 운송해드립니다</p>
-                <button onclick="location.href='<%=request.getContextPath()%>/insertReservation.do'" type="button" class="btn">운송</button>
+                
             </div>
         </div>
 
         <div class="col_text_left">
             <div class="store_box">
+                <img src="resources/images/3.png" onclick="location.href='<%=request.getContextPath()%>/reservationForm.do'"  class="png" > 
                 <p>원하는 장소에 짐을 보관해드립니다</p>
-                <button onclick="location.href='<%=request.getContextPath()%>/insertReservation.do'" type="button" class="btn">보관</button>
+                
             </div>
         </div>
      </div>

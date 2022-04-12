@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.uni.reservation.model.dto.Reservation;
+
 /**
  * Servlet implementation class insertReservation
  */
@@ -29,9 +31,26 @@ public class insertReservationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");// 한글처리
+		
+//		Reservation r = new Reservation();
+//		
+//		
+//		r.setBaggage(request.getParameter("baggage"));
+//		r.setAmount(Integer.parseInt(request.getParameter("amount")));
+//		r.setSta_place(request.getParameter("sta_place"));
+//		r.setSta_date(request.getParameter("sta_date"));
+//		r.setSta_time(request.getParameter("sta_time"));
+//		r.setArr_place(request.getParameter("arr_place"));
+//		r.setArr_time(request.getParameter("arr_time"));
+//		
+		
+		
 		RequestDispatcher view = request.getRequestDispatcher("views/reservation/DetailReservation.jsp");
 		view.forward(request, response);
 	}
+
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

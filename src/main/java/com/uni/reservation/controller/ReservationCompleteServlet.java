@@ -22,6 +22,7 @@ public class ReservationCompleteServlet extends HttpServlet {
     public ReservationCompleteServlet() {
         super();
         // TODO Auto-generated constructor stub
+        
     }
 
 	/**

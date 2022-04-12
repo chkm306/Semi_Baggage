@@ -8,12 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약폼타고옴</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
 
         #wrapper_page{
             max-width: 1000px;
             margin: 0 auto;
-            
+            margin-left: 650px;
             
         }
 
@@ -69,6 +70,7 @@
             max-width: 800px;
             margin: 0;
             padding: 0 10px;
+            text-align:center;
         }
 
         .res_subject{
@@ -148,10 +150,12 @@
         }
 
         .wrap_box{
+            position: relative;
             border: 1px solid black;
             border-radius: 10px 10px 10px 10px;
-            width: 800px;
-            
+            width: 600px;
+            text-align: center;
+        
             
         }
 
@@ -179,6 +183,32 @@
             border-color: rgb(50, 65, 1);
             font-size: large;
         }
+        
+        .modal{ 
+		  	position:relative; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
+		}
+	
+		.modal_content{
+			  width:400px; height:200px;
+			  background:#fff; border-radius:10px;
+			  position:relative; top:50%; left:50%;
+			  margin-top:-100px; margin-left:-200px;
+			  text-align:center;
+			  box-sizing:border-box; padding:74px 0;
+			  line-height:23px; cursor:pointer;
+		}
+		
+		#btn_close{
+			 background-color: rgb(50, 65, 1);
+			 border-color: rgb(50, 65, 1);
+			 color:white;
+		}
+		
+		#pay{
+			 background-color: rgb(50, 65, 1);
+			 border-color: rgb(50, 65, 1);
+			 color:white;
+		}
     </style>
 </head>
 
@@ -197,7 +227,7 @@
             <h1>예약신청서</h1>
         
             
-            <section>
+            <form>
                 <div class="info">
                     <label class="name">이름  </label>
                     <input type="text" class="form_control" id="name" name="name" placeholder="이름을 입력해주세요" required>
@@ -239,9 +269,12 @@
                         <div>도착 일정</div>
                     </span>
                 </div>
-        </div>
-        </section>
+        	
+       	</form>
+       </div>
     </div>
+    </div>
+    
     <div class="btn">
     <input type="button" class="delete" value="예약취소" onclick="location.href='reservationCheck.do'">
     </div>
@@ -262,14 +295,47 @@
             <b class="print_price"></b>
         </div>
         <div id="display_pay_btn" class="pay_btn">
-            <input type="button" value="결제하기" class="btn_submit" onclick="location.href='reservationComplete.do'">
+            <input type="button" value="결제하기" class="btn_submit">
 
         </div>
 
     </div>
-    </div>
+  
+    
+
+	<div class="modal">
+	  <div class="modal_content" 
+	       title="클릭하면 창이 닫힙니다.">
+	    <label>카드번호</label>
+	    <input type="tel" maxlength="16" class="card_num" placeholder="(-없이)1234567812345678">
+	    <br><br>
+	    <button type="submit" id="pay" onclick="location.href='reservationComplete.do'">확인</button>
+	    <button type="button" id= "btn_close" class = "close">취소</button>
+	  </div>
+	</div>
+    
+
      <!--footer-->
 	<%@ include file="../common/footer.jsp" %>
 </body>
+
+    <script>
+    
+    
+
+
+    	  $(".btn_submit").click(function(){
+    	    $(".modal").fadeIn();
+    	  });
+    	  
+    	     //팝업 Close 기능
+	       $('#btn_close').click(function(){
+	                $('.modal').hide();
+	        });
+
+
+    
+    </script>
+
 
 </html>

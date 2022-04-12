@@ -9,11 +9,11 @@ public class Reservation {
 	private String res_type;
 	private String baggage;
 	private int amount;
-	private Date sta_date;
+	private String sta_date;
 	private String sta_place;
 	private String arr_place;
-	private Date sta_time;
-	private Date arr_time;
+	private String sta_time;
+	private String arr_time;
 	private String status;
 	
 	
@@ -22,8 +22,8 @@ public class Reservation {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(int res_no, int mem_no, String res_type, String baggage, int amount, Date sta_date,
-			String sta_place, String arr_place, Date sta_time, Date arr_time, String status) {
+	public Reservation(int res_no, int mem_no, String res_type, String baggage, int amount, String sta_date,
+			String sta_place, String arr_place, String sta_time, String arr_time, String status) {
 		super();
 		this.res_no = res_no;
 		this.mem_no = mem_no;
@@ -36,6 +36,7 @@ public class Reservation {
 		this.sta_time = sta_time;
 		this.arr_time = arr_time;
 		this.status = status;
+		
 	}
 
 	public int getRes_no() {
@@ -78,11 +79,11 @@ public class Reservation {
 		this.amount = amount;
 	}
 
-	public Date getSta_date() {
+	public String getSta_date() {
 		return sta_date;
 	}
 
-	public void setSta_date(Date sta_date) {
+	public void setSta_date(String sta_date) {
 		this.sta_date = sta_date;
 	}
 
@@ -102,19 +103,19 @@ public class Reservation {
 		this.arr_place = arr_place;
 	}
 
-	public Date getSta_time() {
+	public String getSta_time() {
 		return sta_time;
 	}
 
-	public void setSta_time(Date sta_time) {
+	public void setSta_time(String sta_time) {
 		this.sta_time = sta_time;
 	}
 
-	public Date getArr_time() {
+	public String getArr_time() {
 		return arr_time;
 	}
 
-	public void setArr_time(Date arr_time) {
+	public void setArr_time(String arr_time) {
 		this.arr_time = arr_time;
 	}
 

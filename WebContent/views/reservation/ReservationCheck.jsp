@@ -15,6 +15,7 @@
             color:black;
             margin:auto;
             margin-top:80px;
+            margin-left: 600px;
             text-align: center;
             
             
