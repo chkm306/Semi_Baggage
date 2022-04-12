@@ -7,7 +7,7 @@ import com.uni.faq.model.dto.FAQ;
 public class FAQService {
 
 	public ArrayList<FAQ> selectList() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stuba
 		return null;
 	}
 

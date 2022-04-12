@@ -25,14 +25,14 @@ public class faqListServlet extends HttpServlet {
      */
     public faqListServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stuba
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		ArrayList<FAQ> list = new FAQService().selectList();
 
 		request.setAttribute("list", list);

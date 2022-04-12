@@ -9,7 +9,7 @@
     <title>Document</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700&display=swap');
-	/* 주아폰트, 나눔고딕폰트 */
+	/* 주아폰트, 나눔고딕폰트a */
 
 		/* 링크 */
 	a{

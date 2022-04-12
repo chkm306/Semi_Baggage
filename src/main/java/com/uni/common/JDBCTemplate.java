@@ -10,7 +10,6 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class JDBCTemplate {
-	// properties를 읽어들임
 	public static Connection getConnection() {
 
 		Connection conn = null;
@@ -18,7 +17,6 @@ public class JDBCTemplate {
 		Properties prop = new Properties();
 
 		String fileName = JDBCTemplate.class.getResource("/sql/driver/driver.properties").getPath();
-		// 프로퍼티즈 파일 읽어들이기
 
 		 System.out.println(fileName);
 
@@ -30,10 +28,8 @@ public class JDBCTemplate {
 			String user = prop.getProperty("username");
 			String password = prop.getProperty("password");
 
-			// 1. 클래스 객체 등록, Driver 등록
 			Class.forName(driver);
 
-			// 2. DBMS와 연결
 			conn = DriverManager.getConnection(url, user, password);
 
 			conn.setAutoCommit(false);
@@ -43,7 +39,6 @@ public class JDBCTemplate {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

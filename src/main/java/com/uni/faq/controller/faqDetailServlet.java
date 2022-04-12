@@ -23,7 +23,7 @@ public class faqDetailServlet extends HttpServlet {
      */
     public faqDetailServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stuba
     }
 
 	/**
@@ -43,7 +43,7 @@ public class faqDetailServlet extends HttpServlet {
 			request.setAttribute("msg", "조회에 실패했습니다.");
 			view = "views/common/errorPage.jsp";
 		}
-		
+
 		request.getRequestDispatcher(view).forward(request, response);
 		}
 

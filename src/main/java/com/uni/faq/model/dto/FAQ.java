@@ -2,7 +2,7 @@ package com.uni.faq.model.dto;
 
 import java.sql.Date;
 
-public class FAQ {
+public class FAQ { //a
 	
 	private int faq_No;
 	private int mem_no;
