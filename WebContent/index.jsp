@@ -17,9 +17,11 @@
 <!--a-->
 <link href="${pageContext.request.contextPath}/resources/css/index.css" rel="stylesheet" type="text/css">
 <title>Baggage</title>
+
 </head>
 <body>
 	<%@ include file="views/common/menubar.jsp" %>
+	<div class="main-reservation">
 	
     <!-- 슬라이더 시작 {-->
     <!-- 슬라이드 페이징 -->
@@ -124,13 +126,8 @@
             <img src="resources/images/test.png" alt="" style="width: 100%;">
         </div>
     </main>
-	<div class="content">
-	
-	
 	</div>
 	
-
-
 	
 	
 	
