@@ -14,7 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- 폰트어썸 -->
 <script src="https://kit.fontawesome.com/2bf1fadc44.js" crossorigin="anonymous"></script>
- <!--a-->
+<!--a-->
 <link href="${pageContext.request.contextPath}/resources/css/index.css" rel="stylesheet" type="text/css">
 <title>Baggage</title>
 </head>

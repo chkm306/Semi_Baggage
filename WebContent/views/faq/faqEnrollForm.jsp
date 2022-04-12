@@ -38,7 +38,6 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 	<img src="resources/images/faqMain.jpg" alt="" class="faqimg">
-	 <!--a-->
 	<div class="container">
 		<h2 align="center">1:1 문의 하기</h2>
 		<br>
