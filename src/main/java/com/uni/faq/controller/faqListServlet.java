@@ -36,7 +36,7 @@ public class faqListServlet extends HttpServlet {
 		ArrayList<FAQ> list = new FAQService().selectList();
 
 		request.setAttribute("list", list);
-		RequestDispatcher view = request.getRequestDispatcher("views/notice/FAQListView.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("views/faq/faqListView.jsp");
 		view.forward(request, response);
 	}
 
