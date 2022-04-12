@@ -13,16 +13,16 @@ import com.uni.member.model.dto.Member;
 import com.uni.member.model.service.MemberService;
 
 /**
- * Servlet implementation class MemberInfoUpdateServlet
+ * Servlet implementation class MemberInfoUpdatePageServlet
  */
-@WebServlet("/updateMemberInfo.do")
-public class MemberInfoUpdateServlet extends HttpServlet {
+@WebServlet("/updateMemberForm.do")
+public class MemberInfoUpdatePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberInfoUpdateServlet() {
+    public MemberInfoUpdatePageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +31,22 @@ public class MemberInfoUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-		String userId = loginUser.getUserId();
+		String userId = request.getParameter("userId");
+		String userName = request.getParameter("userName");
+		String userPhone = request.getParameter("userPhone");
+		String userEmail = request.getParameter("userEmail");
 		
-		Member member = new MemberService().selectMember(userId);
+		Member updateMem = new MemberService().updateMember(userId, userName, userPhone, userEmail);
 		
-		RequestDispatcher view = null;
-		
-		if(member != null) {
-			request.setAttribute("loginUser", member);
-			view = request.getRequestDispatcher("views/member/myPageUpdate.jsp");
+		if(updateMem != null) {
+			request.getSession().setAttribute("msg", "회원 정보 수정이 완료되었습니다");
+			request.getSession().setAttribute("loginUser", updateMem);
+			response.sendRedirect(request.getContextPath());
 		} else {
-			request.setAttribute("msg", "조회 실패하였습니다");
-			view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			request.getSession().setAttribute("msg", "회원 정보 수정을 실패하였습니다");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
 		}
-		
-		view.forward(request, response);
 	}
 
 	/**

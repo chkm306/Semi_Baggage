@@ -13,16 +13,16 @@ import com.uni.member.model.dto.Member;
 import com.uni.member.model.service.MemberService;
 
 /**
- * Servlet implementation class MemberInfoUpdateServlet
+ * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet("/updateMemberInfo.do")
-public class MemberInfoUpdateServlet extends HttpServlet {
+@WebServlet("/deleteMember.do")
+public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberInfoUpdateServlet() {
+    public MemberDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,19 +34,18 @@ public class MemberInfoUpdateServlet extends HttpServlet {
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 		String userId = loginUser.getUserId();
 		
-		Member member = new MemberService().selectMember(userId);
+		System.out.println("userId: " + userId);
 		
-		RequestDispatcher view = null;
+		int result = new MemberService().deleteMember(userId);
 		
-		if(member != null) {
-			request.setAttribute("loginUser", member);
-			view = request.getRequestDispatcher("views/member/myPageUpdate.jsp");
+		if(result > 0) {
+			request.getSession().setAttribute("msg", "회원 삭제가 완료되었습니다");
+			response.sendRedirect(request.getContextPath());
 		} else {
-			request.setAttribute("msg", "조회 실패하였습니다");
-			view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			request.getSession().setAttribute("msg", "회원 삭제를 실패하였습니다");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
 		}
-		
-		view.forward(request, response);
 	}
 
 	/**

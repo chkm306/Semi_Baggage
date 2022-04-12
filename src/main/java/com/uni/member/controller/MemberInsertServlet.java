@@ -13,16 +13,16 @@ import com.uni.member.model.dto.Member;
 import com.uni.member.model.service.MemberService;
 
 /**
- * Servlet implementation class MemberInfoUpdateServlet
+ * Servlet implementation class MemberInsertServlet
  */
-@WebServlet("/updateMemberInfo.do")
-public class MemberInfoUpdateServlet extends HttpServlet {
+@WebServlet("/insertMember.do")
+public class MemberInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberInfoUpdateServlet() {
+    public MemberInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +31,27 @@ public class MemberInfoUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-		String userId = loginUser.getUserId();
+		String userName = request.getParameter("userName");
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
+		String email = request.getParameter("userEmail");
+		int userType = Integer.parseInt(request.getParameter("userType"));
+		String phone = request.getParameter("userPhone");
 		
-		Member member = new MemberService().selectMember(userId);
+		Member mem = new Member(userName, userId, userPwd, email, userType, phone);
 		
-		RequestDispatcher view = null;
+		int result = new MemberService().insertMember(mem);
 		
-		if(member != null) {
-			request.setAttribute("loginUser", member);
-			view = request.getRequestDispatcher("views/member/myPageUpdate.jsp");
+		if(result > 0) {
+			request.getSession().setAttribute("msg", "회원가입 성공");
+			response.sendRedirect(request.getContextPath());
 		} else {
-			request.setAttribute("msg", "조회 실패하였습니다");
-			view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			request.setAttribute("msg", "로그인에 실패하였습니다");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			
+			view.forward(request, response);
 		}
 		
-		view.forward(request, response);
 	}
 
 	/**

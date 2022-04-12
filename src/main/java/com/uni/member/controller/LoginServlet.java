@@ -36,9 +36,9 @@ public class LoginServlet extends HttpServlet {
 		String userPwd = request.getParameter("userPwd");
 		// login.jsp에서 받아온 userId, userPwd 가져오기
 		
-		String originPwd = (String)request.getAttribute("userPwd");
+		String originPwd = request.getParameter("userPwd");
 		// 패스워드 저장
-		
+		System.out.println("originPwd: " + originPwd);
 		Member loginUser = new MemberService().loginMember(userId, userPwd);
 		System.out.println("loginUser" + loginUser);
 		// 로그인한 회원 정보를 Service에서 가져온 뒤 loginUser에 저장
@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			// session에 로그인 정보와 originPwd를 저장해 준다
 
 			response.sendRedirect(request.getContextPath());
-			// 마이페이지 or 메인 페이지 가져오기
+			// 메인 페이지 가져오기
 			// 수정 필요
 			
 		} else { // login 실패

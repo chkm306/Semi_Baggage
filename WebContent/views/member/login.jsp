@@ -79,19 +79,25 @@
 </style>
 <script type="text/javascript">
 	function findIdPopup() {
+		/* 팝업창 가운데 띄우기*/
 		var popupX = (document.body.offsetWidth / 2) - 200;
 		var popupY = (window.screen.height / 2) - 150;
 		/* 절대 경로로 설정해 줌 */
-		window.open("${pageContext.request.contextPath}/views/member/findIdPopup.jsp", "findId", "width=400, height=300, left="+ popupX + ", top=" + popupY);
+		window.open("${pageContext.request.contextPath}/views/member/findIdPopup.jsp", "findId", "width=400, height=300, left= "+ popupX + ", top=" + popupY);
 	}
 	
 	function findPwdPopup() {
+		/* 팝업창 가운데 띄우기*/
+		var popupX = (document.body.offsetWidth / 2) - 200;
+		var popupY = (window.screen.height / 2) - 150;
 		/* 절대 경로로 설정해 줌 */
-		window.open("${pageContext.request.contextPath}/views/member/findPwdPopup.jsp", "findPwd", "width=400, height=300, left=100, top=50");
+		window.open("${pageContext.request.contextPath}/views/member/findPwdPopup.jsp", "findPwd", "width=400, height=300, left="+ popupX + ", top=" + popupY);
 	}
+	
 	function nmemberReserveCheck() {
 		location.href="<%= request.getContextPath()%>/listReserve.do";
 	}
+	
 	function loginValidate(){
 		if($("#userId").val().trim().length === 0) {
 			alert("아이디를 입력하세요 ");
@@ -105,6 +111,9 @@
 			return false;
 		}
 		return true;
+	}
+	function errorFind(){
+		alert($("#userId").val().trim().length);
 	}
 	
 </script>
@@ -124,7 +133,7 @@
 			<div class="loginbox">
 				<h1 style="color: #0367a6;">로그인</h1>
 				<div class="login">
-					<form id="loginForm" action="<%=request.getContextPath() %>/loginMember.do" method="post" onsubmit="return loginValidate();">	
+					<form id="loginForm" action="<%=request.getContextPath()%>/loginMember.do" method="post" onsubmit="return loginValidate();">	
 						<table>
 							<tr>
 								<td><input id="userId" type="text" name="userId" placeholder="아이디"></td>

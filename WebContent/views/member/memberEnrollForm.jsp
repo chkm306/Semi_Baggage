@@ -7,17 +7,18 @@
 <title>일반 회원 가입</title>
 <style>
 	.outer{
+		background-color: white;
 		width:70%;
 		height:auto;
 		margin-top:50px;
 		margin-left:auto;
 		margin-right:auto;
-		text-align: center;
+		color:black;
 	}
 	#enrollForm table{
+		margin-top: 20px;
 		margin-left: auto;
 		margin-right: auto;
-		text-align: left;
 	}
 	.enrollBtns{
 		margin-left: auto;
@@ -27,7 +28,7 @@
 		margin-top: 10px;
 		margin-bottom: 20px;
 	}
-	h2{
+	h1{
 		text-align: center;
 	}
 	button{
@@ -44,26 +45,27 @@
 	</div>
 	<div class="outer">
 		<h1>일반 회원 가입</h1>
-        <form id="enrollForm" action="" method="post" onsubmit="">
+        <form id="enrollForm" action="<%=request.getContextPath()%>/insertMember.do" method="post" onsubmit="return joinValidate();">
+        	<input type="hidden" name="userType" value="1">
             <table>
                 <tr>
-                    <td><input type="text" name="userName" placeholder="이름" style="width: 250px;" required></td>
+                    <td><input type="text" name="userName" placeholder="이름" required></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="userId" placeholder="아이디" style="width: 150px;" required>
-                    <button type="button" id="idCheckBtn" onclick="checkId();" style="width: 95px;">중복확인</button></td>
+                    <td><input type="text" name="userId" placeholder="아이디" required>
+                    <button type="button" id="idCheckBtn" onclick="checkId();">중복확인</button></td>
                 </tr>
                 <tr>
-                    <td><input type="password" name="userPwd" placeholder="비밀번호" style="width: 250px;" required></td>
+                    <td><input type="password" name="userPwd" placeholder="비밀번호" required></td>
                 </tr>
                 <tr>
-                    <td><input type="password" name="userPwd" placeholder="비밀번호 확인" style="width: 250px;" required></td>
+                    <td><input type="password" name="userPwd" placeholder="비밀번호 확인" required></td>
                 </tr>
                 <tr>
-                    <td><input type="tel" name="userPhone" placeholder="휴대폰 번호" style="width: 250px;" required></td>
+                    <td><input type="tel" name="userPhone" placeholder="휴대폰 번호" required></td>
                 </tr>
                 <tr>
-                    <td><input type="email" name="userEmail" placeholder="이메일" style="width: 250px;" required></td>
+                    <td><input type="email" name="userEmail" placeholder="이메일" required></td>
                 </tr>
             </table>
             <div class="enrollBtns" align="center">
@@ -80,7 +82,7 @@
 	    		}
 	    		
 	    		$.ajax({
-	    			url:"userIdCheck.do",
+	    			url:"/userIdCheck.do",
 	    			type: "post",
 	    			data:{userId:userId.val()},
 	    			success: function(result){
@@ -102,6 +104,6 @@
 	    	}
     	</script>
     </div>
-    <%@ include file="../common/footer.jsp" %>
+    <%@ include file="../common/footer.jsp" %> 
 </body>
 </html>

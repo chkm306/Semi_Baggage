@@ -50,9 +50,11 @@
 		<script>
 			function deleteChk() {
 				var userPwd = $("input[name='userPwd']");
+				var originPwd = "<%= originPwd %>";
 
 				if (userPwd.val() != originPwd) {
 					alert("비밀번호가 다릅니다")
+					alert(userPwd.val());
 					userPwd.val('');
 					checkPwd.focus();
 					return false;
@@ -63,6 +65,5 @@
 			}
 		</script>
 	</div>
-	<%@ include file="../common/footer.jsp" %> 
 </body>
 </html>

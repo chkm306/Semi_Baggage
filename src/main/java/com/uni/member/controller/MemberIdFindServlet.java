@@ -8,21 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.uni.member.model.dto.Member;
 import com.uni.member.model.service.MemberService;
 
 /**
- * Servlet implementation class MemberInfoUpdateServlet
+ * Servlet implementation class MemberIdFindServlet
  */
-@WebServlet("/updateMemberInfo.do")
-public class MemberInfoUpdateServlet extends HttpServlet {
+@WebServlet("/findMemberId.do")
+public class MemberIdFindServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberInfoUpdateServlet() {
+    public MemberIdFindServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +31,26 @@ public class MemberInfoUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-		String userId = loginUser.getUserId();
+		String userName = request.getParameter("userName");
+		String userPhone = request.getParameter("userPhone");
+		// login.jsp에서 받아온 userName, userPhone 가져오기
 		
-		Member member = new MemberService().selectMember(userId);
+		String userId = new MemberService().findMember(userName, userPhone);
 		
+		System.out.println(userId);
 		RequestDispatcher view = null;
-		
-		if(member != null) {
-			request.setAttribute("loginUser", member);
-			view = request.getRequestDispatcher("views/member/myPageUpdate.jsp");
+		if(!userId.equals("")) {
+			request.setAttribute("userId", userId);
+			request.setAttribute("userName", userName);
+			view = request.getRequestDispatcher("views/member/findIdResultPopup.jsp");
 		} else {
-			request.setAttribute("msg", "조회 실패하였습니다");
+			request.setAttribute("msg", "조회 실패하였습니다.");
 			view = request.getRequestDispatcher("views/common/errorPage.jsp");
 		}
 		
 		view.forward(request, response);
+		
+		
 	}
 
 	/**

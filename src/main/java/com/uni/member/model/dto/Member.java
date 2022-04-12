@@ -34,6 +34,17 @@ public class Member {
 		this.userType = userType;
 		this.phone = phone;
 	}
+	
+	public Member(String userName, String userId, String userPwd, String email, 
+			int userType, String phone) {
+		super();
+		this.userName = userName;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.email = email;
+		this.userType = userType;
+		this.phone = phone;
+	}
 
 
 	public String getUserNo() {
