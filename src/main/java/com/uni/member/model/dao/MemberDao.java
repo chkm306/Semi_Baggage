@@ -40,7 +40,6 @@ public class MemberDao {
 		String sql = prop.getProperty("loginMember"); // query 불러오기
 		
 		try {
-			// LoginServlet에서 가져온 userId, userPwd를 query에 입력해 준다
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
