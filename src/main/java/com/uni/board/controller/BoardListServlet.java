@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.uni.board.model.dto.Board;
 
-/**
+/** 
  * Servlet implementation class BoardListServlet
  */
 @WebServlet("/listBoard.do")

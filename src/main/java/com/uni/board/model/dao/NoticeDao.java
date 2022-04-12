@@ -14,7 +14,7 @@ import java.util.Properties;
 
 import com.uni.board.model.dto.Board;
 
-public class NoticeDao {
+public class NoticeDao { 
 	private Properties prop = new Properties();
 
 	public NoticeDao() {

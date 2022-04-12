@@ -2,8 +2,8 @@
     pageEncoding="UTF-8" import="com.uni.board.model.dto.*, java.util.ArrayList"%>
 
 <%
-	ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
-	//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
+	ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList"); 
+	//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1); 
 %>
 <!DOCTYPE html>
 <html>

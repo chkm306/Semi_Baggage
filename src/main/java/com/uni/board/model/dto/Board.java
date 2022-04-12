@@ -2,8 +2,8 @@ package com.uni.board.model.dto;
 
 import java.sql.Date;
 
-public class Board {
-	private int bNo;
+public class Board { 
+	private int bNo; 
 	private String bTitle;
 	private String bCategory;
 	private String bContent;

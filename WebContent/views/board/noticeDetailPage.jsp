@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="com.uni.board.model.dto.*, java.util.ArrayList"%>
 
 <%
-	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
+	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList"); 
 	Board b = (Board)request.getAttribute("notice");
 %>
 <!DOCTYPE html>
@@ -71,7 +71,7 @@
 	            <div class="pagingArea" align="center">
 	            <button onclick="goList()">목록으로</button>
 	            
-	            
+ 	            
 	            </div>
 	            
 	            

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="com.uni.board.model.dto.*, java.util.ArrayList"%>
 
 <%
-	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
+	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList"); 
 	//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
 %>
 <!DOCTYPE html>
@@ -70,7 +70,7 @@
         	<div class="text">
 
            		<h2><%=b.getbTitle() %></h2>
-            	<h4><%=b.getbDate() %></h4>
+            	<h4><%=b.getbDate() %></h4> 
         	</div>
         	<div class="test-img"><img src="resources/images/board/tipImg.jpg">
         	</div>

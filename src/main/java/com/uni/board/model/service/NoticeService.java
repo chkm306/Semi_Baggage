@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import com.uni.board.model.dao.NoticeDao;
 import com.uni.board.model.dto.Board;
 
-public class NoticeService {
+public class NoticeService {  
 
 	public ArrayList<Board> selectList() {
 		Connection conn = getConnection();

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.uni.board.model.dto.Board;
 
-/**
+/** 
  * Servlet implementation class TipListServelet
  */
 @WebServlet("/tipList.do")
@@ -36,7 +36,7 @@ public class TipListServelet extends HttpServlet {
 		//bList.add(b);
 		
 		request.setAttribute("bList", bList);
-		
+		 
 		RequestDispatcher view = request.getRequestDispatcher("views/board/tipListView.jsp");
 		view.forward(request, response);
 	}

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.uni.board.model.dto.Board;
 import com.uni.board.model.service.NoticeService;
 
-/**
+/** 
  * Servlet implementation class NoticeListServlet
  */
 @WebServlet("/listNotice.do")
