@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.uni.board.model.dto.Board;
+import com.uni.board.model.service.NoticeService;
 
 /**
  * Servlet implementation class NoticeListServlet
  */
 @WebServlet("/listNotice.do")
 public class NoticeListServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -66,9 +67,9 @@ public class NoticeListServlet extends HttpServlet {
 		*/
 		
 		//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
-		Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
-		ArrayList<Board> bList = new ArrayList<Board>();
-		bList.add(b);
+		//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
+		ArrayList<Board> bList = new NoticeService().selectList();
+		//bList.add(b);
 		
 		request.setAttribute("bList", bList);
 		

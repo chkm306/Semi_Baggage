@@ -31,9 +31,9 @@ public class BoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
+		//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
 		ArrayList<Board> bList = new ArrayList<Board>();
-		bList.add(b);
+		//bList.add(b);
 		
 		request.setAttribute("bList", bList);
 		

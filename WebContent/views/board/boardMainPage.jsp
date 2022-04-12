@@ -10,7 +10,7 @@
 	        float: center;
 	        width: 70%;
 	        margin: auto;
-        }
+        } 
         .mainImg{
             width: 100%;
             height: 30%;
