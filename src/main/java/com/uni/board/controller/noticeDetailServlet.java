@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.uni.board.model.dto.Board;
+import com.uni.board.model.service.NoticeService;
 
-/**
+/** 
  * Servlet implementation class noticeDetailServlet
  */
 @WebServlet("/detailNotice.do")
@@ -31,14 +32,23 @@ public class noticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
-		ArrayList<Board> bList = new ArrayList<Board>();
-		bList.add(b);
+		int bno = Integer.parseInt(request.getParameter("bno"));
 		
-		request.setAttribute("bList", bList);
+		Board notice = new NoticeService().selectNotice(bno); 
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/board/noticeDetailPage.jsp");
-		view.forward(request, response);
+		String view = "";
+		
+		if(notice != null) {
+			request.setAttribute("notice", notice);
+			view = "views/board/noticeDetailPage.jsp";
+		} else {
+			request.setAttribute("msg", "공지사항 조회에 실패했습니다.");
+			view = "views/common/errorPage.jsp";
+		}
+		
+		request.getRequestDispatcher(view).forward(request, response);
+		
+		
 	}
 
 	/**

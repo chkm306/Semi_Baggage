@@ -2,13 +2,13 @@
     pageEncoding="UTF-8" import="com.uni.board.model.dto.*, java.util.ArrayList"%>
 
 <%
-	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
-	Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
+	ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList"); 
+	//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1); 
 %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baggage</title>
@@ -65,16 +65,20 @@
 	        <h2 align="center">여행 칼럼</h2>
 	
 	        <br>
-	        
-        <div class="test-wrap">
-        	<div class="text">
-
-           		<h2><%=b.getbTitle() %></h2>
-            	<h4><%=b.getbDate() %></h4>
-        	</div>
-        	<div class="test-img"><img src="resources/images/board/colummImg.jpg">
-        	</div>
-    	</div>
+	        <% if(bList.isEmpty()){ %>
+	        	<h1 align="center">등록된 공지사항이 없습니다.</h1>
+	        <%} else { %>
+	        	<% for(Board b : bList){ %>>
+			        <div class="test-wrap">
+			        	<div class="text">
+			           		<h2><%=b.getbTitle() %></h2>
+			            	<h4><%=b.getbDate() %></h4>
+			        	</div>
+			        	<div class="test-img"><img src="resources/images/board/colummImg.jpg">
+			        	</div>
+			    	</div>
+    		<%} %>
+    	<%} %>
     
     
 	    </div>

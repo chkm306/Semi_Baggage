@@ -2,12 +2,12 @@
     pageEncoding="UTF-8" import="com.uni.board.model.dto.*, java.util.ArrayList"%>
 
 <%
-	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
-	Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
+	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList"); 
+	Board b = (Board)request.getAttribute("notice");
 %>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>Baggage</title>
 
@@ -59,14 +59,26 @@
 	                    <th align="right">조회수 : <%=b.getbCount() %></th>
 	                </tr>
 	            </table>
+	        <br>
 	        <hr>
+	        <br>
 	            <h4><%=b.getbContent() %></h4>
+	            
+	        
+	        <br>
+	        <hr>
+	        <br>
 	            <div class="pagingArea" align="center">
 	            <button onclick="goList()">목록으로</button>
+	            
+ 	            
 	            </div>
+	            
+	            
 	
 	        
 	    </div>
+	    
 	    
 	    <script>
 	    	function goList(){

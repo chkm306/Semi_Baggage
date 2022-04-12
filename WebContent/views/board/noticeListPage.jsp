@@ -2,8 +2,8 @@
     pageEncoding="UTF-8" import="com.uni.board.model.dto.*, java.util.ArrayList"%>
 
 <%
-	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
-	Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
+	ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
+	//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1); 
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,11 +81,17 @@
 			</tr> 
 		</thead>
 		<tbody>
-			<td><%=b.getbNo()%></td>
-			<td><%=b.getbTitle()%></td>
-			<td><%=b.getbDate()%></td>
+		<%if(bList.isEmpty()){ %>
+			<td>등록된 공지사항이 없습니다.</td>
+		<%} else {%> 
+			<%for(Board b : bList){ %>
+				<td><%=b.getbNo()%></td>
+				<td><%=b.getbTitle()%></td>
+				<td><%=b.getbDate()%></td>
+			<%} %>
+		<%} %>
 			
-		</tbody>
+		</tbody> 
         </table>
 
         <br><br>

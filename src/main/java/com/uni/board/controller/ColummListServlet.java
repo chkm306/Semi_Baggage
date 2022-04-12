@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.uni.board.model.dto.Board;
 
-/**
+/** 
  * Servlet implementation class ColummListServlet
  */
 @WebServlet("/colummList.do")
@@ -31,9 +31,9 @@ public class ColummListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
+		//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
 		ArrayList<Board> bList = new ArrayList<Board>();
-		bList.add(b);
+		//bList.add(b);
 		
 		request.setAttribute("bList", bList);
 		
@@ -46,7 +46,7 @@ public class ColummListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doGet(request, response); 
 	}
 
 }
