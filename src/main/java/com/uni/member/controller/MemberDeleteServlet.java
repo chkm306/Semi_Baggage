@@ -33,13 +33,16 @@ public class MemberDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 		String userId = loginUser.getUserId();
+		String userPwd = request.getParameter("userPwd");
 		
 		System.out.println("userId: " + userId);
+		System.out.println("userPwd: " + userPwd);
 		
-		int result = new MemberService().deleteMember(userId);
+		int result = new MemberService().deleteMember(userId, userPwd);
 		
 		if(result > 0) {
 			request.getSession().setAttribute("msg", "회원 삭제가 완료되었습니다");
+			request.getSession().invalidate();
 			response.sendRedirect(request.getContextPath());
 		} else {
 			request.getSession().setAttribute("msg", "회원 삭제를 실패하였습니다");

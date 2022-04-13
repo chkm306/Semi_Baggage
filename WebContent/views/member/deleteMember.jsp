@@ -41,16 +41,17 @@
 		<form id="deleteMemberForm" action="<%=request.getContextPath()%>/deleteMember.do" method="post">
 			<%= userName %> 님, 탈퇴 확인을 위해 비밀번호를 재입력해 주십시오. <br><br> 
 			<input type="password" name="userPwd" placeholder="비밀번호 입력">
+			<div class="deleteBtns">
+				<button type="submit" id="deleteChkBtn">확인</button>
+				<br>
+				<button type="button" onclick="history.go(-1)">취소</button>
+			</div>
 		</form>
-		<div class="deleteBtns">
-			<button type="button" id="deleteChkBtn" onclick="deleteChk()">확인</button>
-			<br>
-			<button type="button" onclick="history.go(-1)">취소</button>
-		</div>
-		<script>
+		
+		<!--  <script>
 			function deleteChk() {
 				var userPwd = $("input[name='userPwd']");
-				var originPwd = "<%= originPwd %>";
+				var originPwd = "";
 
 				if (userPwd.val() != originPwd) {
 					alert("비밀번호가 다릅니다")
@@ -63,7 +64,7 @@
 				}
 
 			}
-		</script>
+		</script>-->
 	</div>
 </body>
 </html>

@@ -34,6 +34,7 @@ public class MemberIdFindServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String userPhone = request.getParameter("userPhone");
 		// login.jsp에서 받아온 userName, userPhone 가져오기
+		System.out.println("이름과 폰 번호 " + userName + userPhone);
 		
 		String userId = new MemberService().findMember(userName, userPhone);
 		

@@ -33,7 +33,7 @@
 </script>
 </head>
 <body>
-	<b>비밀번호 변경</b>
+	<b>비밀번호 재설정</b>
 	<br>
 	
 	<form id="updatePwdForm" action="<%= request.getContextPath() %>/updatePwdMember.do" method="post">

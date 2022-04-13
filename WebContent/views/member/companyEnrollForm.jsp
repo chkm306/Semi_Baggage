@@ -84,7 +84,7 @@
     		}
     		
     		$.ajax({
-    			url:"/userIdCheck.do",
+    			url:"<%= request.getContextPath()%>/userIdCheck.do",
     			type: "post",
     			data:{userId:userId.val()},
     			success: function(result){
