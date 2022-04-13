@@ -21,23 +21,25 @@
 		align-items: center;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 		function closePopup() {
 			self.close();
-		}
-		function findPwd() {
-			location.href="<%=request.getContextPath()%>/views/member/findPwdPopup.jsp";
 		}
 </script>
 </head>
 <body>
 	<div class="wrapper">
 		<div class="idResult" style="text-align:center">
-			<%= userName %> 님이 가입한 아이디는 <%= idCode%>입니다.
-			<button type="button" id="findPwdBtn" onclick="resetPwd()" style="margin-right: 10px;">비밀번호 재설정</button>
-			<br>
-			<button type="button" id="backBtn" onclick="closePopup()">로그인 화면으로 이동</button>
+			<form id = "findIdResultForm" action="<%=request.getContextPath()%>/updatePwdMemberPage.do" method="post">
+				<input type="hidden" name="userId" value="<%= userId%>">
+				<%= userName %> 님이 가입한 아이디는 <%= idCode%>입니다.
+				<button type="submit" id="findPwdBtn" style="margin-right: 10px;">비밀번호 재설정</button>
+				<br>
+				<button type="button" id="backBtn" onclick="closePopup()">로그인 화면으로 이동</button>
+			</form>
 		</div>
+		
 	</div>
 </body>
 </html>

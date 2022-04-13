@@ -34,7 +34,6 @@ public class MemberIdFindServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String userPhone = request.getParameter("userPhone");
 		// login.jsp에서 받아온 userName, userPhone 가져오기
-		System.out.println("이름과 폰 번호 " + userName + userPhone);
 		
 		String userId = new MemberService().findMember(userName, userPhone);
 		
@@ -46,7 +45,7 @@ public class MemberIdFindServlet extends HttpServlet {
 			view = request.getRequestDispatcher("views/member/findIdResultPopup.jsp");
 		} else {
 			request.setAttribute("msg", "조회 실패하였습니다.");
-			view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view = request.getRequestDispatcher("views/common/errorPopup.jsp");
 		}
 		
 		view.forward(request, response);

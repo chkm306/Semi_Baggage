@@ -7,11 +7,12 @@
 <title>로그인</title>
 <style>
 	.outer{
-		margin-top: 40px;
 		width:70%;
 		height:auto;
+		margin-top: 40px;
 		margin-left:auto;
 		margin-right:auto;
+		margin-bottom: 100px;
 		text-align: center;
 	}
 	

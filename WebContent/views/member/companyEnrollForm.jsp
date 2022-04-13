@@ -13,6 +13,7 @@
 		margin-top:50px;
 		margin-left:auto;
 		margin-right:auto;
+		margin-bottom: 100px;
 		color:black;
 	}
 	#enrollForm table{
