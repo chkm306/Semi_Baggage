@@ -9,4 +9,18 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- EncryptFilter -->
+  <filter>
+  	<filter-name>encryptFilter</filter-name>
+  	<filter-class>com.uni.common.filter.EncryptFilter</filter-class>
+  </filter>
+  <!-- 필터가 적용되는 곳 -->
+  <filter-mapping>
+  	<filter-name>encryptFilter</filter-name>
+  	<url-pattern>/insertMember.do</url-pattern>
+  	<url-pattern>/loginMember.do</url-pattern>
+  	<url-pattern>/updatePwdMember.do</url-pattern>
+  	<url-pattern>/deleteMember.do</url-pattern>
+  </filter-mapping>
 </web-app>

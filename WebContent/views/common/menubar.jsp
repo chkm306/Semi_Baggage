@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
+import="com.uni.member.model.dto.Member"%>
 <%
 	String msg = (String)session.getAttribute("msg");
-	
+//20220406 login을 위한 객체 생성 
+	Member loginUser = (Member)session.getAttribute("loginUser");
 	String contextPath = request.getContextPath();
 %>
 <!DOCTYPE html>
@@ -77,6 +79,18 @@
 	}
 
 	
+	.nav_logout{
+		display: flex;
+	}
+	.nav_logout li{
+		padding: 8px;
+		list-style: none;
+		display: flex;
+	}
+	.nav_logout a{
+		color: #000000;
+	}
+	
 	/*@media screen and (max-width:1100px) {
 	    .nav_logo{
 	        align-items: center;
@@ -116,6 +130,7 @@
 	</style>
 
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -133,7 +148,18 @@
             <li><a target="_self" onclick="goFAQ()">FAQ</a></li>
         </ul>
         
-        <div class="nav_login"><a onclick="goLogin()">로그인</a></div>
+        <!-- 20220406 login 유무에 따른 list 변경 -->
+        	<%if(loginUser == null) {%>
+       		<div class="nav_login">
+        		<a onclick="goLogin()">로그인</a>
+       		</div>
+       		<%} else { %>
+       		<div class="nav_logout">
+       			<li><a onclick="goMyPage()">마이페이지</a></li>
+            	<li><a onclick="goLogout()">로그아웃</a></li>
+   			</div>
+       		<%} %>
+       		<!-- 20220406 login 유무에 따른 list 변경 끝 -->
         <script>
                 // 로고 - 메인 화면
             function goMain(){
@@ -171,6 +197,15 @@
             function goLogin(){
                 location.href="<%=request.getContextPath()%>/listLogin.do";
             }
+	         // goMyPage(), goLogout() 추가
+	        	// 마이페이지
+	        function goMyPage(){
+	            location.href="<%=request.getContextPath()%>/listMyPage.do";
+	        }
+	        
+	        function goLogout(){
+	            location.href="<%=request.getContextPath()%>/logoutMember.do";
+	        }
 		</script>
 		
 		<!-- 화면이 작아지면 변하는 부분. 수정이 필요함. -->
