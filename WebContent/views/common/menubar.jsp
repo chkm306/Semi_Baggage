@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
 import="com.uni.member.model.dto.Member"%>
 <%
-	
 	String msg = (String)session.getAttribute("msg");
 //20220406 login을 위한 객체 생성 
 	Member loginUser = (Member)session.getAttribute("loginUser");
@@ -26,22 +25,18 @@ import="com.uni.member.model.dto.Member"%>
 	*{
 	    margin: 0;
 	    padding: 0;
-	    /* 기본적으로 들어간 마진과 패딩을 없애겠다 */
 	    box-sizing: border-box;
-	    /* 박스의 사이즈는 컨텐츠박스가 아닌 테두리를 기준으로 하겠다. */
 	}
 	
 	
 	/* 메뉴바 기본 세팅2 */
 	body{
 	    font-family: jua, serif;
-	    /* 주아 폰트 적용 */
 	}
 	
 	/* 링크 */
 	a{
 	    cursor:pointer;
-	    /* 커서를 올렸을때 포인터로 설정 */
 	    text-decoration: none;
 	}
 	
@@ -82,6 +77,7 @@ import="com.uni.member.model.dto.Member"%>
 	    font-size: 25px;
 	    color: #0367a6;
 	}
+
 	
 	.nav_logout{
 		display: flex;
@@ -132,6 +128,7 @@ import="com.uni.member.model.dto.Member"%>
 	}*/
 
 	</style>
+
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -140,12 +137,13 @@ import="com.uni.member.model.dto.Member"%>
         <div class="nav_logo" style="width:150px; height:33.08px">
              <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="백있지 로고" onclick="goMain()"> 
         </div>
-        <ul class="nav_menu">
-            <li><a target="_self" onclick="goInfo()">이용안내</a></li>
+
+        <ul class="nav_menu" style="color: #0367a6;">
+            <li><a target="_self" onclick="goInfo()" style="color : gray">이용안내</a></li>
             <li><a target="_self" onclick="goReserve()">예약하기</a></li>
-            <li><a target="_self" onclick="goStorage()">보관소</a></li>
+            <li><a target="_self" onclick="goStorage()" style="color : gray">보관소</a></li>
             <li><a target="_self" onclick="goBoard()">게시판</a></li>
-            <li><a target="_self" onclick="goReview()">이용후기</a></li>
+            <li><a target="_self" onclick="goReview()" style="color : gray">이용후기</a></li>
             <li><a target="_self" onclick="goNotice()">공지사항</a></li>
             <li><a target="_self" onclick="goFAQ()">FAQ</a></li>
         </ul>
