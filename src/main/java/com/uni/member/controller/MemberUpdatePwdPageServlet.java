@@ -1,27 +1,23 @@
 package com.uni.member.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.uni.member.model.service.MemberService;
-
 /**
- * Servlet implementation class MemberPwdFindServlet
+ * Servlet implementation class MemberUpdatePwdPageServlet
  */
-@WebServlet("/findMemberPwd.do")
-public class MemberPwdFindServlet extends HttpServlet {
+@WebServlet("/updatePwdMemberPage.do")
+public class MemberUpdatePwdPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberPwdFindServlet() {
+    public MemberUpdatePwdPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,19 +27,8 @@ public class MemberPwdFindServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
-		String userPhone = request.getParameter("userPhone");
-		
-		int result = new MemberService().findMemberPwd(userId, userPhone);
-		
-		RequestDispatcher view = null;
-		
-		if(result > 0) {
-			request.setAttribute("userId", userId);
-			request.getRequestDispatcher("views/member/pwdUpdateForm.jsp").forward(request, response);
-		} else {
-			request.setAttribute("msg", "조회 실패하였습니다.");
-			view = request.getRequestDispatcher("views/common/errorPopup.jsp");
-		}
+		request.setAttribute("userId", userId);
+		request.getRequestDispatcher("views/member/pwdUpdateForm.jsp").forward(request, response);
 	}
 
 	/**

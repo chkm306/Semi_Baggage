@@ -21,6 +21,7 @@
 		height: 100%;
 		text-align: center;
 		margin-top: 40px;
+		margin-bottom: 100px;
 	}
 	.userUpdate{
 		width: 70%;

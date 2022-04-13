@@ -9,6 +9,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+    <!-- encodingFilter 호출 -->
+  <filter>
+  	<filter-name>encodingFilter</filter-name>
+  	<filter-class>com.uni.common.filter.EncodingFilter</filter-class>
+  </filter>
+  <!-- 필터가 적용되는 곳 -->
+  <filter-mapping>
+  	<filter-name>encodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
   
   <!-- EncryptFilter -->
   <filter>

@@ -45,7 +45,7 @@ public class MemberIdFindServlet extends HttpServlet {
 			view = request.getRequestDispatcher("views/member/findIdResultPopup.jsp");
 		} else {
 			request.setAttribute("msg", "조회 실패하였습니다.");
-			view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view = request.getRequestDispatcher("views/common/errorPopup.jsp");
 		}
 		
 		view.forward(request, response);

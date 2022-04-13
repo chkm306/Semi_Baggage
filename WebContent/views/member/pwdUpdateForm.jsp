@@ -2,57 +2,53 @@
     pageEncoding="UTF-8"%>
     
 <%
-	String msg = (String)request.getAttribute("msg");
-	String sTag = (String)request.getAttribute("sTag");
-	String originPwd = (String)session.getAttribute("originPwd");
+	String userId = (String)request.getAttribute("userId");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-	var msg="<%= msg %>";
-	var sTag="<%= sTag %>";
-	var originPwd = "<%= originPwd %>";
-	$(function(){
-		if(msg != "null"){
-			
-			alert(msg)
-		}
-		
-		if(sTag == "Y"){
-			
-			opener.document.getElementById("originPwd").value = originPwd;
-			window.close()
-		}
-		
-	})
+<style>
+	h2 {
+		text-align: center;
+	}
 	
-</script>
+	#updatePwdForm table{
+		text-align: right;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	button{
+		background-color: #324001;
+		margin-top: 10px;
+		color: white;
+		width: 230px;
+		height: 30px;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
-	<b>비밀번호 변경</b>
-	<br>
-	
+	<h2>비밀번호 재설정</h2>
 	<form id="updatePwdForm" action="<%= request.getContextPath() %>/updatePwdMember.do" method="post">
+		<input type="hidden" name="userId" value="<%= userId%>">
 		<table>
 			<tr>
 				<td><label>현재 비밀번호</label>
 				<td><input type="password" name="userPwd" id="userPwd"></td>
 			</tr>
 			<tr>
-				<td><label>변경할 비밀번호</label></td>
+				<td><label>새 비밀번호</label></td>
 				<td><input type="password" name="newPwd"></td>
 			</tr>
 			<tr>
-				<td><label>변경할 비밀번호 확인</label></td>
+				<td><label>비밀번호 확인</label></td>
 				<td><input type="password" name="checkPwd"></td>
 			</tr>
 		</table>
 		
-		<br>
 		<br>
 		
 		<div class="btns" align="center">
@@ -71,7 +67,7 @@
 			}
 			
 			if(newPwd.val() != checkPwd.val()){
-				alert("비밀번호가 다릅니다.")
+				alert("비밀번호 확인이 다릅니다.")
 				checkPwd.val('');
 				checkPwd.focus();
 				return false;

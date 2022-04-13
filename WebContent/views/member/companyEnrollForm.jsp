@@ -13,6 +13,7 @@
 		margin-top:50px;
 		margin-left:auto;
 		margin-right:auto;
+		margin-bottom: 100px;
 		color:black;
 	}
 	#enrollForm table{
@@ -84,7 +85,7 @@
     		}
     		
     		$.ajax({
-    			url:"/userIdCheck.do",
+    			url:"<%= request.getContextPath()%>/userIdCheck.do",
     			type: "post",
     			data:{userId:userId.val()},
     			success: function(result){

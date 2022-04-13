@@ -40,7 +40,7 @@ public class MemberService {
 		return member;
 	}
 
-	/*public Member updatePwd(String userId, String userPwd, String newPwd) {
+	public int updatePwd(String userId, String userPwd, String newPwd) {
 		Connection conn = getConnection();
 		// 수정될 정보를 담을 객체
 		Member updateMem = null;
@@ -50,14 +50,12 @@ public class MemberService {
 		
 		if(result > 0) { // 성공적으로 수정되었으면
 			commit(conn);
-			// 수정된 정보를 들고 와야 되니까 selectMember
-			updateMem = new MemberDao().selectMember(conn, userId);
 		} else {
 			rollback(conn);
 		}
 		close(conn);
-		return updateMem;
-	}*/
+		return result;
+	}
 
 	public String findMember(String userName, String userPhone) {
 		Connection conn = getConnection();
@@ -91,10 +89,10 @@ public class MemberService {
 		return updateMem;
 	}
 
-	public int deleteMember(String userId) {
+	public int deleteMember(String userId, String userPwd) {
 		Connection conn = getConnection();
 		
-		int result = new MemberDao().deleteMember(conn, userId);
+		int result = new MemberDao().deleteMember(conn, userId, userPwd);
 		
 		if(result > 0) {
 			commit(conn);
@@ -102,6 +100,16 @@ public class MemberService {
 			rollback(conn);
 		}
 		close(conn);
+		return result;
+	}
+
+	public int findMemberPwd(String userId, String userPhone) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().findMemberPwd(conn, userId, userPhone);
+		
+		close(conn);
+		
 		return result;
 	}
 

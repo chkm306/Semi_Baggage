@@ -13,14 +13,15 @@
 		color: white;
 	}
 </style>
-<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
 		function closePopup() {
 			self.close();
 		}
 		function findMemberId() {
 			if($("#userName").val().trim().length === 0) {
 				alert("이름을 입력해 주세요");
-				#("#username").focus();
+				#("#userName").focus();
 				return false;
 			}
 			
@@ -29,6 +30,7 @@
 				#("#userPhone").focus();
 				return false;
 			}
+			return true;
 		}
 	</script>
 </head>
@@ -42,7 +44,5 @@
 			<button type="button" id="backBtn" onclick="closePopup()">취소</button>
 		</form>
 	</div>
-	
-
 </body>
 </html>

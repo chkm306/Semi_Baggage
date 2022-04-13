@@ -231,7 +231,7 @@ public class MemberDao {
 		}
 		return result;
 	}
-	public int deleteMember(Connection conn, String userId) {
+	public int deleteMember(Connection conn, String userId, String userPwd) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -240,6 +240,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
 			
 			result = pstmt.executeUpdate();
 			
@@ -248,6 +249,29 @@ public class MemberDao {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
+		}
+		return result;
+	}
+	public int findMemberPwd(Connection conn, String userId, String userPhone) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findMemberPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPhone);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return result;
 	}

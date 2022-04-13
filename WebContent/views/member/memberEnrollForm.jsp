@@ -13,6 +13,7 @@
 		margin-top:50px;
 		margin-left:auto;
 		margin-right:auto;
+		margin-bottom: 100px;
 		color:black;
 	}
 	#enrollForm table{
@@ -76,13 +77,14 @@
         <script>
 	    	function checkId(){
 	    		var userId = $("#enrollForm input[name=userId]");
+	    		alert(userId.val());
 	    		if(userId.val() == "") {
 	    			alert("아이디를 입력해 주세요")
 	    			return false;
 	    		}
 	    		
 	    		$.ajax({
-	    			url:"/userIdCheck.do",
+	    			url:"<%= request.getContextPath()%>/userIdCheck.do",
 	    			type: "post",
 	    			data:{userId:userId.val()},
 	    			success: function(result){
@@ -93,7 +95,7 @@
 	    					if(confirm("사용가능한 아이디입니다. 사용하시겠습니까?")) {
 	    						$("#joinBtn").removeAttr("disabled");
 	    					} else {
-	    						storageId.focus();
+	    						userId.focus();
 	    					}
 	    				}
 	    			},
