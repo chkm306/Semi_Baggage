@@ -13,6 +13,7 @@
 <style>
 	.outer{
 		margin-top: 40px;
+		margin-bottom: 140px;
 	    width: 100%;
 	    height: 100%;
 	    text-align: center;
@@ -66,5 +67,6 @@
 			}
 		</script>-->
 	</div>
+	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>
