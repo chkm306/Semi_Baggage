@@ -21,7 +21,7 @@ public class NoticeService {
 		}
 		
 		return bList;
-	}
+	} 
 	*/
 	public Board selectNotice(int bno) {
 		System.out.println("selectNotice service 실행됨");

@@ -22,7 +22,7 @@ public class NoticeUpdateFormServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateFormServlet() {
+    public NoticeUpdateFormServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }

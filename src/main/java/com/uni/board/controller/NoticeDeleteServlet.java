@@ -21,7 +21,7 @@ public class NoticeDeleteServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDeleteServlet() {
+    public NoticeDeleteServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }

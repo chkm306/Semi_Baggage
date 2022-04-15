@@ -16,7 +16,7 @@
             margin: auto;
         }
         .mainImg{
-	        width: 100%;
+	        width: 100%; 
 	        height: 30%;
 	        margin: 0%;
 	        padding: 0%;

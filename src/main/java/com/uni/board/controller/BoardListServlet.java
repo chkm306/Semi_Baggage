@@ -22,7 +22,7 @@ public class BoardListServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListServlet() {
+    public BoardListServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }

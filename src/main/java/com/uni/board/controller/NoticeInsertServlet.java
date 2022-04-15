@@ -22,7 +22,7 @@ public class NoticeInsertServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertServlet() {
+    public NoticeInsertServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }

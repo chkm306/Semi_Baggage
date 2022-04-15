@@ -17,7 +17,7 @@ public class NoticeEnrollFormServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeEnrollFormServlet() {
+    public NoticeEnrollFormServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }

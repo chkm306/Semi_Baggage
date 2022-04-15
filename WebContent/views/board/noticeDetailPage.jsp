@@ -16,7 +16,7 @@
 <style>
         .outer{
             float: center;
-            width: 70%;
+            width: 70%; 
             margin: auto;
         }
         .mainImg{

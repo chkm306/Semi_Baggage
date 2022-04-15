@@ -23,7 +23,7 @@ public class noticeDetailServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public noticeDetailServlet() {
+    public noticeDetailServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }

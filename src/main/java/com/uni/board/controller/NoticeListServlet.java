@@ -24,7 +24,7 @@ public class NoticeListServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeListServlet() {
+    public NoticeListServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }
