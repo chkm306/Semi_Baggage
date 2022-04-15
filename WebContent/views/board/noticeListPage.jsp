@@ -4,6 +4,13 @@
 <%
 	ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
 	//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1); 
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,16 +62,21 @@
     </style>
 </head>
 <body>
+
+	<!-- 메뉴바 -->
 	<%@ include file="../common/menubar.jsp" %>
 	
+	<!-- 메인 이미지 -->
 	<img class="mainImg" alt="img" src="resources/images/noticeMain.jpg">
 	
+	<!-- 전체 outer -->
     <div class="outer">
     
     	<br>
         <h2 align="center">공지사항</h2>     
         <br>
         
+     <!-- 검색창 -->
 		<form class="seach" align="center">
 			<input type="search" id="search" placeholder="검색어를 입력하세요.">
 			<button type="submit">검색하기</button>
@@ -72,22 +84,24 @@
 		
 		<br>
 		
+	<!-- 공지사항 리스트 -->
 		<table class="listArea">
 		<thead>
 			<tr>
-			
 				<td width="70%" colspan="2">제목</td>
 				<td width="30%">작성일</td>
 			</tr> 
 		</thead>
 		<tbody>
 		<%if(bList.isEmpty()){ %>
-			<td>등록된 공지사항이 없습니다.</td>
+			<td colspan=2>등록된 공지사항이 없습니다.</td>
 		<%} else {%> 
 			<%for(Board b : bList){ %>
+			<tr>
 				<td><%=b.getbNo()%></td>
 				<td><%=b.getbTitle()%></td>
 				<td><%=b.getbDate()%></td>
+			<tr>
 			<%} %>
 		<%} %>
 			
@@ -95,11 +109,48 @@
         </table>
 
         <br><br>
-
-        <div class="pagingArea" align="center">
-            <button onclick="">&lt;&lt;</button>
-            <button onclick="">&gt;&gt;</button>
+        <div class="insertButton" align="center">
+        <button onclick="location.href='enrollFormNotice.do'">작성하기</button>
         </div>
+        <br><br>
+        
+        
+        
+        
+        <!-- 페이징바 영역 -->
+		<div class="pagingArea" align="center">
+		<!-- 맨 처음 페이지 -->
+			<button onclick="location.href='<%=contextPath%>/listNotice.do?currentPage=1'"> &lt;&lt; </button>
+		
+		
+		<!-- 이전 페이지 -->
+			<%if(currentPage == 1){ %>
+			<button disabled> &lt; </button>
+			<%}else{ %>
+			<button onclick="location.href='<%= contextPath %>/listNotice.do?currentPage=<%= currentPage-1 %>'"> &lt; </button>
+			<%} %>
+			
+		<!-- 페이지 목록 -->
+			<%for(int p=startPage; p<=endPage; p++){ %>
+				
+				<%if(p == currentPage){ %>
+				<button disabled> <%= p %> </button>
+				<%}else{ %>
+				<button onclick="location.href='<%=contextPath %>/listNotice.do?currentPage=<%= p %>'"> <%= p %> </button>
+				<%} %>
+				
+			<%} %>
+			
+		<!-- 다음 페이지 -->
+			<%if(currentPage == maxPage){ %>
+			<button disabled> &gt; </button>
+			<%}else { %>
+			<button onclick="location.href='<%= contextPath %>/listNotice.do?currentPage=<%= currentPage+1 %>'"> &gt; </button>
+			<%} %>
+		
+		<!-- 맨끝 페이지 -->
+			<button onclick="location.href='<%=contextPath%>/listNotice.do?currentPage=<%=maxPage%>'"> &gt;&gt; </button>
+		</div>
         	
         
         
@@ -107,7 +158,7 @@
     
     <script>
     $(function(){
-        $(".listArea>tbody>tr").click(function(){
+        $("tbody>tr").click(function(){
            var bno = $(this).children().eq(0).text();
            location.href = "<%=contextPath%>/detailNotice.do?bno="+bno;
         })

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.uni.board.model.dto.Board;
+import com.uni.board.model.dto.PageInfo;
 import com.uni.board.model.service.NoticeService;
 
 /** 
@@ -32,7 +33,7 @@ public class NoticeListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
+		
 		int listCount; // 총 게시글 갯수
 		int currentPage; // 현재 페이지(요청한 페이지)
 		int startPage; // 현재 페이지 하단에 보여지는 페이징 바의 시작 수
@@ -64,17 +65,19 @@ public class NoticeListServlet extends HttpServlet {
 		if(maxPage < endPage) {
 		   endPage = maxPage;
 		}
-		*/
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, startPage, endPage, maxPage, pageLimit, boardLimit);
+		
 		
 		//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
 		//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
-		ArrayList<Board> bList = new NoticeService().selectList();
+		ArrayList<Board> bList = new NoticeService().selectList(pi);
 		//bList.add(b);
 		
 		request.setAttribute("bList", bList);
-		
-		RequestDispatcher view = request.getRequestDispatcher("views/board/noticeListPage.jsp");
-		view.forward(request, response);
+		request.setAttribute("pi", pi);
+
+		request.getRequestDispatcher("views/board/noticeListPage.jsp").forward(request, response);
 		
 	}
 
