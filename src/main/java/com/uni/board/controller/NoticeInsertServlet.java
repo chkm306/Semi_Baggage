@@ -1,7 +1,6 @@
 package com.uni.board.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,18 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.uni.board.model.dto.Board;
+import com.uni.board.model.service.NoticeService;
 
-/** 
- * Servlet implementation class BoardListServlet
+/**
+ * Servlet implementation class NoticeInsertServlet
  */
-@WebServlet("/listBoard.do")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/insertNotice.do")
+public class NoticeInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListServlet() { 
+    public NoticeInsertServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,14 +31,19 @@ public class BoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
-		ArrayList<Board> bList = new ArrayList<Board>();
-		//bList.add(b);
+		request.setCharacterEncoding("UTF-8");
+		String title = request.getParameter("title");
+		String content = (String)request.getParameter("content");
 		
-		request.setAttribute("bList", bList);
+		int result = new NoticeService().insertNotice(title, content.replace("\n", "<br>"));
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/board/boardMainPage.jsp");
-		view.forward(request, response) ;
+		if(result > 0) {
+			request.getSession().setAttribute("msg", "공지사항이 등록되었습니다.");
+			response.sendRedirect("listNotice.do");
+		} else {
+			request.getSession().setAttribute("msg", "공지사항 등록 실패하였습니다.");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+		}
 	}
 
 	/**

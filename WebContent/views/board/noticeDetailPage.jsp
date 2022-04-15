@@ -16,7 +16,7 @@
 <style>
         .outer{
             float: center;
-            width: 70%;
+            width: 70%; 
             margin: auto;
         }
         .mainImg{
@@ -68,21 +68,24 @@
 	        <br>
 	        <hr>
 	        <br>
-	            <div class="pagingArea" align="center">
-	            <button onclick="goList()">목록으로</button>
-	            
- 	            
-	            </div>
-	            
-	            
-	
 	        
-	    </div>
+            <div align="center">
+	            <button onclick="goList()">목록으로</button>
+	            <button onclick="goUpdate()">수정하기</button>
+	            <button onclick="goDelete()">삭제하기</button>
+	   		 </div>
 	    
 	    
 	    <script>
 	    	function goList(){
 	            location.href = "<%=contextPath%>/listNotice.do";
+	    	}
+	    	function goUpdate(){
+	            location.href = "<%=contextPath%>/updateFormNotice.do?bno=<%=b.getbNo()%>";
+	    	}
+	    	function goDelete(){
+	            location.href = "<%=contextPath%>/deleteNotice.do?bno=<%=b.getbNo()%>";
+	            console.log(bno);
 	    	}
 	    </script>
 	    

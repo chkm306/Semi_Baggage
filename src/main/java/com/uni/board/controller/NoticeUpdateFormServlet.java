@@ -1,7 +1,6 @@
 package com.uni.board.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,18 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.uni.board.model.dto.Board;
+import com.uni.board.model.service.NoticeService;
 
-/** 
- * Servlet implementation class BoardListServlet
+/**
+ * Servlet implementation class NoticeUpdateFormServlet
  */
-@WebServlet("/listBoard.do")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/updateFormNotice.do")
+public class NoticeUpdateFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListServlet() { 
+    public NoticeUpdateFormServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,14 +31,12 @@ public class BoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
-		ArrayList<Board> bList = new ArrayList<Board>();
-		//bList.add(b);
-		
-		request.setAttribute("bList", bList);
-		
-		RequestDispatcher view = request.getRequestDispatcher("views/board/boardMainPage.jsp");
-		view.forward(request, response) ;
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		Board notice = new NoticeService().getNotice(bno);
+		request.setAttribute("notice", notice);
+		RequestDispatcher view = request.getRequestDispatcher("views/board/noticeUpdateForm.jsp");
+		view.forward(request, response);
+		System.out.println(notice);
 	}
 
 	/**

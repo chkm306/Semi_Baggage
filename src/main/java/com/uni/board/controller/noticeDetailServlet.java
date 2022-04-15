@@ -23,7 +23,7 @@ public class noticeDetailServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public noticeDetailServlet() {
+    public noticeDetailServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +32,7 @@ public class noticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("noticeDetail servlet 실행됨");
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		
 		Board notice = new NoticeService().selectNotice(bno); 
