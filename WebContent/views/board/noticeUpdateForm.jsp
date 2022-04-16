@@ -61,7 +61,7 @@
              </tr>
         </table>
         <br>
-             <textarea name="content" value="<%=n.getbContent()%>"></textarea>  
+             <textarea name="content"><%=n.getbContent()%></textarea>  
              
              <br>
           
