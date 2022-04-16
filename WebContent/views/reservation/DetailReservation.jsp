@@ -206,7 +206,7 @@
 
 
 		<div class="dropdown">
-		<form method = "get">
+		<form method = "post" action="">
 			<div class="modal_content">
 			  <ul class="dropdown-menu carrier_list">
                <li>
@@ -225,7 +225,7 @@
                   <input type="hidden" name="cr_name[0]" value="S">
                   <input type="hidden" name="cr_price[0]" value="0">
                </li>
-                              <li>
+                <li>
                   <span class="cr_name">M</span>  
                   <span class="pull-right" style="">
                      <button type="button" class="cr_qty_minus">-</button>
@@ -236,7 +236,7 @@
                   <input type="hidden" name="cr_name[1]" value="M">
                   <input type="hidden" name="cr_price[1]" value="5000">
                </li>
-                              <li>
+                <li>
                   <span class="cr_name">L</span>  
                   <span class="pull-right" style="">
                      <button type="button" class="cr_qty_minus">-</button>
@@ -251,7 +251,9 @@
             		<button type="submit" id="selectBtn" class ="select">확인</button>
             		<button type="button" id= "btn_close" class = "close">취소</button>
 			</div>
-		</form>	
+		</form>
+		<script>
+		</script>
 		</div>
 
         <script>
