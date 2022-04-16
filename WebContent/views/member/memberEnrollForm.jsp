@@ -77,7 +77,6 @@
         <script>
 	    	function checkId(){
 	    		var userId = $("#enrollForm input[name=userId]");
-	    		alert(userId.val());
 	    		if(userId.val() == "") {
 	    			alert("아이디를 입력해 주세요")
 	    			return false;

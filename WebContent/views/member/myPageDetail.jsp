@@ -64,6 +64,8 @@
                 <button type="button" id="myPageUpdateBtn" onclick="updateMyPage()">개인 정보 수정</button>
                 <br>
                 <button type="button" id="memDeleteBtn" onclick="deletePage()">회원 탈퇴</button>
+                 <br>
+                <button type="button" id="memDeleteBtn" onclick="memberListTest()">정보 불러오기</button>
             </div>
             <script>
             	function updateMyPage(){
@@ -71,6 +73,9 @@
             	}
             	function deletePage(){
             		location.href="<%=request.getContextPath()%>/deletePage.do";
+            	}
+            	function memberListTest(){
+            		location.href="<%=request.getContextPath()%>/listMember.do";
             	}
             </script>
         </div>

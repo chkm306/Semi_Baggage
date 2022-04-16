@@ -4,6 +4,7 @@ import static com.uni.common.JDBCTemplate.*;
 
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.uni.member.model.dao.MemberDao;
 import com.uni.member.model.dto.Member;
@@ -40,13 +41,13 @@ public class MemberService {
 		return member;
 	}
 
-	public int updatePwd(String userId, String userPwd, String newPwd) {
+	public int updatePwd(String userId, String newPwd) {
 		Connection conn = getConnection();
 		// 수정될 정보를 담을 객체
 		Member updateMem = null;
 		
 		// MemberDao에 있는 updatePwd를 호출한 뒤 결과값 반환
-		int result = new MemberDao().updatePwd(conn, userId, userPwd, newPwd);
+		int result = new MemberDao().updatePwd(conn, userId, newPwd);
 		
 		if(result > 0) { // 성공적으로 수정되었으면
 			commit(conn);
@@ -111,6 +112,14 @@ public class MemberService {
 		close(conn);
 		
 		return result;
+	}
+
+	public ArrayList<Member> selectMemberList() {
+		Connection conn = getConnection();
+		ArrayList<Member> list = new MemberDao().selectMemberList(conn);
+		
+		close(conn);
+		return list;
 	}
 
 	
