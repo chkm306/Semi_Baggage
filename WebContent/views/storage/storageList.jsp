@@ -12,8 +12,9 @@
 </head>
 <body>
 	<div class="outer">
-		<div class="">
-			
+		<div class="storageListTBL">
+			<% for(Storage s : storageList) {  %>
+			<%} %>
 		</div>
 	</div>
 </body>
