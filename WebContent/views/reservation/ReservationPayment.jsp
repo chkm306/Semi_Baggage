@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+/*
+	Reservation r = (Reservation)request.getAttribute("reserved"); //insertReseravtion에서 정보를 받아오면 될듯
+	String baggage = r.getBaggage();
+	int amount = r.getAmount();
+	String sta_date = r.getSta_date();
+	String sta_place = r.getSta_place();
+	String sta_time = r.getSta_time();
+	String arr_time = r.getArr_time();
+	String arr_place = r.getArr_place();
+*/
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,17 +20,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예약폼타고옴</title>
+    <title>baggage</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
 
         #wrapper_page{
-            max-width: 1000px;
+            max-width: 30%;
             margin: 0 auto;
-            margin-left: 650px;
             
         }
 
+		h1{
+			text-align: center;
+			margin-bottom:20px;
+		}
 
         .reseve_img{
             padding: auto;
@@ -30,6 +46,7 @@
             margin: 0;
             padding: 10px;
             border: 1px solid black;
+            text-align: left;
         }
 
         .form_control{
@@ -40,7 +57,7 @@
         }
 
         .name{
-            padding-right: 48px;
+            padding-right: 40px;
         }
 
         .size_box { /*짐*/
@@ -67,10 +84,12 @@
        
 
         .non-res_form{
+        	position: relative;
+            text-align: center;
+            margin: 5px;
             max-width: 800px;
-            margin: 0;
+            margin-top: 20px;
             padding: 0 10px;
-            text-align:center;
         }
 
         .res_subject{
@@ -78,7 +97,8 @@
             margin-top: 30px;
             font-size: 25px;
             padding: 5px;
-            margin-bottom: 5px;
+            margin-bottom: 15px;
+            text-align: center;
             
         }
 
@@ -134,9 +154,10 @@
         .btn{
             position: relative;
             text-align: center;
-            margin: 5px;
+            margin-top: 40px;
             margin-bottom: 40px;
             margin-right: 200px;
+            margin-left: 200px;
         }
         .delete{
             
@@ -147,15 +168,19 @@
             border-radius : 4px 4px 4px 4px;
             border-color: rgb(50, 65, 1);
             font-size: large;
+            text-align: center;
         }
 
         .wrap_box{
             position: relative;
             border: 1px solid black;
-            border-radius: 10px 10px 10px 10px;
-            width: 600px;
-            text-align: center;
-        
+		    margin: 10px;
+		    margin-bottom: 40px;
+		    margin-right: 200px;
+		    margin-left: 670px;
+		    max-width: 30%;
+		    padding: 0 10px;
+        	line-height: 30px;
             
         }
 
@@ -166,12 +191,15 @@
             font-size: 25px;
             font-weight: bold;
             margin-right: 200px;
+		    margin-left: 200px;
         }
 
         #display_pay_btn{
             text-align: center;
             margin-right: 200px;
             padding: 10px;
+            margin-right: 200px;
+		    margin-left: 200px;
         }
 
         .btn_submit{
@@ -182,6 +210,7 @@
             border-radius : 4px 4px 4px 4px;
             border-color: rgb(50, 65, 1);
             font-size: large;
+            
         }
         
         .modal{ 
@@ -240,9 +269,9 @@
                 <h2 class="res_subject">예약정보</h2>
                 <div class="cart_list1">
                     <div class="size_box">
-                        <label class="res_data">짐 : </label>
+                        <label class="res_data">짐 :</label>
                         <span class="res_size_count">
-                            <div class="amount"> </div>
+                            <div class="amount"></div>
                         </span>
                     </div>
                     <div class="price_box">
@@ -256,17 +285,17 @@
                 <div class="res_spot">
                     <label class="res_data">
                         <div class="spot">
-                            <div class="_spot">서울역(출발장소출력)</div>
+                            <div class="_spot"></div>
                             <span> --></span>
-                            <div class="_spot">부산역(도착장소출력)</div>
+                            <div class="_spot"></div>
 
                         </div>
                    
                     </label>
 
                     <span class="res_date">
-                        <div>출발 일정</div>
-                        <div>도착 일정</div>
+                        <div></div>
+                        <div></div>
                     </span>
                 </div>
         	
@@ -276,7 +305,7 @@
     </div>
     
     <div class="btn">
-    <input type="button" class="delete" value="예약취소" onclick="location.href='reservationCheck.do'">
+    <input type="button" class="delete" value="예약취소" onclick="location.href='listReservationMem.do'">
     </div>
     <div class="wrap_box">
         <p>
@@ -307,7 +336,7 @@
 	  <div class="modal_content" 
 	       title="클릭하면 창이 닫힙니다.">
 	    <label>카드번호</label>
-	    <input type="tel" maxlength="16" class="card_num" placeholder="(-없이)1234567812345678">
+	    <input type="tel" maxlength="16" id="card" class="card_num" placeholder="(-없이)1234567812345678" required>
 	    <br><br>
 	    <button type="submit" id="pay" onclick="location.href='reservationComplete.do'">확인</button>
 	    <button type="button" id= "btn_close" class = "close">취소</button>
@@ -321,7 +350,16 @@
 
     <script>
     
+    $("#pay").click(function(n){
     
+    	if($(".card").val() < 16){
+    		alert("카드번호를 입력하세요.");
+    		$(".card").focus();
+    	}else{
+    		alert("결제가 완료되었습니다.");
+    	}
+    	
+    });
 
 
     	  $(".btn_submit").click(function(){

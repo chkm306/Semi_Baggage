@@ -9,30 +9,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.uni.reservation.model.dto.Reservation;
+import com.uni.reservation.model.service.ReservationService;
+
 /**
- * Servlet implementation class ReservationFormServlet
+ * Servlet implementation class ReservationDeleteServlet
  */
-@WebServlet("/reservationForm.do")
-public class ReservationFormServlet extends HttpServlet {
+@WebServlet("/reservationDelete.do")
+public class ReservationDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-	
-    public ReservationFormServlet() {
+    public ReservationDeleteServlet() {
         super();
-        
-        
-        
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("views/reservation/DetailReservation.jsp");
-		view.forward(request, response);
+		
+		int res_no = Integer.parseInt(request.getParameter("res_no"));
+		
+		int result = new ReservationService().deleteReservation(res_no);
+		
+		if(result > 0) {// 0보다 크면
+			request.getSession().setAttribute("msg", "예약이 취소되었습니다.");
+			response.sendRedirect("reservationDetail.do"); // 상세보기로 이동
+		}else {
+			request.setAttribute("msg", "삭제에 실패하였습니다");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
+			}
 	}
 
 	/**

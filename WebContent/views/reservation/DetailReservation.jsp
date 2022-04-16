@@ -1,6 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+/*
+	Reservation r = (Reservation)request.getAttribute("reserved"); //insertReseravtion에서 정보를 받아오면 될듯
+	String baggage = r.getBaggage();
+	int amount = r.getAmount();
+	String sta_date = r.getSta_date();
+	String sta_place = r.getSta_place();
+	String sta_time = r.getSta_time();
+	String arr_time = r.getArr_time();
+	String arr_place = r.getArr_place();
+*/
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +23,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약페이지</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="resources/css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
-    <!-- Air datepicker css -->
-    <script src="resources/js/datepicker.js"></script> <!-- Air datepicker js -->
-    <script src="resources/js/i18n/datepicker.ko.js"></script> <!-- 달력 한글 추가를 위해 커스텀 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    
+    <!-- 제이쿼리 ui css -->
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	 
+	 <!-- 제이쿼리 style css -->
+	 <link rel="stylesheet" href="/resources/demos/style.css">
+	 
+	 <!-- 제이쿼리 js -->
+	 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	 
+	 <!--  제이쿼리 ui js -->
+	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
+
+	<!--  제이쿼리 timepicker-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+   
     <style>
         
         h1{
@@ -60,11 +89,12 @@
         } */
 
         .form_control_bag{
-            width: 200px;
+            width: 250px;
             margin-left: 115px;
         }
         .lb_1{
             margin-left: 45px;
+            width: 250px;
         }
 
         .next_btn{
@@ -124,7 +154,7 @@
 		
 		#btn_close{
 				margin-top: 5px;
-				textalign: center;
+				text-align: center;
 				background-color: rgb(50, 65, 1);
 				color:white;
 		}
@@ -152,18 +182,18 @@
         <form id="reservationForm" class="page_form" action="<%=request.getContextPath()%>/insertReservation.do" method="post">
             <div class="page">
             <div class="info" >
-                <label>짐</label><input type="text" class="form_control_bag"  value placeholder="사이즈/수량"  data-toggle="dropdown" readonly aria-expanded="true">
+                <label>짐</label><input type="text" class="form_control_bag" value="" placeholder="사이즈/수량"  data-toggle="dropdown" readonly >
           	<%--<input type="button" class="bag_modal" value="선택" data-toggle="modal" data-target="#modal" > --%><br> 
                 <label>출발장소</label>
-                    <input type="text" name="searchText" class="lb_1"><br>
+                    <input type="text" name="searchText" value="" class="lb_1"><br>
                 <label>출발날짜</label>
-                    <input type="text" name ="dateInput" class="lb_1" id="datepicker" readonly><br>
+                    <input type="text" name ="start_time" value="" class="lb_1" id="datepicker" readonly><br>
                 <label for="time">출발시간</label>
-                    <input type="text" id="time" name ="str_time" class="lb_1"><br>
+                    <input type="text" id="time" name ="str_time" value="" class="lb_1"><br>
                 <label>도착장소</label>
-                    <input type="text" name="searchText" class="lb_1"><br>
+                    <input type="text" name="searchText" value=""  class="lb_1"><br>
                 <label for="time">도착시간</label>
-                <input type="text" id="time1" name ="arr_time" class="lb_1"><br>
+                <input type="text" id="time1" name ="arr_time" value=""  class="lb_1"><br>
             </div>
 
             <div class="next_btn">
@@ -245,11 +275,11 @@
                     ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
                     ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
                     ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
-                    ,minDate: "+1d" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                    ,maxDate: "+1y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+                    ,minDate: "+1d" //허용하는 가장 이른 날짜 (-1D:하루전, -1M:한달전, -1Y:일년전)
+                    ,maxDate: "+1y" //허용하는 가장 늦은 날짜(+1D:하루후, -1M:한달후, -1Y:일년후)  
                 });                    
                 
-                //초기값을 오늘 날짜로 설정해줘야 합니다.
+                //초기값을 오늘 날짜로 설정
                 $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
             });
    
@@ -257,19 +287,20 @@
             
             
             $(function() {//출발시간
-    
-                $("#time").timepicker({
-                    timeFormat: 'HH:mm',
-                    interval: 5,
-                    minTime: '8',
-                    maxTime: '19',
-                    defaultTime: '8',
-                    startTime: '8',
-                    dynamic: false,
-                    dropdown: true,
-                    scrollbar: true        
-                });
+            		$("#time").timepicker({
+                        timeFormat: 'HH:mm',
+                        interval: 5,
+                        minTime: '8', 
+                        maxTime: '19',
+                        defaultTime: '8',
+                        startTime: '8',
+                        dynamic: false,
+                        dropdown: true,
+                        scrollbar: true        
+                    });
 
+            	
+                
             });
             
             $(function(){//도착시간 : 출발시간 + 2시간
@@ -293,38 +324,7 @@
   
 
 
-
-
-            
-        	
-        	$(function(){
-        		
-        		
-        		$('.cr_qty_minus').click(function(){
-        			
-        			var cnt = 0;
-        			cnt--;
-        			$('.frm_input text-center').text(cnt)
-        			
-        			if(cnt<=0){
-                		alert('더이상 줄일수 없습니다.');
-                		}
-        		});
-        		
-        		$('.cr_qty_plus').click(function(){
-        			var cnt = 0;
-        			cnt++;
-        			$('.frm_input text-center').text(cnt)
-        			
-        			if(cnt>20){
-                		alert('더이상 늘릴수 없습니다.');
-                		}
-        		});
-        	});
-        	
-     
-  
-        		
+    		
 
         		//버튼 클릭시 보여줌
         		$('.form_control_bag').click(function(){
@@ -336,6 +336,42 @@
 		                $('.dropdown').hide();
 		        });
 
+
+            
+        	
+        	$(function(){
+        		
+        		
+        		$('.cr_qty_minus').click(function(e){
+        			e.preventDefault();
+        			var stat = $('.frm_input text-center').text();
+        			var cnt = parseInt(stat,10);
+        			cnt--;
+        			
+        			if(cnt<=0){
+                		alert('더이상 줄일수 없습니다.');
+                		}
+        			
+        			$('.frm_input text-center').text();
+        		});
+        		
+        		$('.cr_qty_plus').click(function(){
+        			var stat = $('.frm_input text-center').text();
+        			var cnt = parseInt(stat,10);
+  
+        			cnt++;
+        			
+        			
+        			if(cnt>10){
+                		alert('더이상 늘릴수 없습니다.');
+                		}
+        			 $('.frm_input text-center').text();
+        		});
+        	});
+        	
+     
+  
+    
 
 		       /*	$(function(){
 	        	
