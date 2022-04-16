@@ -71,8 +71,12 @@
 	        
             <div align="center">
 	            <button onclick="goList()">목록으로</button>
-	            <button onclick="goUpdate()">수정하기</button>
-	            <button onclick="goDelete()">삭제하기</button>
+                
+                <%if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
+	            
+	            	<button onclick="goUpdate()">수정하기</button>
+	            	<button onclick="goDelete()">삭제하기</button>
+	            	<%} %>
 	   		 </div>
 	    
 	    
