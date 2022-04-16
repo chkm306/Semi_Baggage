@@ -36,10 +36,6 @@
 		<input type="hidden" name="userId" value="<%= userId%>">
 		<table>
 			<tr>
-				<td><label>현재 비밀번호</label>
-				<td><input type="password" name="userPwd" id="userPwd"></td>
-			</tr>
-			<tr>
 				<td><label>새 비밀번호</label></td>
 				<td><input type="password" name="newPwd"></td>
 			</tr>

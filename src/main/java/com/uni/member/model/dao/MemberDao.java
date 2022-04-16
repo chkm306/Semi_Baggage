@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.uni.member.model.dto.Member;
@@ -103,7 +104,7 @@ public class MemberDao {
 		}
 		return member;
 	}
-	public int updatePwd(Connection conn, String userId, String userPwd, String newPwd) {
+	public int updatePwd(Connection conn, String userId, String newPwd) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -115,7 +116,6 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, newPwd);
 			pstmt.setString(2, userId);
-			pstmt.setString(3, userPwd);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -272,8 +272,53 @@ public class MemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
 		}
 		return result;
+	}
+	public ArrayList<Member> selectMemberList(Connection conn) {
+		ArrayList<Member> list = new ArrayList<Member>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMemberList");
+		/*
+		 * MEM_NO
+			MEM_NAME
+			MEM_ID
+			MEM_PWD
+			MEM_EMAIL
+			MEM_DATE
+			MEM_TYPE
+			MEM_PHONE	
+		 */
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getString("MEM_NO"),
+									rset.getString("MEM_NAME"),
+									rset.getString("MEM_ID"),
+									rset.getString("MEM_PWD"),
+									rset.getString("MEM_EMAIL"),
+									rset.getDate("MEM_DATE"),
+									rset.getInt("MEM_TYPE"),
+									rset.getString("MEM_PHONE")
+									));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return list;
 	}
 
 }

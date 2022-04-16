@@ -1,7 +1,7 @@
 package com.uni.member.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +14,16 @@ import com.uni.member.model.dto.Member;
 import com.uni.member.model.service.MemberService;
 
 /**
- * Servlet implementation class MemberUpdatePwdServlet
+ * Servlet implementation class MemberListServlet
  */
-@WebServlet("/updatePwdMember.do")
-public class MemberUpdatePwdServlet extends HttpServlet {
+@WebServlet("/listMember.do")
+public class MemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberUpdatePwdServlet() {
+    public MemberListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,29 +32,12 @@ public class MemberUpdatePwdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+		ArrayList<Member> list = new MemberService().selectMemberList();
 		
-		String newPwd = request.getParameter("newPwd");
+		request.setAttribute("list", list);
 		
-		// MemberService에서 updatePwd 호출
-		int result = new MemberService().updatePwd(userId, newPwd);
-		
-		response.setContentType("text/html; charset=euc-kr");
-		
-		if(result > 0) {
-			PrintWriter writer = response.getWriter();
-			String str = "";
-			str = "<script>alert('비밀번호 재설정이 완료되었습니다');";
-			str += "self.close();";
-			str += "</script>";
-			
-			writer.print(str);
-			writer.close();
-		} else {
-			request.setAttribute("msg", "비밀번호 변경에 실패했습니다.");
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPopup.jsp");
-			view.forward(request, response);
-		}
+		RequestDispatcher view = request.getRequestDispatcher("views/member/manageMemberList.jsp");
+		view.forward(request, response);
 	}
 
 	/**
