@@ -63,7 +63,7 @@
             border: 1px solid black;
             border-radius: 10px 10px 10px 10px;
             height: 400px;
-            width: 255px;
+            width: 300px;
             margin-top: 60px;
         }
 
@@ -71,6 +71,10 @@
             text-align: center;
             margin-top: 40px;
             margin-bottom: 20px;
+            font-size: 25px;
+            font-weight: 600;
+            color: rgb(12, 101, 166);
+            
         }
 
         .png{
@@ -78,7 +82,7 @@
             width: 200px;
             height:200px;
             text-align: center;
-            background-color: rgb(50, 65, 1);
+            
             border-radius : 6px 6px 6px 6px;
             border-color: rgb(50, 65, 1);
             font-size: 25px;
@@ -102,7 +106,7 @@
             border: 1px solid black;
             border-radius: 10px 10px 10px 10px;
             height: 400px;
-            width: 255px;
+            width: 300px;
             margin-top: 60px;
         }
     </style>
@@ -125,7 +129,7 @@
             <div class="trans_res_box">
             
             	<img src="resources/images/2.png" onclick="location.href='<%=request.getContextPath()%>/reservationForm.do'" class="png"> 
-                <p>짐을 원하는 장소로 운송해드립니다</p>
+                <p>운송</p>
                 
             </div>
         </div>
@@ -133,7 +137,7 @@
         <div class="col_text_left">
             <div class="store_box">
                 <img src="resources/images/3.png" onclick="location.href='<%=request.getContextPath()%>/reservationForm.do'"  class="png" > 
-                <p>원하는 장소에 짐을 보관해드립니다</p>
+                <p>보관</p>
                 
             </div>
         </div>

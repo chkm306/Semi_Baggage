@@ -1,6 +1,7 @@
 package com.uni.reservation.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,17 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.uni.reservation.model.dto.Reservation;
+import com.uni.reservation.model.service.ReservationService;
+
 /**
- * Servlet implementation class ReservationCheckServlet
+ * Servlet implementation class ReservationListServlet
  */
-@WebServlet("/reservationCheck.do")
-public class ReservationCheckServlet extends HttpServlet {
+@WebServlet("/listReservationMem.do")
+public class ReservationListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReservationCheckServlet() {
+    public ReservationListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,11 +33,15 @@ public class ReservationCheckServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher view = null;
+		request.setCharacterEncoding("UTF-8");
 		
+		String mem_no = request.getParameter("mem_no"); 
 		
-		view = request.getRequestDispatcher("views/reservation/ReservationCheck.jsp");
+		ArrayList<Reservation> list = new ReservationService().selectList(mem_no);
+		
+		RequestDispatcher view = request.getRequestDispatcher("views/reservation/MemReservationList");
 		view.forward(request, response);
+		
 		
 	}
 

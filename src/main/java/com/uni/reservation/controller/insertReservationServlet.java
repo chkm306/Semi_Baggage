@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.uni.reservation.model.dto.Reservation;
+import com.uni.reservation.model.service.ReservationService;
 
 /**
  * Servlet implementation class insertReservation
@@ -33,21 +34,30 @@ public class insertReservationServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");// 한글처리
 		
-//		Reservation r = new Reservation();
-//		
-//		
-//		r.setBaggage(request.getParameter("baggage"));
-//		r.setAmount(Integer.parseInt(request.getParameter("amount")));
-//		r.setSta_place(request.getParameter("sta_place"));
-//		r.setSta_date(request.getParameter("sta_date"));
-//		r.setSta_time(request.getParameter("sta_time"));
-//		r.setArr_place(request.getParameter("arr_place"));
-//		r.setArr_time(request.getParameter("arr_time"));
-//		
+		String res_type = request.getParameter("res_type");
+		String baggage = request.getParameter("baggage");
+		int amount = Integer.parseInt(request.getParameter("amount"));
+		String sta_place = request.getParameter("sta_place");
+		String sta_date = request.getParameter("sta_date");
+		String sta_time = request.getParameter("sta_time");
+		String arr_place = request.getParameter("arr_place");
+		String arr_time = request.getParameter("arr_time");
 		
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/reservation/DetailReservation.jsp");
-		view.forward(request, response);
+		Reservation r = new Reservation(res_type, baggage, amount, sta_place, sta_date, sta_time, arr_place, arr_time);
+		
+		int result = new ReservationService().insertReservation(r);
+		
+		if(result > 0) {
+			request.getSession().setAttribute("msg","예약성공");
+			response.sendRedirect(request.getContextPath());
+		}else {
+			request.setAttribute("msg", "예약실패");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
+		}
+		
+
 	}
 
 	

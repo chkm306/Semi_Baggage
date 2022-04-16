@@ -1,6 +1,7 @@
 package com.uni.reservation.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,29 +10,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.uni.reservation.model.dto.Reservation;
+import com.uni.reservation.model.service.ReservationService;
+
 /**
- * Servlet implementation class ReservationFormServlet
+ * Servlet implementation class NonReservationListServlet
  */
-@WebServlet("/reservationForm.do")
-public class ReservationFormServlet extends HttpServlet {
+@WebServlet("/NonReservationListServlet")
+public class NonReservationListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-	
-    public ReservationFormServlet() {
+    public NonReservationListServlet() {
         super();
-        
-        
-        
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("views/reservation/DetailReservation.jsp");
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String res_no = request.getParameter("res_no"); 
+		
+		ArrayList<Reservation> list = new ReservationService().selectNonList(res_no);
+		
+		RequestDispatcher view = request.getRequestDispatcher("views/reservation/NonReservationList");
 		view.forward(request, response);
 	}
 

@@ -4,17 +4,17 @@ import java.sql.Date;
 
 public class Reservation {
 
-	private int res_no;
-	private int mem_no;
-	private String res_type;
-	private String baggage;
-	private int amount;
-	private String sta_date;
-	private String sta_place;
-	private String arr_place;
-	private String sta_time;
-	private String arr_time;
-	private String status;
+	private int res_no; //예약번호
+	private String mem_no; //회원번호
+	private String res_type; //예약종류 ( 보관,운송)
+	private String baggage; //짐
+	private int amount; //수량
+	private String sta_date; //출발날짜
+	private String sta_place; //출발장소
+	private String arr_place; //도착장소
+	private String sta_time; //출발시간
+	private String arr_time; //도착시간
+	private String status; //상태
 	
 	
 	
@@ -22,7 +22,7 @@ public class Reservation {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(int res_no, int mem_no, String res_type, String baggage, int amount, String sta_date,
+	public Reservation(int res_no, String mem_no, String res_type, String baggage, int amount, String sta_date,
 			String sta_place, String arr_place, String sta_time, String arr_time, String status) {
 		super();
 		this.res_no = res_no;
@@ -38,6 +38,36 @@ public class Reservation {
 		this.status = status;
 		
 	}
+	
+	
+	
+
+	public Reservation(String res_type, String sta_date, String sta_place, String arr_place, String sta_time,
+			String arr_time) {
+		super();
+		this.res_type = res_type;
+		this.sta_date = sta_date;
+		this.sta_place = sta_place;
+		this.arr_place = arr_place;
+		this.sta_time = sta_time;
+		this.arr_time = arr_time;
+	}
+
+	public Reservation(String res_type, String baggage, int amount, String sta_place, String sta_date,
+			String sta_time, String arr_place, String arr_time) {
+		this.res_type = res_type;
+		this.baggage = baggage;
+		this.amount = amount;
+		this.sta_place = sta_place;
+		this.sta_date = sta_date;
+		this.sta_time = sta_time;
+		this.arr_place = arr_place;
+		this.arr_time = arr_time;
+		
+	}
+
+
+
 
 	public int getRes_no() {
 		return res_no;
@@ -47,11 +77,11 @@ public class Reservation {
 		this.res_no = res_no;
 	}
 
-	public int getMem_no() {
+	public String getMem_no() {
 		return mem_no;
 	}
 
-	public void setMem_no(int mem_no) {
+	public void setMem_no(String mem_no) {
 		this.mem_no = mem_no;
 	}
 
@@ -134,6 +164,8 @@ public class Reservation {
 				+ ", arr_place=" + arr_place + ", sta_time=" + sta_time + ", arr_time=" + arr_time + ", status="
 				+ status + "]";
 	}
+
+	
 	
 	
 }
