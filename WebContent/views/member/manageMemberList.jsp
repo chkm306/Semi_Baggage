@@ -11,12 +11,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	.outer{
+		margin-top: 40px;
+		margin-bottom: 100px;
+	    width: 100%;
+	    height: 100%;
+	    text-align: center;
+	}
+	
 	.adminTBL{
 		border-collapse: separate;
 		border-spacing: 1px;
 		text-align: center;
 		line-height: 1.5;
 		margin: 20px 10px;
+		border-color: gray;
+		margin-left: auto;
+	    margin-right: auto;
 	}
 	
 	.adminTBL thead{
@@ -26,6 +37,7 @@
 		vertical-align: top;
 		color: #fff;
 		background: #0367a6;
+		font-size: 20px;
 	}
 	
 	.adminTBL tbody td{
@@ -33,18 +45,19 @@
 		padding: 10px;
 		vertical-align: top;
 		border-bottom: 1px solid #ccc;
-		background: #eee;
+		background: white;
 	}
 	
-	button{
-		background: #a2cdf2;
+	.memUpdateBtn, .memDeleteBtn{
+		background-color: #324001;
 		color: white;
-		width: 90px;
 	}
 </style>
 </head>
 <body>
+	<%@ include file="../common/menubar.jsp" %>
 	<div class="outer">
+		<h1>회원 관리</h1>
         <table class="adminTBL">
             <thead id="memberListHead">
                 <tr>
@@ -73,12 +86,38 @@
                             <td><%= m.getEnrollDate()%></td>
                             <td><%= m.getUserType()%></td>
                             <td><%= m.getPhone()%></td>
-                            <td><button>수정</button></td>
+                            <td><input type="button" class="memUpdateBtn" value="수정" />
+                            <input type="button" class="memDeleteBtn" value="삭제" /></td>
                         </tr>
                     <% } %>
                 <% } %>
             </tbody>
         </table>
     </div>
+    <script>
+ 		$(".memUpdateBtn").click(function(){
+ 			var mUpdateBtn = $(this);
+ 			
+ 			var tr = mUpdateBtn.parent().parent();
+ 			var td = tr.children();
+ 			var userId = td.eq(2).text();
+ 			
+ 			location.href = "<%=request.getContextPath()%>/mgUpdateMemberForm.do?userId=" + userId;
+ 		})
+ 		
+ 		$(".memDeleteBtn").click(function(){
+ 			var mDeleteBtn = $(this);
+ 			
+ 			var tr = mDeleteBtn.parent().parent();
+ 			var td = tr.children();
+ 			var userId = td.eq(2).text();
+ 			
+ 			var popupX = (document.body.offsetWidth / 2) - 200;
+ 			var popupY = (window.screen.height / 2) - 150;
+ 			/* 절대 경로로 설정해 줌 */
+ 			window.open("${pageContext.request.contextPath}/views/member/manageMemberDelete.jsp?" + userId, "findId", "width=400, height=150, left= "+ popupX + ", top=" + popupY);
+ 			
+ 		})
+    </script>
 </body>
 </html>
