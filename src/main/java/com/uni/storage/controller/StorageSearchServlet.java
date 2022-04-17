@@ -35,8 +35,9 @@ public class StorageSearchServlet extends HttpServlet {
 		
 		ArrayList<Storage> sList = new StorageService().searchStorage(address);
 		
-			request.setAttribute("sList", sList);
-			request.getRequestDispatcher("views/storage/storageList.jsp").forward(request, response);
+		request.setAttribute("sList", sList);
+		request.getRequestDispatcher("views/storage/storageList.jsp").forward(request, response);
+		System.out.println(sList);
 		
 	}
 
