@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Properties;
 
 import com.uni.storage.model.dto.Storage;
@@ -32,24 +33,37 @@ public class StorageDao {
 	}
 	public ArrayList<Storage> searchStorage(Connection conn, String address) {
 		System.out.println("searchStorage dao 실행됨");
-		ArrayList<Storage> sList = null;
+		ArrayList<Storage> sList1 = new ArrayList<Storage>();
+		ArrayList<Storage> sList = new ArrayList<Storage>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("searchStorage");
-		String address1 = "%" + address + "%";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, address1);
+			//pstmt.setString(1, address);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				sList.add(new Storage(rset.getInt("STO_NO"),
+				if(rset.getString("STO_ADDRESS").contains(address)) {
+				sList1.add(new Storage(rset.getInt("STO_NO"),
 									  rset.getString("STO_ADDRESS"),
 									  rset.getString("MEM_NO"),
 									  rset.getString("STO_NAME")
-						));
+									  
+						)); 
+				}
 			}
+			/*
+			for(int i = 0; i < sList1.size(); i++) {
+				if(sList1.contains(address)) {
+					sList = new ArrayList((Collection) sList1.get(i));
+				}
+			}
+			System.out.println("test : " + sList1.get(0));
+			*/
+			
+			//System.out.println(sList.get(1));
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -59,6 +73,8 @@ public class StorageDao {
 			close(pstmt);
 		}
 		
-		return sList;
+		System.out.println("sList : " + sList.isEmpty());
+		
+		return sList1;
 	}
 }
