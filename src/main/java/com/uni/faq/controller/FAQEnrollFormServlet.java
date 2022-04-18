@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FaqEnrollFormServlet
  */
-@WebServlet("/enrollFormFaq.do")
-public class FaqEnrollFormServlet extends HttpServlet {
+@WebServlet("/enrollFormFAQ.do")
+public class FAQEnrollFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqEnrollFormServlet() {
+    public FAQEnrollFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

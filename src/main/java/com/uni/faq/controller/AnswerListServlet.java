@@ -1,6 +1,7 @@
 package com.uni.faq.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.uni.faq.model.dto.Answer;
 import com.uni.faq.model.dto.FAQ;
 import com.uni.faq.model.service.FAQService;
 
 /**
- * Servlet implementation class faqDetailServlet
+ * Servlet implementation class AnswerListServlet
  */
-@WebServlet("/faqDetailServlet")
-public class faqDetailServlet extends HttpServlet {
+@WebServlet("/answerList.do")
+public class AnswerListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public faqDetailServlet() {
+    public AnswerListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +34,14 @@ public class faqDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nno = Integer.parseInt(request.getParameter("fno"));
+		int fno = Integer.parseInt(request.getParameter("fno"));
 		
-		FAQ faq = new FAQService().selectNotice(nno);
+		ArrayList<Answer> a = new FAQService().selectAnswer(fno);
 		
-		String view = "";
-		
-		if (faq != null) {
-			request.setAttribute("faq", faq);
-			view = "views/notice/faqDetailView.jsp";
-		} else {
-			request.setAttribute("msg", "조회에 실패했습니다.");
-			view = "views/common/errorPage.jsp";
-		}
-		
-		request.getRequestDispatcher(view).forward(request, response);
-		}
+		response.setContentType("application/json; charset=utf-8");
+		Gson gson = new GsonBuilder().setDateFormat("yyyy년 MM월 dd일").create();
+		new Gson().toJson(a, response.getWriter());
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
