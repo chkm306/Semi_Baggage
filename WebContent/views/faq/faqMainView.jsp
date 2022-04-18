@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.uni.member.model.dto.Member"%>
+<%
+Member m = (Member)request.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://kit.fontawesome.com/2bf1fadc44.js" crossorigin="anonymous"></script>
 <!-- 폰트어썸 -->
-<title>Document</title>
+<script src="https://kit.fontawesome.com/2bf1fadc44.js" crossorigin="anonymous"></script>
+<title>Baggage - FAQ</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700&family=Vibur&display=swap');
     *{
@@ -16,15 +19,15 @@
         margin: 0;
         box-sizing: border-box;
     }
+    
     .container{
-        padding: 20px 60px 50px;
+        padding: 20px 60px 100px 60px;
         position: relative;
-        width: 100%;
+        width: 968px;
         margin: auto;
+        
+        background: white;
         font-size: 20px;
-        /* border: 1px solid gainsboro; */
-        justify-content: center;
-  align-items: center;
     }
     
     .faqMenu{
@@ -34,27 +37,18 @@
         font-family: 'Jua', sans-serif;
         padding: 20px 30px;
         justify-content: center;
-  		align-items: center;
-    }
-    
-    
-    .faqMenu1123{
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    margin: 15px 0;
-    border-collapse: collapse;
-    text-align: center;
     }
     
     .faqMenu a{
-	    width:30%;
-	    height: 128px;
-	    border: 1px solid #d7d7d7;    
+        width:100%;
         text-decoration: none;
         text-align: center;
         padding-top: 40px;
-        color: #027373;
+        height: 128px;
+        border-collapse: collapse;
+        
+        color: #0367a6;
+	    border: 1px solid #d7d7d7;    
     }
     
     .faqimg{
@@ -62,6 +56,8 @@
         height: 30%;
     }
     
+
+    /* FAQ */
     .layout{
         max-width: 800px;
         margin: 0 auto;
@@ -96,6 +92,7 @@
     margin: 20px 0 0;
     cursor: pointer;
     }
+    
     /* 제목 앞 화살표 */
     .qna label::before {
     content: "▶";
@@ -118,6 +115,7 @@
     box-sizing: border-box;
     transition: max-height 0.4s;
     }
+    
     .qna input:checked + label + div { /* 내용 영역 펼침 */
     display: block;
     }
@@ -131,13 +129,15 @@
     <h2 align="center">FAQ</h2><br>
 
     <div class="faqMenu">
-        <a href="<%= request.getContextPath()%>/enrollFormFaq.do" >
-            <p >1:1 문의</p>
+		<a href="<%= request.getContextPath()%>/enrollFormFAQ.do" >
+            <p><i class="fa-solid fa-lg fa-comments"></i>&nbsp;&nbsp;1:1 문의</p>
         </a>
-        <a href="<%= request.getContextPath()%>/myFaqPage.do">
-            <p>내 문의 내역</p>
+        <a href="<%= request.getContextPath()%>/listMyFAQ.do">
+            <p><i class="fa-solid fa-lg fa-receipt"></i>&nbsp;&nbsp;내 문의 내역</p>
         </a>
     </div>
+
+
     <br><h2 align="center">자주 묻는 질문</h2><br>
     <div class="layout">
         <ul class="qna">
@@ -145,7 +145,8 @@
                 <input type="checkbox" id="qna-1">
                 <label for="qna-1">예약을 취소/환불 받고 싶어요.</label>
                 <div>
-                    <p>백있지의 예약 취소/환불은 아래와 같이 이루어집니다.<br>1. 홈페이지 예약: 서비스 이용 전날 21시 전까지 예약을 취소한 경우, 결제 금액의 90%를 환불받으실 수 있습니다. 서비스 이용 전날 21시 이후에는 취소는 가능하지만 환불은 불가합니다.<br>2. 현장접수: 영수증을 지참하신 경우 취소/환불이 가능합니다. 단, 고객님의 수화물 운송이 시작되면 취소/환불이 불가합니다.</p>
+                    <p>백있지의 예약 취소/환불은 아래와 같이 이루어집니다.<br>1. 홈페이지 예약: 서비스 이용 전날 21시 전까지 예약을 취소한 경우, 결제 금액의 90%를 환불받으실 수 있습니다. 서비스 이용 전날 21시 이후에는 취소는 가능하지만 환불은 불가합니다.
+                    <br>2. 현장접수: 영수증을 지참하신 경우 취소/환불이 가능합니다. 단, 고객님의 수화물 운송이 시작되면 취소/환불이 불가합니다.</p>
                 </div>
             </li>
             <li>
@@ -159,7 +160,8 @@
                 <input type="checkbox" id="qna-3">
                 <label for="qna-3">백있지 예약 마감 시간은 언제인가요?</label>
                 <div>
-                    <p>백있지 예약은 아래와 같이 이루어집니다. <br>1. 홈페이지 예약: 서비스 이용 전날 21시까지 홈페이지에서 예약할 수 있습니다.<br>2. 당일 현장 접수: 매장에서 오후 3시 이전까지 현장 접수 가능합니다.<br>※ 단, 당일 현장 접수의 경우 운송 서비스가 조기 마감되면 이용이 불가할 수 있습니다.</p>
+                    <p>백있지 예약은 아래와 같이 이루어집니다. <br>1. 홈페이지 예약: 서비스 이용 전날 21시까지 홈페이지에서 예약할 수 있습니다.<br>2. 당일 현장 접수: 매장에서 오후 3시 이전까지 현장 접수 가능합니다.
+                    <br>※ 단, 당일 현장 접수의 경우 운송 서비스가 조기 마감되면 이용이 불가할 수 있습니다.</p>
                 </div>
             </li>
             <li>

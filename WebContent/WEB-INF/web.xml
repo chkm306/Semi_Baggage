@@ -33,4 +33,21 @@
   	<url-pattern>/updatePwdMember.do</url-pattern>
   	<url-pattern>/deleteMember.do</url-pattern>
   </filter-mapping>
+  
+  <!-- LoginCheckFilter -->
+  <filter>
+    <filter-name>LoginCheckFilter</filter-name>
+    <filter-class>com.uni.common.filter.LoginCheckFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginCheckFilter</filter-name>
+  	<url-pattern>/deleteFAQ.do</url-pattern>
+  	<url-pattern>/detailFAQ.do</url-pattern>
+  	<url-pattern>/enrollFormFAQ.do</url-pattern>
+  	<url-pattern>/deleteMember.do</url-pattern>
+  	<url-pattern>/insertFAQ.do</url-pattern>
+  	<url-pattern>/updateFormFAQ.do</url-pattern>
+  	<url-pattern>/updateFAQ.do</url-pattern>
+  	<url-pattern>/listMyFAQ.do</url-pattern>
+  </filter-mapping>
 </web-app>

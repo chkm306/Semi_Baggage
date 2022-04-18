@@ -68,7 +68,6 @@
         <div class="footer">
             <h3>BAGGAGE</h3>
             <div class="footer_menu">
-                <a href="">이용약관</a> | <a href="">개인정보취급방침</a>
             	<p style="line-height: 2.5;">최경민 신현지 송한우리 구승환<br>
             	©BAGGAGE. All rights reserved. Created by <a href="https://time-breakfast-3c5.notion.site/Team-New-Tools-7434d17cbdbc40989fb958883952fa42">최신공구</a></p>
             </div>
