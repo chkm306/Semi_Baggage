@@ -1,32 +1,32 @@
-package com.uni.board.model.service;
+package com.uni.notice.model.service;
 
 import static com.uni.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.uni.board.model.dao.NoticeDao;
-import com.uni.board.model.dto.Board;
-import com.uni.board.model.dto.PageInfo;
+import com.uni.notice.model.dao.NoticeDao;
+import com.uni.notice.model.dto.Notice;
+import com.uni.notice.model.dto.PageInfo;
 
 public class NoticeService {  
 
 	/*
-	public ArrayList<Board> selectList() {
+	public ArrayList<Notice> selectList() {
 		Connection conn = getConnection();
-		ArrayList<Board> bList = new NoticeDao().selectList(conn);
+		ArrayList<Notice> bList = new NoticeDao().selectList(conn);
 		 
-		for(Board b : bList) {
+		for(Notice b : bList) {
 			System.out.println("service : " + b.getbTitle());
 		}
 		
 		return bList;
 	} 
 	*/
-	public Board selectNotice(int bno) {
+	public Notice selectNotice(int bno) {
 		System.out.println("selectNotice service 실행됨");
 
-		Board notice = null;
+		Notice notice = null;
 		Connection conn = getConnection();
 		
 		int result = new NoticeDao().increaseCount(conn, bno);
@@ -46,11 +46,12 @@ public class NoticeService {
 		return notice;
 	}
 	
-	public Board getNotice(int bno) {
+	public Notice getNotice(int bno) {
 		System.out.println("getNotice service 실행됨");
 		Connection conn = getConnection();
 
-		Board notice = new NoticeDao().selectNotice(bno, conn);
+		Notice notice = new NoticeDao().selectNotice(bno, conn);
+		close(conn);
 
 		return notice;
 	}
@@ -64,11 +65,11 @@ public class NoticeService {
 		return listCount;
 	}
 
-	public ArrayList<Board> selectList(PageInfo pi) {
+	public ArrayList<Notice> selectList(PageInfo pi) {
 		System.out.println("selectList service 실행됨");
 
 		Connection conn = getConnection();
-		ArrayList<Board> bList = new NoticeDao().selectList(conn, pi);
+		ArrayList<Notice> bList = new NoticeDao().selectList(conn, pi);
 		close(conn);
 		return bList;
 	}
@@ -108,9 +109,9 @@ public class NoticeService {
 		return result;
 	}
 
-	public Board updateNotice(int bno, String title, String content) {
+	public Notice updateNotice(int bno, String title, String content) {
 		System.out.println("updateNotice service 실행됨");
-		Board notice = null;
+		Notice notice = null;
 
 		Connection conn = getConnection();		
 		int result = new NoticeDao().updateNotice(bno, title, content, conn);
@@ -122,6 +123,14 @@ public class NoticeService {
 		}
 		System.out.println("update : "+ notice);
 		return notice;
+	}
+
+	public ArrayList<Notice> searchNotice(String keyword, PageInfo pi) {
+		System.out.println("searchNotice service 실행됨");
+		Connection conn = getConnection();	
+		ArrayList<Notice> nList = new NoticeDao().searchNotice(conn, keyword, pi);
+		close(conn);
+		return nList;
 	}
 
 }

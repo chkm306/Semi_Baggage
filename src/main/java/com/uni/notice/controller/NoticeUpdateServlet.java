@@ -1,4 +1,4 @@
-package com.uni.board.controller;
+package com.uni.notice.controller;
 
 import java.io.IOException;
 
@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.uni.board.model.dto.Board;
-import com.uni.board.model.service.NoticeService;
+import com.uni.notice.model.dto.Notice;
+import com.uni.notice.model.dto.Notice;
+import com.uni.notice.model.service.NoticeService;
 
 /**
  * Servlet implementation class NoticeUpdateServlet
@@ -36,11 +37,11 @@ public class NoticeUpdateServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		Board notice = new NoticeService().updateNotice(bno, title, content.replace("\n", "<br>"));
+		Notice notice = new NoticeService().updateNotice(bno, title, content.replace("\n", "<br>"));
 		
 		if(notice != null) {
 			request.setAttribute("msg", "공지사항 수정 되었습니다.");
-			RequestDispatcher view = request.getRequestDispatcher("views/board/noticeDetailPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/notice/noticeDetailPage.jsp");
 			request.setAttribute("notice", notice);
 			view.forward(request, response);
 		} else {

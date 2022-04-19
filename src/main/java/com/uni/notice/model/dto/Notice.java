@@ -1,8 +1,8 @@
-package com.uni.board.model.dto;
+package com.uni.notice.model.dto;
 
 import java.sql.Date;
 
-public class Board { 
+public class Notice { 
 	private int bNo; 
 	private String bTitle;
 	private Date bDate;
@@ -10,12 +10,12 @@ public class Board {
 	private String bContent;
 
 	 
-	public Board() {
+	public Notice() {
 		// TODO Auto-generated constructor stub
 	}
  
 
-	public Board(int bNo, String bTitle, Date bDate, int bCount, String bContent) {
+	public Notice(int bNo, String bTitle, Date bDate, int bCount, String bContent) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -25,7 +25,7 @@ public class Board {
 	}
 
 
-	public Board(int bNo) {
+	public Notice(int bNo) {
 		super();
 		this.bNo = bNo;	
 	}
@@ -84,7 +84,7 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bDate=" + bDate + ", bCount=" + bCount + ", bContent="
+		return "Notice [bNo=" + bNo + ", bTitle=" + bTitle + ", bDate=" + bDate + ", bCount=" + bCount + ", bContent="
 				+ bContent + "]";
 	}
 

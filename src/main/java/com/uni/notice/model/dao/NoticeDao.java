@@ -1,4 +1,4 @@
-package com.uni.board.model.dao;
+package com.uni.notice.model.dao;
 
 import static com.uni.common.JDBCTemplate.*;
 
@@ -13,8 +13,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.uni.board.model.dto.Board;
-import com.uni.board.model.dto.PageInfo;
+import com.uni.notice.model.dto.Notice;
+import com.uni.notice.model.dto.PageInfo;
 
 public class NoticeDao { 
 	private Properties prop = new Properties();
@@ -34,8 +34,8 @@ public class NoticeDao {
 
 	}
 	/*
-	public ArrayList<Board> selectList(Connection conn) {
-		ArrayList<Board> bList = new ArrayList<Board>();
+	public ArrayList<Notice> selectList(Connection conn) {
+		ArrayList<Notice> bList = new ArrayList<Notice>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -48,7 +48,7 @@ public class NoticeDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				bList.add(new Board(rset.getInt("N_NO"),
+				bList.add(new Notice(rset.getInt("N_NO"),
 									rset.getString("N_TITLE"),
 									rset.getString("N_CATEGORY"),
 									rset.getString("N_CONTENT"),
@@ -67,17 +67,17 @@ public class NoticeDao {
 			
 		}
 		
-		for(Board b : bList) {
+		for(Notice b : bList) {
 			System.out.println("dao : " + b.getbTitle());
 		}
 		return bList;
 	}
 	*/
 
-	public Board selectNotice(int bno, Connection conn) {
+	public Notice selectNotice(int bno, Connection conn) {
 		System.out.println("selectNotice dao 실행됨");
 
-		Board notice = null;
+		Notice notice = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -92,7 +92,7 @@ public class NoticeDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				notice = new Board(rset.getInt("N_NO"),
+				notice = new Notice(rset.getInt("N_NO"),
 						rset.getString("N_TITLE"),
 						rset.getDate("N_DATE"),
 						rset.getInt("N_COUNT"),
@@ -143,18 +143,18 @@ public class NoticeDao {
 		return listCount;
 	}
 
-	public ArrayList<Board> selectList(Connection conn, PageInfo pi) {
+	public ArrayList<Notice> selectList(Connection conn, PageInfo pi) {
 		System.out.println("selectList dao 실행됨");
 
-		ArrayList<Board> bList = new ArrayList<Board>();
+		ArrayList<Notice> bList = new ArrayList<Notice>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("selectList");
 		//selectList=SELECT N_NO, N_TITLE, , N_CONTENT, N_DATE, N_COUNT,  FROM N_CONTENT ORDER BY N_NO DESC;
 		
-		int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
-		int endRow = startRow + pi.getBoardLimit() - 1;
+		int startRow = (pi.getCurrentPage()-1) * pi.getNoticeLimit() + 1;
+		int endRow = startRow + pi.getNoticeLimit() - 1;
 
 		
 		try {
@@ -164,7 +164,7 @@ public class NoticeDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				bList.add(new Board(rset.getInt("N_NO"),
+				bList.add(new Notice(rset.getInt("N_NO"),
 									rset.getString("N_TITLE"),
 									rset.getDate("N_DATE"),
 									rset.getInt("N_COUNT"),
@@ -180,6 +180,8 @@ public class NoticeDao {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println("startNum : " + startRow );
+		System.out.println("endRow : " + endRow);
 		return bList;
 	}
 
@@ -290,6 +292,48 @@ public class NoticeDao {
 		System.out.println("updateNotice : " + result);
 		
 		return result;
+	}
+
+	public ArrayList<Notice> searchNotice(Connection conn, String keyword, PageInfo pi) {
+		System.out.println("searchNotice dao 실행됨");
+		ArrayList<Notice> nList = new ArrayList<Notice>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectList");
+		//selectList=SELECT N_NO, N_TITLE, , N_CONTENT, N_DATE, N_COUNT,  FROM N_CONTENT ORDER BY N_NO DESC;
+		
+		int startRow = (pi.getCurrentPage()-1) * pi.getNoticeLimit() + 1;
+		int endRow = startRow + pi.getNoticeLimit() - 1;
+
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+			
+			
+			while(rset.next()) {
+				if(rset.getString("N_TITLE").contains(keyword) || rset.getString("N_CONTENT").contains(keyword)) {
+					nList.add(new Notice(rset.getInt("N_NO"),
+										rset.getString("N_TITLE"),
+										rset.getDate("N_DATE"),
+										rset.getInt("N_COUNT"),
+										rset.getString("N_CONTENT")
+
+				));
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("nList: " + nList.isEmpty());
+		// TODO Auto-generated method stub
+		return nList;
 	}
 
 	

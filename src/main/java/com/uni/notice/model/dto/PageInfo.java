@@ -1,5 +1,4 @@
-package com.uni.board.model.dto;
-
+package com.uni.notice.model.dto;
 
 public class PageInfo {
 	
@@ -9,14 +8,14 @@ public class PageInfo {
 	private int endPage;			// 현재 페이지에 하단에 보여지는 페이징 바의 끝 수
 	private int maxPage;			// 전체 페이지에서의 가장 마지막 페이지
 	private int pageLimit;			// 한 페이지 하단에 보여질 페이지 최대 갯수
-	private int boardLimit;			// 한 페이지에 보여질 게시글 최대 갯수
+	private int noticeLimit;			// 한 페이지에 보여질 게시글 최대 갯수
 	
 	public PageInfo() {
 		
 	}
  
 	public PageInfo(int listCount, int currentPage, int startPage, int endPage, int maxPage, int pageLimit,
-			int boardLimit) {
+			int noticeLimit) {
 		super();
 		this.listCount = listCount;
 		this.currentPage = currentPage;
@@ -24,7 +23,7 @@ public class PageInfo {
 		this.endPage = endPage;
 		this.maxPage = maxPage;
 		this.pageLimit = pageLimit;
-		this.boardLimit = boardLimit;
+		this.noticeLimit = noticeLimit;
 	}
 
 	public int getListCount() {
@@ -75,19 +74,19 @@ public class PageInfo {
 		this.pageLimit = pageLimit;
 	}
 
-	public int getBoardLimitLimit() {
-		return boardLimit;
+	public int getNoticeLimit() {
+		return noticeLimit;
 	}
 
-	public void setBoardLimit(int boardLimit) {
-		this.boardLimit = boardLimit;
+	public void setNoticeLimit(int boardLimit) {
+		this.noticeLimit = boardLimit;
 	}
 
 	@Override
 	public String toString() {
 		return "PageInfo [listCount=" + listCount + ", currentPage=" + currentPage + ", startPage=" + startPage
 				+ ", endPage=" + endPage + ", maxPage=" + maxPage + ", pageLimit=" + pageLimit + ", boardLimit="
-				+ boardLimit + "]";
+				+ noticeLimit + "]";
 	}
 	
 	
