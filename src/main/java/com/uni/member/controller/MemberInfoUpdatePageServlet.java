@@ -31,6 +31,8 @@ public class MemberInfoUpdatePageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
+		
 		String userId = request.getParameter("userId");
 		String userName = request.getParameter("userName");
 		String userPhone = request.getParameter("userPhone");
@@ -40,7 +42,7 @@ public class MemberInfoUpdatePageServlet extends HttpServlet {
 		
 		if(updateMem != null) {
 			request.getSession().setAttribute("msg", "회원 정보 수정이 완료되었습니다");
-			request.getSession().setAttribute("loginUser", updateMem);
+			request.getSession().setAttribute("loginUser", loginUser);
 			response.sendRedirect(request.getContextPath());
 		} else {
 			request.getSession().setAttribute("msg", "회원 정보 수정을 실패하였습니다");

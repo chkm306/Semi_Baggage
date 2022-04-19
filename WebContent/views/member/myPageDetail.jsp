@@ -4,6 +4,7 @@
 	Member m = (Member)request.getAttribute("loginUser");
 	String userId = m.getUserId();
 	String userName = m.getUserName();
+	int userType = m.getUserType();
 %>
 <!DOCTYPE html>
 <html>
@@ -30,6 +31,7 @@
 	table{
 	    margin-left: auto;
 	    margin-right: auto;
+	    font-size: 20px;
 	}
 	button{
 	    background-color: #324001;
@@ -47,7 +49,7 @@
 	</div>
 	<div class="outer">
         <div class="userInfo">
-        	<h1 style="color: #0367a6;">마이페이지</h1>
+        	<h1>마이페이지</h1>
         	<div class="myInfo">
 	            <table>
 	                <tr>
@@ -64,7 +66,15 @@
                 <button type="button" id="myPageUpdateBtn" onclick="updateMyPage()">개인 정보 수정</button>
                 <br>
                 <button type="button" id="memDeleteBtn" onclick="deletePage()">회원 탈퇴</button>
-                <button type="button" id="memDeleteBtn" onclick="test()">회원 탈퇴</button>
+                <%if(userType == 2) {%>
+                <br>
+                <button type="button" id="insertStorageBtn" onclick="insertStorage()">보관소 등록</button><br>
+                <button type="button" id="storageListBtn" onclick="storageList()">보관소 조회</button><br>
+                <button type="button" id="reservationListBtn" onclick="reservationList()">보관소 예약 조회</button>
+                <%} else if(userType == 3) {%>
+                <br>
+                <button type="button" id="manageMemberBtn" onclick="manageMember()">회원 관리</button><br>
+                <%} %>
             </div>
             <script>
             	function updateMyPage(){
@@ -73,7 +83,16 @@
             	function deletePage(){
             		location.href="<%=request.getContextPath()%>/deletePage.do";
             	}
-            	function test(){
+            	function insertStorage(){
+            		location.href="<%=request.getContextPath()%>/storageEnrollPage.do";
+            	}
+            	function storageList(){
+            		location.href="<%=request.getContextPath()%>/storageListPage.do";
+            	}
+            	function reservationList(){
+            		location.href="<%=request.getContextPath()%>/reservationListPage.do";
+            	}
+            	function manageMember(){
             		location.href="<%=request.getContextPath()%>/listMember.do";
             	}
             </script>

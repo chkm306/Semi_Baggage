@@ -13,21 +13,23 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+	function findMemberPwd() {
+		var userId = $("#userId");
+		var userPhone = $("#userPhone");
+		
+		if(userId.val().trim() === "") {
+			alert("아이디를 입력해 주세요");
+			return false;
+		}
+		
+		if(userPhone.val().trim() === "") {
+			alert("번호를 입력해 주세요");
+			return false;
+		}
+		return true;
+	}
 		function closePopup() {
 			self.close();
-		}
-		function findMemberId() {
-			if($("#userId").val().trim().length === 0) {
-				alert("아이디를 입력해 주세요");
-				#("#userId").focus();
-				return false;
-			}
-			
-			if($("#userPhone").val().trim().length === 0) {
-				alert("번호를 입력해 주세요");
-				#("#userPhone").focus();
-				return false;
-			}
 		}
 </script>
 </head>
@@ -41,10 +43,5 @@
 			<button type="button" id="backBtn" onclick="closePopup()">취소</button>
 		</form>
 	</div>
-	<script>
-		function closePopup() {
-			self.close();
-		}
-	</script>
 </body>
 </html>

@@ -14,25 +14,27 @@
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-		function closePopup() {
-			self.close();
-		}
+<script>
 		function findMemberId() {
-			if($("#userName").val().trim().length === 0) {
+			var userName = $("#userName");
+			var userPhone = $("#userPhone");
+			
+			if(userName.val().trim() === "") {
 				alert("이름을 입력해 주세요");
-				#("#userName").focus();
 				return false;
 			}
 			
-			if($("#userPhone").val().trim().length === 0) {
+			if(userPhone.val().trim() === "") {
 				alert("번호를 입력해 주세요");
-				#("#userPhone").focus();
 				return false;
 			}
 			return true;
 		}
-	</script>
+		
+		function closePopup() {
+			self.close();
+		}
+</script>
 </head>
 <body>
 	<div style="text-align:center">

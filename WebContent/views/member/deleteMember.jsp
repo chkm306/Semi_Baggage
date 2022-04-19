@@ -17,6 +17,7 @@
 	    width: 100%;
 	    height: 100%;
 	    text-align: center;
+	    font-size: 20px;
 	}
 	button{
 	    background-color: #324001;

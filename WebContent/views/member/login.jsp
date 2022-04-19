@@ -87,6 +87,10 @@
 		window.open("${pageContext.request.contextPath}/views/member/findIdPopup.jsp", "findId", "width=400, height=300, left= "+ popupX + ", top=" + popupY);
 	}
 	
+	function nmemberReserveCheck() {
+		location.href="<%= request.getContextPath()%>/listReserve.do";
+	}
+	
 	function findPwdPopup() {
 		/* 팝업창 가운데 띄우기*/
 		var popupX = (document.body.offsetWidth / 2) - 200;

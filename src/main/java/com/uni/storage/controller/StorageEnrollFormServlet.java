@@ -1,27 +1,27 @@
-package com.uni.member.controller;
+package com.uni.storage.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.uni.member.model.service.MemberService;
+import com.uni.member.model.dto.Member;
+import com.uni.storage.model.service.StorageService;
 
 /**
- * Servlet implementation class MemberPwdFindServlet
+ * Servlet implementation class StorageEnrollFormServlet
  */
-@WebServlet("/findMemberPwd.do")
-public class MemberPwdFindServlet extends HttpServlet {
+@WebServlet("/storageEnrollForm.do")
+public class StorageEnrollFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberPwdFindServlet() {
+    public StorageEnrollFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +30,21 @@ public class MemberPwdFindServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
-		String userPhone = request.getParameter("userPhone");
+		String userNo = request.getParameter("userNo");
+		String storageAddress = request.getParameter("storageAddress");
+		String storageName = request.getParameter("storageName");
 		
-		int result = new MemberService().findMemberPwd(userId, userPhone);
+		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 		
-		RequestDispatcher view = null;
+		int result = new StorageService().insertStorage(userNo, storageAddress, storageName);
 		
 		if(result > 0) {
-			request.setAttribute("userId", userId);
-			request.getRequestDispatcher("views/member/pwdUpdateForm.jsp").forward(request, response);
+			request.setAttribute("loginUser", loginUser);
+			request.getRequestDispatcher("views/member/myPageDetail.jsp").forward(request, response);
 		} else {
-			request.setAttribute("msg", "조회 실패하였습니다.");
-			view = request.getRequestDispatcher("views/common/errorPopup.jsp");
+			request.setAttribute("msg", "보관소 등록에 실패하였습니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
-		view.forward(request, response);
 	}
 
 	/**

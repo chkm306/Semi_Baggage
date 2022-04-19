@@ -4,8 +4,8 @@ import java.sql.Date;
 
 public class Storage {
 
-   private int sr_no;
-   private int sr_sno;
+   private int sr_no; // 예약 번호
+   private int sr_sno; // 보관소 번호
    private String sr_address;
    private String mem_no;
    private Date sr_start;
@@ -47,7 +47,18 @@ public Storage(int sr_no, int sr_sno, String sr_address, String mem_no, Date sr_
       this.sr_baggage = sr_baggage;
       this.sr_amount = sr_amount;
    }
-   
+
+public Storage(int sr_sno, String sr_address, String mem_no, Date sr_start, Date sr_end, String sr_baggage,
+        int sr_amount) {
+     super();
+     this.sr_sno = sr_sno;
+     this.sr_address = sr_address;
+     this.mem_no = mem_no;
+     this.sr_start = sr_start;
+     this.sr_end = sr_end;
+     this.sr_baggage = sr_baggage;
+     this.sr_amount = sr_amount;
+  }
 	
 
    public int getSr_no() {
@@ -184,7 +195,7 @@ public void setSto_address(String sto_address) {
 
 @Override
    public String toString() {
-      return sto_no + " " + sto_address + " " + mem_no + " " + sto_name;
+      return sr_sno + sr_address + mem_no + sr_start + sr_end + sr_baggage + sr_amount;
    }
 //public Storage(int sto_no, String sto_address, String mem_no, String sto_name) {
 
