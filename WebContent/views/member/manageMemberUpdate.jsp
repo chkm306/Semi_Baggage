@@ -44,6 +44,14 @@
 		width: 230px;
 		height: 30px;
 	}
+	
+	#goBack{
+		background-color: #324001;
+	    margin-top: 10px;
+		color: white;
+	    width: 230px;
+	    height: 30px;
+	}
 </style>
 </head>
 <body>
@@ -83,5 +91,6 @@
 			</form>
 		</div>
 	</div>
+	<%@ include file="../common/footer.jsp" %> 
 </body>
 </html>

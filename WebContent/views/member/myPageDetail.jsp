@@ -63,17 +63,23 @@
 	            </table>
             </div>
             <div class="updateBtns">
-                <button type="button" id="myPageUpdateBtn" onclick="updateMyPage()">개인 정보 수정</button>
-                <br>
-                <button type="button" id="memDeleteBtn" onclick="deletePage()">회원 탈퇴</button>
-                <%if(userType == 2) {%>
-                <br>
-                <button type="button" id="insertStorageBtn" onclick="insertStorage()">보관소 등록</button><br>
-                <button type="button" id="storageListBtn" onclick="storageList()">보관소 조회</button><br>
-                <button type="button" id="reservationListBtn" onclick="reservationList()">보관소 예약 조회</button>
+            	<%if(userType == 1) { %>
+	                <button type="button" id="myPageUpdateBtn" onclick="updateMyPage()">개인 정보 수정</button>
+	                <br>
+	                <button type="button" id="memDeleteBtn" onclick="deletePage()">회원 탈퇴</button><br>
+	                <button type="button" id="reserveListBtn" onclick="reserveListPage()">예약 조회</button>
+                <%} if(userType == 2) {%>
+	                <br>
+	                <button type="button" id="myPageUpdateBtn" onclick="updateMyPage()">개인 정보 수정</button>
+	                <br>
+	                <button type="button" id="memDeleteBtn" onclick="deletePage()">회원 탈퇴</button><br>
+	                <button type="button" id="insertStorageBtn" onclick="insertStorage()">보관소 등록</button><br>
+	                <button type="button" id="storageListBtn" onclick="storageList()">보관소 조회</button><br>
+	                <button type="button" id="reservationListBtn" onclick="reservationList()">보관소 예약 조회</button>
                 <%} else if(userType == 3) {%>
-                <br>
-                <button type="button" id="manageMemberBtn" onclick="manageMember()">회원 관리</button><br>
+	                <br>
+	                <button type="button" id="manageMemberBtn" onclick="manageMember()">회원 관리</button><br>
+	                <button type="button" id="storageListBtn" onclick="storageList()">보관소 조회</button><br>
                 <%} %>
             </div>
             <script>

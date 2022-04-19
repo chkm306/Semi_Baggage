@@ -32,6 +32,9 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 	<div class="banner_img">
+			<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img4.jpg" alt="img" width="100%" height="30%">
+	</div>
+	<div class="banner_img">
 		<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img3.jpg" alt="img" width="100%" height="30%">
 	</div>
 	<div class="outer">
