@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.uni.board.model.dto.*, java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="com.uni.notice.model.dto.*, java.util.ArrayList"%>
 
 <%
 	//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList"); 
-	Board b = (Board)request.getAttribute("notice");
+	Notice b = (Notice)request.getAttribute("notice");
 %>
 <!DOCTYPE html>
 <html>
@@ -30,10 +30,11 @@
             color:  rgb(13, 101, 166);
             font-size: 40px;
         }
-        button {
+        button{
             background-color: rgb(50, 65, 1);
             color: white;
-		}
+            font-size: 15px
+        }
     </style>
 </head>
 <body>
@@ -45,7 +46,7 @@
 	<div class="outer">
 	
 			<br>
-	        <h2 align="center">공지사항</h2>
+        <h1 align="center">공지사항</h1>     
 	        <br>
 	        <br>
 	        <br>
@@ -78,6 +79,9 @@
 	            	<button onclick="goDelete()">삭제하기</button>
 	            	<%} %>
 	   		 </div>
+	   		 
+	   		 <br>
+	   		 <br>
 	    
 	    
 	    <script>

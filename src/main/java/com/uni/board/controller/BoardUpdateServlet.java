@@ -10,19 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.uni.board.model.dto.Board;
+import com.uni.board.model.dto.Board_Info;
+import com.uni.board.model.dto.Board_content;
+import com.uni.board.model.service.BoardService;
 
-/** 
- * Servlet implementation class TipListServelet
+/**
+ * Servlet implementation class BoardUpdateServlet
  */
-@WebServlet("/tipList.do")
-public class TipListServelet extends HttpServlet {
-	private static final long serialVersionUID = 1L; 
+@WebServlet("/updateFormBoardform.do")
+public class BoardUpdateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TipListServelet() {
+    public BoardUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,14 +33,17 @@ public class TipListServelet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
-		ArrayList<Board> bList = new ArrayList<Board>();
-		//bList.add(b);
+		int b_no = Integer.parseInt(request.getParameter("b_no"));
+		
+		Board_Info b = new BoardService().selectBoard(b_no);
+		ArrayList<Board_content> bList = new BoardService().selectBoardList(b_no);
 		
 		request.setAttribute("bList", bList);
-		 
-		RequestDispatcher view = request.getRequestDispatcher("views/board/tipListView.jsp");
+		request.setAttribute("b", b);
+		request.setAttribute("b_no", b_no);
+		RequestDispatcher view = request.getRequestDispatcher("/views/board/updateBoardForm.jsp");
 		view.forward(request, response);
+				
 	}
 
 	/**

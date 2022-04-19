@@ -1,4 +1,4 @@
-package com.uni.board.controller;
+package com.uni.notice.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.uni.board.model.dto.Board;
-import com.uni.board.model.dto.PageInfo;
-import com.uni.board.model.service.NoticeService;
+import com.uni.notice.model.dto.Notice;
+import com.uni.notice.model.dto.PageInfo;
+import com.uni.notice.model.service.NoticeService;
 
 /** 
  * Servlet implementation class NoticeListServlet
@@ -41,10 +41,9 @@ public class NoticeListServlet extends HttpServlet {
 		  
 		int maxPage; // 전체 페이지의 가장 마지막 페이지
 		int pageLimit; // 한 페이지 하단에 보여질 페이지 최대 갯수
-		int boardLimit; //한 페이지에 보여질 게시글 최대 갯수
+		int noticeLimit; //한 페이지에 보여질 게시글 최대 갯수
 		  
 		listCount = new NoticeService().getListCount();
-		System.out.println("listCount : " + listCount);
 		  
 		currentPage = 1;
 		  
@@ -54,9 +53,9 @@ public class NoticeListServlet extends HttpServlet {
 		  
 		pageLimit = 10;
 		
-		boardLimit = 10;
+		noticeLimit = 10;
 		  
-		maxPage = (int)Math.ceil((double)listCount/boardLimit);
+		maxPage = (int)Math.ceil((double)listCount/noticeLimit);
 		
 		startPage = (currentPage - 1) / pageLimit * pageLimit +1;
 		  
@@ -66,18 +65,18 @@ public class NoticeListServlet extends HttpServlet {
 		   endPage = maxPage;
 		}
 		
-		PageInfo pi = new PageInfo(listCount, currentPage, startPage, endPage, maxPage, pageLimit, boardLimit);
+		PageInfo pi = new PageInfo(listCount, currentPage, startPage, endPage, maxPage, pageLimit, noticeLimit);
 		
 		
 		//ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
 		//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1);
-		ArrayList<Board> bList = new NoticeService().selectList(pi);
+		ArrayList<Notice> bList = new NoticeService().selectList(pi);
 		//bList.add(b);
 		
 		request.setAttribute("bList", bList);
 		request.setAttribute("pi", pi);
 
-		request.getRequestDispatcher("views/board/noticeListPage.jsp").forward(request, response);
+		request.getRequestDispatcher("views/notice/noticeListPage.jsp").forward(request, response);
 		
 	}
 

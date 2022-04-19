@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.uni.board.model.dto.Board" %>
-<%
-	Board n = (Board)request.getAttribute("notice");
-	
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,7 +16,7 @@
             margin: auto;
         }
         .mainImg{
-	        width: 100%;
+	        width: 100%; 
 	        height: 30%;
 	        margin: 0%;
 	        padding: 0%;
@@ -35,7 +30,11 @@
 			width: 100%;
 			font-size: 20px;
 		}
-		textarea{
+        button{
+            background-color: rgb(50, 65, 1);
+            color: white;
+            font-size: 15px
+        }		textarea{
 			width : 100%;
 			height : 400px;
 			font-size: 20px;
@@ -51,32 +50,37 @@
     <div class="outer">
 
         <br>
-          <h2 align="center">공지사항</h2>
+        <h1 align="center">공지사항</h1>     
           <br>
           
-          <form id="enrollForm" action="<%= request.getContextPath()%>/updateNotice.do?bno=<%=n.getbNo() %>" method="post">
+          <form id="enrollForm" action="<%= request.getContextPath()%>/insertNotice.do" method="post">
           <table>
              <tr>
-                <td><input type="text" name="title" value="<%=n.getbTitle()%>"></td>
+                <td><input type="text" name="title" placeholder="제목을 입력하세요."></td>
              </tr>
         </table>
         <br>
-             <textarea name="content"><%=n.getbContent()%></textarea>  
+             <textarea name="content" placeholder="내용을 입력하세요."></textarea>  
              
              <br>
           
 			<div class="btns" align="center">
-				<button type="submit" >등록하기</button> 
-			
-			</div>        
+				<button type="submit" >등록하기</button>
+				
+			</div>  
+          
           </form>
-
+          
+          
    </div>
    
    <br>
    
 <script>
 
+	function insert(){
+		console.log("click");
+	}
 	
 </script>
 

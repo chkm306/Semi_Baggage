@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.uni.board.model.dto.*, java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="com.uni.notice.model.dto.*, java.util.ArrayList"%>
 
 <%
-	ArrayList<Board> bList = (ArrayList<Board>)request.getAttribute("bList");
+	ArrayList<Notice> bList = (ArrayList<Notice>)request.getAttribute("bList");
 	//Board b = new Board(1, "title", "category", "content", "2012-02-03", 1); 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	
@@ -25,7 +25,7 @@
     <style>
         .outer{
             float: center;
-            width: 70%;
+            width: 80%;
             margin: auto;
         }
         .mainImg{
@@ -42,12 +42,13 @@
         tbody{
             text-align: center;
         }
-        #search{
+        input[name=keyword]{
         	width : 60%
         }
         button{
             background-color: rgb(50, 65, 1);
             color: white;
+            font-size: 15px
         }
        	table{
             width: 100%;
@@ -73,54 +74,57 @@
     <div class="outer">
     
     	<br>
-        <h2 align="center">공지사항</h2>     
+        <h1 align="center">공지사항</h1>     
         <br>
         
      <!-- 검색창 -->
-		<form class="seach" align="center">
-			<input type="search" id="search" placeholder="검색어를 입력하세요.">
-			<button type="submit">검색하기</button>
+		<form class="search" align="center" action="<%=request.getContextPath()%>/searchNotice.do" method="post">
+			<input type="text" name="keyword" placeholder="검색어를 입력하세요.">
+			<button class="btn" type="submit">검색하기</button>
 		</form>
 		
 		<br>
 		
 	<!-- 공지사항 리스트 -->
-		<table class="listArea">
+		<table class="listArea" border="1">
 		<thead>
 			<tr>
-				<td width="70%" colspan="2">제목</td>
+				<td width="70%" colspan="2" >제목</td>
 				<td width="30%">작성일</td>
 			</tr> 
 		</thead>
 		<tbody>
 		<%if(bList.isEmpty()){ %>
-			<td colspan=2>등록된 공지사항이 없습니다.</td>
+			<td colspan="3">등록된 공지사항이 없습니다.</td>
 		<%} else {%> 
-			<%for(Board b : bList){ %>
+			<%for(Notice b : bList){ %>
 			<tr>
-				<td><%=b.getbNo()%></td>
-				<td><%=b.getbTitle()%></td>
+				<!-- <td><input type="hidden" value="<%=b.getbNo()%>" name="bno"></td> -->
+				<td style="display: none;"><%=b.getbNo()%></td>
+				
+				<td colspan="2"><%=b.getbTitle()%></td>
 				<td><%=b.getbDate()%></td>
 			<tr>
 			<%} %>
 		<%} %>
-			
+
 		</tbody> 
         </table>
 
         <br><br>
+        <%if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
         <div class="insertButton" align="center">
-        <button onclick="location.href='enrollFormNotice.do'">작성하기</button>
+        <button class="btn" onclick="location.href='enrollFormNotice.do'">작성하기</button>
         </div>
         <br><br>
+        <%} %>
         
-        
-        
+
         
         <!-- 페이징바 영역 -->
 		<div class="pagingArea" align="center">
 		<!-- 맨 처음 페이지 -->
-			<button onclick="location.href='<%=contextPath%>/listNotice.do?currentPage=1'"> &lt;&lt; </button>
+			<button onclick="location.href='<%=contextPath%>/colummList.do?currentPage=1'"> &lt;&lt; </button>
 		
 		
 		<!-- 이전 페이지 -->
@@ -151,10 +155,12 @@
 		<!-- 맨끝 페이지 -->
 			<button onclick="location.href='<%=contextPath%>/listNotice.do?currentPage=<%=maxPage%>'"> &gt;&gt; </button>
 		</div>
-        	
-        
+
         
     </div>
+    
+    <br>
+    <br>
     
     <script>
     $(function(){
@@ -162,7 +168,8 @@
            var bno = $(this).children().eq(0).text();
            location.href = "<%=contextPath%>/detailNotice.do?bno="+bno;
         })
-     })    </script>
+     })    
+     </script>
 
     <%@ include file="../common/footer.jsp" %> 
 </body>

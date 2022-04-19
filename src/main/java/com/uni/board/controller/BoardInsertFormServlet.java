@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.uni.board.model.service.NoticeService;
-
 /**
- * Servlet implementation class NoticeDeleteServlet
+ * Servlet implementation class BoardInsertFormServlet
  */
-@WebServlet("/deleteNotice.do")
-public class NoticeDeleteServlet extends HttpServlet {
+@WebServlet("/insertBoardForm.do")
+public class BoardInsertFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDeleteServlet() { 
+    public BoardInsertFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +28,8 @@ public class NoticeDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("NoticeDeleteServlet 실행됨");
-
-		int bno = Integer.parseInt(request.getParameter("bno"));
-		System.out.println(bno);
-		
-		int result = new NoticeService().deleteNotece(bno);
-		
-		if(result > 0) {
-			request.getSession().setAttribute("msg", "공지사항이 삭제 되었습니다.");
-			response.sendRedirect("listNotice.do");
-		} else {
-			request.setAttribute("msg", "공지사항 삭제 실패하였습니다.");
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		}
+		RequestDispatcher view = request.getRequestDispatcher("views/board/insertFormBoard_Info.jsp");
+		view.forward(request, response);
 	}
 
 	/**
