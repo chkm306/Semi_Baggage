@@ -136,7 +136,7 @@
 			
 			<!-- loginForm -->
 			<div class="loginbox">
-				<h1 style="color: #0367a6;">로그인</h1>
+				<h1>로그인</h1>
 				<div class="login">
 					<form id="loginForm" action="<%=request.getContextPath()%>/loginMember.do" method="post" onsubmit="return loginValidate();">	
 						<table>
@@ -163,15 +163,6 @@
 						</tr>
 					</table>
 				</div>
-				<div class="nmember">
-					<form id="NMemberReservationForm" action="<%=request.getContextPath() %>/nmemberReserveList.do" method="post">
-						
-						<input id="reservationNo" type="text" name="reservationNo" placeholder="예약번호">
-						<br>
-						<button type="button" id="reserveChkBtn" onclick="nmemberReserveCheck();" style="margin-top: 10px; width: 170px;">비회원 예약 조회</button>
-					</form>
-				</div>
-
 			</div>
 		</div>
 	</div>

@@ -61,6 +61,9 @@
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>
+	<div class="banner_img">
+			<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img4.jpg" alt="img" width="100%" height="30%">
+	</div>
 	<div class="outer">
 		<div class="storageReserve">
 			<form id="storageEnrollForm" action="<%= request.getContextPath() %>/storageEnrollForm.do" method="post" onsubmit="return fnInputCheck();">
@@ -83,5 +86,6 @@
 			</form>
 		</div>
 	</div>
+	<%@ include file="../common/footer.jsp" %> 
 </body>
 </html>
