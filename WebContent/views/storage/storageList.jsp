@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, com.uni.storage.dto.Storage"%>
+    import="java.util.ArrayList, com.uni.storage.model.dto.Storage"%>
 <%
 	ArrayList<Storage> storageList = (ArrayList<Storage>)request.getAttribute("sList");
 %>
@@ -11,42 +11,64 @@
 <title>BAGGAGE</title>
 <style>
 		.outer{
-		margin-top: 40px;
-		margin-bottom: 100px;
-	    width: 100%;
-	    height: 100%;
-	    text-align: center;
+			margin-top: 40px;
+			margin-bottom: 100px;
+		    width: 100%;
+		    height: 100%;
+		    text-align: center;
 		}
         p {
             margin-bottom: 10px;
         }
-        h1 {
-        	color: #0367a6;
-        }
+        table{
+	        margin-top: 20px;
+		    margin-left: auto;
+		    margin-right: auto;
+		    text-align: left;
+		    border-spacing: 10px;
+		}
     </style>
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>
+	<div class="banner_img">
+		<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img3.jpg" alt="img" width="100%" height="30%">
+	</div>
 	<div class="outer">
 		<h1>보관소 목록</h1>
 		<div class="storageListTBL">
-			<% for(Storage s : storageList) {  %>
-				<p>
-                    <input type="hidden" name="storageNo" value="<%= s.getSr_sno() %>">
-                    <span style="font-size: 1.5em;"><%= s.getSto_name() %></span>
-                    <br>
-                    <span style="font-size: 1em;"><%= s.getSr_address() %></span>
-                </p>
-			<%} %>
+			<table class="listArea">
+				<% if(storageList.isEmpty()) { %>
+					<tr>
+						<td>조회 가능한 보관소가 없습니다.</td>
+					</tr>
+				<%} else {%>
+					<% for(Storage s : storageList) { %>
+						<tr>
+							<td>
+								<%= s.getSto_no() %>
+							</td>
+							<td>
+								<span style="font-size: 1.5em;"><%= s.getSto_name() %></span>
+							</td>
+							<td>
+								<span style="font-size: 1em;"><%= s.getSto_address() %></span>
+							</td>
+						</tr>
+					<% } %>
+				<% } %>
+			</table>
 		</div>
 	</div>
 	<script>
+		<%if(!storageList.isEmpty()) {%>
 	    $(function(){
 	        $("tbody>tr").click(function(){
-	           var sno = $(".storageListTBL input[name=storageNo]").val();
-	           location.href = "<%=contextPath%>/reservationStorage.do?sno="+sno;
+	           var sno = $(this).children().eq(0).text();
+	           location.href = "<%=request.getContextPath()%>/reservationStorageForm.do?sno=" + sno;
 	        })
-	     })    
+	     })
+	    <% } %>
      </script>
 	<%@ include file="../common/footer.jsp" %>
 </body>

@@ -25,16 +25,25 @@
             width: 100%;
             font-size: 30px;
         }
+        button{
+	    background-color: #324001;
+	    margin-top: 10px;
+		color: white;
+	    width: 230px;
+	    height: 30px;
+	}
 </style>
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>
-	<img class="mainImg" alt="img" src="resources/images/noticeMain.jpg">
+	<div class="banner_img">
+		<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img3.jpg" alt="img" width="100%" height="30%">
+	</div>
 	
     <div class="outer">
 
         <br>
-        <h2 align="center">보관소 찾기</h2>
+        <h1 align="center">보관소 찾기</h1>
         <br>
 
         <form id="searchForm" action="<%=request.getContextPath()%>/searchStorage.do" method="post">

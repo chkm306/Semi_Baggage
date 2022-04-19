@@ -1,4 +1,4 @@
-package com.uni.member.controller;
+package com.uni.storage.controller;
 
 import java.io.IOException;
 
@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.uni.member.model.service.MemberService;
+import com.uni.member.model.dto.Member;
+import com.uni.storage.model.service.StorageService;
 
 /**
- * Servlet implementation class MemberPwdFindServlet
+ * Servlet implementation class ManageStorageUpdateServlet
  */
-@WebServlet("/findMemberPwd.do")
-public class MemberPwdFindServlet extends HttpServlet {
+@WebServlet("/updateStorage.do")
+public class ManageStorageUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberPwdFindServlet() {
+    public ManageStorageUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +31,22 @@ public class MemberPwdFindServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
-		String userPhone = request.getParameter("userPhone");
+		int storageNo = Integer.parseInt(request.getParameter("storageNo"));
+		String storageName = request.getParameter("storageName");
+		String storageAddress = request.getParameter("storageAddress");
 		
-		int result = new MemberService().findMemberPwd(userId, userPhone);
+		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
+		
+		int result = new StorageService().updateStorage(storageNo, storageName, storageAddress);
 		
 		RequestDispatcher view = null;
 		
 		if(result > 0) {
-			request.setAttribute("userId", userId);
-			request.getRequestDispatcher("views/member/pwdUpdateForm.jsp").forward(request, response);
+			request.setAttribute("loginUser", loginUser);
+			view = request.getRequestDispatcher("views/member/myPageDetail.jsp");
 		} else {
-			request.setAttribute("msg", "조회 실패하였습니다.");
-			view = request.getRequestDispatcher("views/common/errorPopup.jsp");
+			request.setAttribute("msg", "조회 실패하였습니다");
+			view = request.getRequestDispatcher("views/common/errorPage.jsp");
 		}
 		
 		view.forward(request, response);

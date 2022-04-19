@@ -53,7 +53,7 @@
 			<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img2.jpg" alt="img" width="100%" height="30%">
 	</div>
 	<div class="outer">
-		<h1 style="color: #0367a6;">마이페이지 수정</h1>
+		<h1>회원 수정</h1>
 		<div class="userUpdate">
 			<form id = "updateMemberForm" action="<%= request.getContextPath() %>/updateMemberForm.do" method="post">
 				<input type="hidden" name="userId" value="<%= userId %>">

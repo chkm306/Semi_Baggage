@@ -57,10 +57,10 @@
                     <button type="button" id="idCheckBtn" onclick="checkId();">중복확인</button></td>
                 </tr>
                 <tr>
-                    <td><input type="password" name="userPwd" placeholder="비밀번호" required></td>
+                    <td><input type="password" id="userPwd" name="userPwd" placeholder="비밀번호" required></td>
                 </tr>
                 <tr>
-                    <td><input type="password" name="userPwd" placeholder="비밀번호 확인" required></td>
+                    <td><input type="password" id="checkPwd" name="userPwd" placeholder="비밀번호 확인" required></td>
                 </tr>
                 <tr>
                     <td><input type="tel" name="userPhone" placeholder="휴대폰 번호" required></td>
@@ -71,7 +71,7 @@
             </table>
             <div class="enrollBtns" align="center">
                 <button type="submit" id="joinBtn" disabled>가입하기</button>
-                <button type="button" id="goLogin" onclick="location.href='/'">메인으로</button>
+                <button type="button" id="goLogin" onclick="location.href='<%=request.getContextPath() %>/'">메인으로</button>
             </div>
         </form>
         <script>
@@ -102,6 +102,17 @@
 	    				console.log("서버 통신 실패")
 	    			}
 	    		})
+	    	}
+	    	
+	    	function joinValidate() {
+	    		var userPwd = $("#userPwd");
+	    		var checkPwd = $("#checkPwd");
+	    		
+	    		if(userPwd.val().trim() !== checkPwd.val().trim()) {
+	    			alert("비밀번호가 다릅니다")
+	    			return false;
+	    		}
+	    		return true;
 	    	}
     	</script>
     </div>
