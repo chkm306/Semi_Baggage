@@ -20,7 +20,7 @@
 	
 	
     <style>
-        .outer{
+          .outer{
             float: center;
             width: 70%; 
             margin: auto;
@@ -30,25 +30,25 @@
         	height: 30%;
         }
         .info{
-         	border: 1px solid black;
-            margin-top: 40px;
-            padding: 10px;
+         	
+            margin-top: 60px;
+            padding: 20px;
            
             width: 600px;
             height: 350px;
+            
+            margin-bottom: 120px;
         }
 
-		label{
-			text-align: center;
-			
-		}
+		
         
         
         .lb_0{
         	width:20%;
         	margin-left: 40px;
-        	margin-top: 10px;
+ 
         	font-size: 15px;
+        	margin-bottom: 10px;
         }
         .lb_1{
         	width:20%;
@@ -61,6 +61,15 @@
         	margin-left: 10px;
         	margin-top: 10px;
         }
+   
+  
+        #btn{
+        	
+        
+        	background-color: #324001;
+			color: white;
+        }
+  
         
     </style>
 </head>
@@ -105,7 +114,7 @@
          	</div>
          	<br>
       		<div>
-         	<button type="submit">확인</button>
+         	<button id="btn" type="submit">확인</button>
          	</div>
          </form>
         </div> 

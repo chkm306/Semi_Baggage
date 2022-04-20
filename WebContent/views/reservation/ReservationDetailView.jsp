@@ -12,53 +12,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    
+    
     <title>상세보기</title>
     <style>
+		
+		
 
 
         .outer{
-            width: 800px;
+            width: 70%;
+            height:30%;
             margin: auto;
             margin-top: 50px;
-            text-align: center;
+          
         }
 
         .info_box{
-            width: 800px;
-            height: 350px;
-
+            width: 50%;
+            height: 35%;
+			margin-left:30%;
             margin-bottom: 40px;
             margin-top: 50px;
             text-align: left;
             border: 1px solid black;
             
         }
+        
+      
 
         .info{
-            margin-top: 20px;
-            margin-left: 20px;
-            line-height: 50px;
+  			text-align:center;
+            margin: auto;
+            padding: 6%;
+            line-height: 20%;
+            margin-right: 60px;
         }
 
         .lb_1{
-            width: 300px;
-            margin-left: 30px;
+            width: 40%;
+            line-height: 20%;
+            margin-left: 8%;
+      		margin-top:6%;
+
         }
         .lb_1_bag{
-            width: 300px;
-            margin-left: 70px;
+            width: 40%;
+            margin-left: 14%;
+            
         }
+        .lb_2{
+      		width: 40%;
+      		margin-left: 12%;
+      		margin-top:3%;
+        }
+        
         .btn{
-            margin: 50px;
-            text-align: center;
+           	
+     		text-align: center;
+     		margin: 20px;
         }
+        
+        button{
+        	background-color: rgb(50, 65, 1);
+        	color: white;
+        	margin-left: 20px;
+        }
+        
+        
         .update{
             background-color: rgb(50, 65, 1);
             color: white;
             border-radius: 4px 4px 4px 4px;
-            width: 100px;
-            height: 30px;
-            margin: 10px;
+            width: 30%;
+            height: auto;
+            margin: 5%;
             padding: 0;
             font-size: large;
         }
@@ -66,9 +97,9 @@
             background-color: rgb(50, 65, 1);
             color: white;
             border-radius: 4px 4px 4px 4px;
-            width: 100px;
-            height: 30px;
-            margin: 10px;
+            
+            height: auto;
+            margin: 5%;
             padding: 0;
             font-size: large;
         }
@@ -79,11 +110,9 @@
 	<!--navigation-->
 	<%@ include file="../common/menubar.jsp" %>
 	
-    <div class= "reseve_img">
-       <img src="/resources/images/reservation2.jpg" alt="">
-    </div>
+   <img class="mainImg" src="resources/images/reservation.jpg">    
 
-    <section>
+    <form>
         <div class="outer"></div>
             <div>
                 <h1 align="center">상세보기</h1>
@@ -93,7 +122,7 @@
                 <label>짐</label>
                 <input type="text" name="baggage" value="<%= r.getBaggage()%>" class="lb_1_bag" readonly><br>
                 <label>수량</label>
-                <input type="text" name="amount" value="<%= r.getAmount()%>" class="lb_1_bag" readonly><br>
+                <input type="text" name="amount" value="<%= r.getAmount()%>" class="lb_2" readonly><br>
                 <label>출발장소</label>
                 <input type="text" name="sta_place" value="<%= r.getSta_place() %>" class="lb_1" readonly><br>
                 <label>출발날짜</label>
@@ -118,7 +147,7 @@
             </div>
 
       
-    </section>
+    </form>
     
      <!--footer-->
 	<%@ include file="../common/footer.jsp" %>

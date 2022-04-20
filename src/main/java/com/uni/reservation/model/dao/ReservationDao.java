@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.uni.board.model.dao.NoticeDao;
+import com.uni.notice.model.dao.NoticeDao;
 import com.uni.reservation.model.dto.PageInfo;
 import com.uni.reservation.model.dto.Reservation;
 

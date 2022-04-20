@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
     <title>Baggage</title>
     <style>
-        .outer{
+        
+     .outer{
             float: center;
             width: 70%; 
             margin: auto;
@@ -18,45 +19,49 @@
         }
         
        
-       .row{
-       		display: flex;
-       		flex-wrap: wrap;
-       		text-align: center;]
-       }
         
+
+        
+        .cate{
+        	text-align: center;
+        	display: flex;
+        	margin-left: 35%;
+        	margin-top:10%;
+        
+        }
         
        .col_text_right{
        		width: 100%;
-            position: relative;
+            
             
             border-radius: 10px 10px 10px 10px;
             padding: 0;
-            margin-right: 30px;
-       
-       }
-       .trans_res_box{
-        	float: left;
-            padding: 40px 25px;
-            text-align: center;
-            border: 1px solid black;
-            border-radius: 10px 10px 10px 10px;
-            height: 30%;
-            width: 100%px;
-            margin-top: 60px;
-        	
+		
         }
-         
+       
+		p{
+			font-size: 25px;
+			margin-left: 40px
+		}
+
+	    
+	    
+	    ._box{
+	    	border: 1px solid black;
+	    }
+	    
+	    
         .png{
             margin-top: 30px;
-            width: 200px;
-            height:200px;
+            width: 150px;
+            height:150px;
             text-align: center;
-            
             border-radius : 6px 6px 6px 6px;
             border-color: rgb(50, 65, 1);
             font-size: 25px;
             font-weight: 800;
             color: white;
+            margin-left: 630px;
         }
 
         .col_text_left{
@@ -68,16 +73,19 @@
             
         }
 
-        .store_box{
-            float: left;
-            padding: 40px 25px;
-            text-align: center;
-            border: 1px solid black;
-            border-radius: 10px 10px 10px 10px;
-            height: 30%;
-            width: 100%px;
-            margin-top: 60px;
-        }
+    
+        
+        #selectRList{
+			text-align: center;
+			margin-bottom: 10px;
+			
+		}
+		#reservationList{
+			background-color: #324001;
+			color: white;
+			
+			margin-top: 10%;
+		}
     </style>
 
 </head>
@@ -98,33 +106,30 @@
         <div class="trans_res_box">
             
             <img src="resources/images/2.png" class="png" onclick="location.href='<%=request.getContextPath()%>/r_transe.do'"> 
-            <p>운송</p>
+            <p></p>
            </div> 
         </div>
 	<div class="col_text_left">
         <div class="store_box">
             
             <img src="resources/images/3.png" class="png" onclick="location.href='<%=request.getContextPath()%>/r_storage.do'"> 
-            <p>보관</p>
+            <p></p>
             </div>
    </div>
 		</div>
     </div>
     
-
+    
+		
     
     
     
-    	<a href="<%= request.getContextPath()%>/memRList.do">
-            <p>예약 조회 - 마이페이지로 들어가는게좋을듯</p>
-        </a>
     
     
     
-
-
-   
     
+    
+ 
 
     <!-- 푸터 -->
     	<%@ include file="../common/footer.jsp" %> 

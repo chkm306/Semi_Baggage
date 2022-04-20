@@ -83,9 +83,9 @@
 	<%@ include file="../common/menubar.jsp" %>
 	
 	
-    <div class= "reseve_img">
-       <img src="/resources/images/reservation2.jpg" alt="">
-    </div>
+   <div class= "mainImg">
+        <img src="resources/images/reservation.jpg" alt="" >       
+	</div>
 
     <form action="<%=request.getContextPath() %>/updateRes.do" method="post">
         <div class="outer">
