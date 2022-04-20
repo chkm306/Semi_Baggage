@@ -66,7 +66,7 @@
 	<%@ include file="../common/menubar.jsp" %>
 	<div class="banner_img">
 			<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img4.jpg" alt="img" width="100%" height="30%">
-	</div>s
+	</div>
 	<div class="outer">
 		<h1>회원 관리</h1>
         <table class="adminTBL">
