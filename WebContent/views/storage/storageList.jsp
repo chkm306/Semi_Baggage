@@ -46,7 +46,7 @@
 					<% for(Storage s : storageList) { %>
 						<tr>
 							<td>
-								<%= s.getSto_no() %>
+								<span style="font-size: 1em;"><%= s.getSto_no() %></span>
 							</td>
 							<td>
 								<span style="font-size: 1.5em;"><%= s.getSto_name() %></span>

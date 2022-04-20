@@ -52,10 +52,21 @@
 		background-color: #324001;
 		color: white;
 	}
+	
+	#goBack{
+		background-color: #324001;
+	    margin-top: 10px;
+		color: white;
+	    width: 230px;
+	    height: 30px;
+	}
 </style>
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>
+	<div class="banner_img">
+			<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img4.jpg" alt="img" width="100%" height="30%">
+	</div>
 	<div class="outer">
 		<h1>회원 관리</h1>
         <table class="adminTBL">
@@ -93,6 +104,7 @@
                 <% } %>
             </tbody>
         </table>
+        <button type="button" id="goBack" onclick="history.go(-1)">이전 페이지로</button>
     </div>
     <script>
  		$(".memUpdateBtn").click(function(){
@@ -119,5 +131,6 @@
  			
  		})
     </script>
+    <%@ include file="../common/footer.jsp" %> 
 </body>
 </html>
