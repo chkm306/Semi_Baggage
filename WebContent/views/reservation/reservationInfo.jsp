@@ -1,4 +1,4 @@
-<%@page import="com.uni.member.model.dto.NonMember"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"   import="com.uni.reservation.model.dto.Reservation, com.uni.member.model.dto.Member" %>
     <%
@@ -46,6 +46,16 @@
 	        button{
 	        	background-color: #324001;
 				color: white;
+				margin-left: 550px;
+				margin-bottom: 10px;
+	        }
+	        
+	        #btn{
+	        	background-color: #324001;
+				color: white;
+	        	text-align: center;
+	        	margin-left: 48%;
+	        	
 	        }
 </style>
 </head>
@@ -99,14 +109,12 @@
 	
 				</div>
 				
-				<button type="submit">예약완료</button>
+				<button id="btn" type="submit" >예약완료</button>
 				
 			</form>
 			
-			<div class="wrap_box">
-		        <p>
-		            <span>* 비회원 예약 조회는 로그인 창에서 확인가능합니다.</span>
-		        </p>
+			<div class="wrap_box" align="center">
+		        
 		        <p>
 		            <span>* 거리가 너무 먼 지역은 배송 불가능합니다.</span>
 		        </p>

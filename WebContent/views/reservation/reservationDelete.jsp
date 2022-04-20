@@ -9,6 +9,8 @@ String userName = ((Member) request.getSession().getAttribute("loginUser")).getU
 <head>
 <meta charset="UTF-8">
 <title>baggage</title>
+
+	
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>

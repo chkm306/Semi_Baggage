@@ -27,25 +27,25 @@
         	height: 30%;
         }
         .info{
-         	border: 1px solid black;
-            margin-top: 40px;
-            padding: 10px;
+         	
+            margin-top: 60px;
+            padding: 20px;
            
             width: 600px;
             height: 350px;
+            
+            margin-bottom: 120px;
         }
 
-		label{
-			text-align: center;
-			
-		}
+		
         
         
         .lb_0{
         	width:20%;
         	margin-left: 40px;
-        	margin-top: 10px;
+ 
         	font-size: 15px;
+        	margin-bottom: 10px;
         }
         .lb_1{
         	width:20%;
@@ -58,7 +58,15 @@
         	margin-left: 10px;
         	margin-top: 10px;
         }
+   
+  
+        #btn{
+        	
         
+        	background-color: #324001;
+			color: white;
+        }
+       
     </style>
 </head>
 <body>
@@ -79,7 +87,7 @@
                 <input type="text" name="baggage" class="lb_0" placeholder="사이즈" id="bag" required ><br>
                 
                 <label>수량</label>
-                <input type="text" name="amount" placeholder="수량" required><br>           
+                <input type="text" name="amount" class="lb_3" placeholder="수량" required><br>           
                      
                 <label>출발장소</label>
                  <input type="text" name="sta_place"  class="lb_2" required><br>
@@ -102,7 +110,7 @@
          	</div>
          	<br>
       		<div>
-         	<button type="submit">확인</button>
+         	<button id='btn' type="submit">확인</button>
          	</div>
          </form>
         </div> 

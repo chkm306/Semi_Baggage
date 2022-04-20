@@ -63,6 +63,12 @@
 	            </table>
             </div>
             <div class="updateBtns">
+            
+            
+    	
+        
+        		<button type="button" id="SelecteBtn" onclick="selectResevation()">예약조회</button>
+                <br>
                 <button type="button" id="myPageUpdateBtn" onclick="updateMyPage()">개인 정보 수정</button>
                 <br>
                 <button type="button" id="memDeleteBtn" onclick="deletePage()">회원 탈퇴</button>
@@ -95,6 +101,12 @@
             	function manageMember(){
             		location.href="<%=request.getContextPath()%>/listMember.do";
             	}
+            	function selectResevation(){
+            		
+            		location.href="<%= request.getContextPath()%>/memRList.do";
+            	}
+            	
+            	
             </script>
         </div>
     </div>
