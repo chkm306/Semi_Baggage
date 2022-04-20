@@ -32,9 +32,6 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 	<div class="banner_img">
-			<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img4.jpg" alt="img" width="100%" height="30%">
-	</div>
-	<div class="banner_img">
 		<img id="banner_img" src="${pageContext.request.contextPath}/resources/images/banner_img3.jpg" alt="img" width="100%" height="30%">
 	</div>
 	<div class="outer">
@@ -49,7 +46,7 @@
 					<% for(Storage s : storageList) { %>
 						<tr>
 							<td>
-								<%= s.getSto_no() %>
+								<span style="font-size: 1em;"><%= s.getSto_no() %></span>
 							</td>
 							<td>
 								<span style="font-size: 1.5em;"><%= s.getSto_name() %></span>
